@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import bg from "../assets/img/bg.jpg";
 
 export const About = () => {
   const [isVisible, setIsVisible] = useState(true);
   const handleToggle = () => {
     setIsVisible(!isVisible);
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
   };
 
   return (
@@ -16,20 +22,26 @@ export const About = () => {
     >
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-[#1A1A1D90]"></div>
-      <div className="w-[80%] h-[70%] bg-[#1A1A1D90] rounded-2xl">
-        <div className="text-center py-16 font-nunito relative z-10">
-          <p className="text-white font-extrabold uppercase text-xl sm:text-5xl py-4">
+      <div className="relative z-10 flex flex-col justify-center items-center px-4 w-[80%] h-[70%] bg-[#1A1A1D90] rounded-2xl">
+        <div className="text-center font-nunito">
+          <p className="text-white font-extrabold uppercase text-xl sm:text-2xl md:text-3xl xl:text-5xl py-4">
             about slp community
           </p>
           {isVisible && (
-            <h1 className="text-white mx-0 sm:mx-24 text-justify text-xs sm:text-sm">
+            <motion.h1
+              className="text-white mx-0 sm:mx-24 text-justify text-xs sm:text-sm"
+              initial="hidden"
+              animate="visible"
+              exit="hidden"
+              variants={fadeIn}
+            >
               Ut est laboris sit elit incididunt cillum fugiat. Pariatur duis et
               veniam adipisicing anim exercitation id irure voluptate sit.
               Occaecat adipisicing irure magna magna aliquip enim cillum. Aliqua
               do sint ullamco qui eiusmod laboris Lorem ex ad qui mollit. Sint
               ullamco incididunt aliqua reprehenderit eiusmod dolore ullamco et.
               Sit pariatur incididunt commodo dolor.
-            </h1>
+            </motion.h1>
           )}
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center py-4">
