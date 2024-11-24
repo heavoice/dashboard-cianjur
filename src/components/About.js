@@ -22,7 +22,7 @@ export const About = () => {
     >
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-[#1A1A1D90]"></div>
-      <div className="relative z-10 flex flex-col justify-center items-center px-4 w-[80%] h-[70%] bg-[#1A1A1D90] rounded-2xl">
+      <div className="relative z-10 flex flex-col justify-center items-center px-4 w-[80%] h-[70%] bg-[#1A1A1D90] mt-24 rounded-2xl">
         <div className="text-center font-nunito">
           <p className="text-white font-extrabold uppercase text-xl sm:text-2xl md:text-3xl xl:text-5xl py-4">
             about slp community

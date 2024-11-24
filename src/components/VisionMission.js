@@ -40,7 +40,7 @@ export const VisionMission = () => {
       initial="hidden"
       animate="visible"
       variants={fadeIn}
-      className="flex items-center justify-center w-full h-screen bg-white p-4"
+      className="flex items-center justify-center w-full h-screen bg-white p-4 font-nunito"
     >
       <div className="flex flex-col md:flex-row items-center md:items-start w-full">
         {/* Bagian Kiri (Gambar) */}
@@ -55,7 +55,7 @@ export const VisionMission = () => {
         {/* Bagian Kanan (Tulisan) */}
         <div className="w-full md:w-1/2 flex flex-col p-4 self-center ">
           <div className="w-[84px] h-[2px] bg-blue-500 mb-4"></div>
-          <h2 className="text-3xl font-bold text-blue-500 mb-4">
+          <h2 className="text-3xl font-extrabold text-blue-500 mb-4 uppercase">
             {content[currentIndex].title}
           </h2>
           <p className="text-blue-500 text-lg mb-4">
