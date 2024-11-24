@@ -53,7 +53,7 @@ export const FAQ = () => {
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="w-full bg-white rounded-lg border-blue-500 border-2 p-6 flex flex-col items-center justify-between transition-transform duration-200"
+                className="w-72 sm:w-full bg-white rounded-lg border-blue-500 border-2 p-6 flex flex-col items-center justify-between transition-transform duration-200"
               >
                 <h3 className="text-xl font-bold text-blue-500 mb-4 text-center">
                   {faq.question}
