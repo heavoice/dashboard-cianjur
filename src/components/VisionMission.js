@@ -40,7 +40,7 @@ export const VisionMission = () => {
       initial="hidden"
       animate="visible"
       variants={fadeIn}
-      className="flex items-center justify-center w-full h-screen bg-white p-4 font-nunito"
+      className="flex items-center justify-center w-full h-screen bg-slate-50 p-4 font-nunito"
     >
       <div className="flex flex-col md:flex-row items-center md:items-start w-full">
         {/* Bagian Kiri (Gambar) */}
@@ -48,7 +48,7 @@ export const VisionMission = () => {
           <img
             src={content[currentIndex].image}
             alt={content[currentIndex].title}
-            className="w-full h-auto rounded-lg shadow-lg"
+            className="w-full h-auto shadow-lg"
           />
         </div>
 

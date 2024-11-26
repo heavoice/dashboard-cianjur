@@ -1,22 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
-import Main from "./Main";
+import AppRouter from "./Router"; // Import AppRouter yang baru saja dibuat
 import reportWebVitals from "./reportWebVitals";
-import $ from "jquery"; // Import jQuery
-import "owl.carousel"; // Import Owl Carousel
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Main />
+    <AppRouter /> {/* Gunakan AppRouter di sini */}
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+// Jika Anda ingin memulai pengukuran kinerja di aplikasi Anda, kirimkan fungsi
+// untuk mencatat hasilnya (misalnya: reportWebVitals(console.log))
+// atau kirim ke endpoint analitik. Pelajari lebih lanjut: https://bit.ly/CRA-vitals
 reportWebVitals();

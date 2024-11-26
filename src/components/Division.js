@@ -33,7 +33,7 @@ export const Division = () => {
     {
       title: "UI/UX Designer",
       description:
-        "UI/UX Designer bertanggung jawab untuk menciptakan pengalaman pengguna (User Experience) dan antarmuka pengguna (User Interface) yang intuitif, menarik, dan efisien.",
+        "Divisi ini bertanggung jawab atas desain antarmuka dan pengalaman pengguna. Tim ini memastikan bahwa aplikasi atau platform yang dikembangkan memiliki tampilan menarik, mudah digunakan, dan memenuhi kebutuhan pengguna. Mereka mengerjakan wireframe, prototipe, serta mendesain elemen visual dan interaksi pengguna.",
       image: uiuximg,
       icons: (
         <>
@@ -50,7 +50,7 @@ export const Division = () => {
     {
       title: "Web Developer",
       description:
-        "Web Developer berfokus pada pengembangan dan pemeliharaan situs web, baik dari sisi front-end, back-end, atau keduanya (full-stack).",
+        "Divisi ini berfokus pada pengembangan aplikasi berbasis web. Anggota tim bertugas mengimplementasikan frontend dan backend untuk membuat aplikasi web yang responsif, fungsional, dan sesuai dengan standar teknologi modern. WebDev juga bertanggung jawab dalam pengintegrasian API, pengelolaan data, serta optimasi performa web.",
       image: webimg,
       icons: (
         <>
@@ -68,7 +68,7 @@ export const Division = () => {
     {
       title: "Mobile Developer",
       description:
-        "Mobile Developer bertugas untuk mengembangkan aplikasi untuk perangkat mobile, baik berbasis Android, iOS, maupun platform lintas (cross-platform).",
+        "Divisi ini mengembangkan aplikasi mobile untuk platform Android dan/atau iOS. Tim ini memastikan aplikasi memiliki performa yang baik, ramah pengguna, dan sesuai dengan kebutuhan pasar. Mereka menggunakan teknologi dan framework terkini untuk menghadirkan aplikasi mobile yang inovatif.",
       image: mobileimg,
       icons: (
         <>
@@ -107,7 +107,7 @@ export const Division = () => {
   }, [currentIndex]);
 
   return (
-    <div className="w-full h-[120vh] sm:h-[200vh]  bg-slate-50 flex justify-center items-center p-4 font-nunito relative">
+    <div className="w-full h-[170vh] sm:h-[200vh]  bg-slate-50 flex justify-center items-center p-4 font-nunito relative tracking-wider">
       {/* Teks Divisi Kami */}
       <h2 className="absolute top-10 text-4xl font-extrabold text-blue-500 uppercase p-8">
         Represent Our Division
@@ -128,7 +128,7 @@ export const Division = () => {
         />
 
         {/* Deskripsi Divisi */}
-        <p className="text-lg text-gray-600 text-justify text-balance">
+        <p className="text-lg text-gray-600 text-start">
           {divisionData[currentIndex].description}
         </p>
 

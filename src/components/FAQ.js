@@ -1,8 +1,4 @@
-import React, { useEffect } from "react";
-import $ from "jquery";
-import "owl.carousel/dist/assets/owl.carousel.css";
-import "owl.carousel/dist/assets/owl.theme.default.css";
-import "owl.carousel";
+import React, { useState, useEffect } from "react";
 
 export const FAQ = () => {
   const faqs = [
@@ -27,17 +23,35 @@ export const FAQ = () => {
     },
   ];
 
+  const [activeIndex, setActiveIndex] = useState(0); // State to track the active FAQ
+
   useEffect(() => {
     const $ = window.$;
 
-    $(".owl-carousel").owlCarousel({
+    const owl = $(".owl-carousel").owlCarousel({
       loop: true,
       margin: 30,
-      nav: true,
       dots: false,
-      responsive: {},
+      responsive: { 0: { items: 1 }, 768: { items: 2 }, 1024: { items: 3 } },
     });
-  }, []);
+
+    // Sync the active index with carousel changes
+    owl.on("changed.owl.carousel", (event) => {
+      const currentIndex = event.item.index % faqs.length; // Get the current index
+      setActiveIndex(currentIndex); // Update the active index
+    });
+
+    return () => {
+      owl.off("changed.owl.carousel"); // Clean up event listener on unmount
+    };
+  }, [faqs.length]);
+
+  // Function to navigate carousel based on button click
+  const handleNavigate = (index) => {
+    setActiveIndex(index); // Update active index
+    const $ = window.$;
+    $(".owl-carousel").trigger("to.owl.carousel", [index, 300]); // Navigate carousel to the selected index
+  };
 
   return (
     <div className="flex justify-center w-full bg-slate-50 font-nunito py-10">
@@ -49,19 +63,36 @@ export const FAQ = () => {
 
         {/* Owl Carousel Wrapper */}
         <div className="flex justify-center">
-          <div className="owl-carousel flex items-center">
+          <div className="owl-carousel">
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className="w-72 sm:w-full bg-white rounded-lg border-blue-500 border-2 p-6 flex flex-col items-center justify-between transition-transform duration-200"
+                className="w-72 mx-auto sm:w-full bg-white rounded-lg border-blue-500 border-2 p-6 flex flex-col items-center justify-between transition-transform duration-200"
               >
                 <h3 className="text-xl font-bold text-blue-500 mb-4 text-center">
                   {faq.question}
                 </h3>
-                <p className="text-gray-600 text-center">{faq.answer}</p>
+                <p className="text-gray-600 text-start">{faq.answer}</p>
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Custom Navigation Buttons */}
+        <div className="pt-4 flex justify-center space-x-2">
+          {faqs.map((_, index) => {
+            return (
+              <button
+                key={index}
+                onClick={() => handleNavigate(index + 1)} // Handle button click
+                className={`rounded-full p-2 border-2 ${
+                  activeIndex === index
+                    ? "bg-transparent border-blue-500 text-blue-500"
+                    : "bg-blue-500 text-white"
+                } hover:bg-blue-500 hover:text-white transition duration-200`}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
