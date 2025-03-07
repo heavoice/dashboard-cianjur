@@ -1,170 +1,96 @@
-import React, { useState, useEffect } from "react";
-import {
-  FaArrowLeft,
-  FaArrowRight,
-  FaFigma,
-  FaJava,
-  FaPhp,
-  FaLaravel,
-  FaHtml5,
-  FaCss3,
-  FaJs,
-  FaReact,
-  FaGit,
-  FaVuejs,
-} from "react-icons/fa";
-import {
-  SiKotlin,
-  SiFlutter,
-  SiDart,
-  SiAndroidstudio,
-  SiAdobexd,
-  SiCanva,
-  SiAdobephotoshop,
-  SiAdobeillustrator,
-} from "react-icons/si";
-import uiuximg from "../assets/img/uiux.jpg";
-import webimg from "../assets/img/webdev.jpg";
-import mobileimg from "../assets/img/mobile.jpg";
+import React from "react";
+import { highlightData } from "../constant/HighlightData";
+import { bgPrimary, textPrimary } from "../constant/constants";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 export const Division = () => {
-  // Dummy data untuk divisi
-  const divisionData = [
-    {
-      title: "UI/UX Designer",
-      description:
-        "Divisi ini bertanggung jawab atas desain antarmuka dan pengalaman pengguna. Tim ini memastikan bahwa aplikasi atau platform yang dikembangkan memiliki tampilan menarik, mudah digunakan, dan memenuhi kebutuhan pengguna. Mereka mengerjakan wireframe, prototipe, serta mendesain elemen visual dan interaksi pengguna.",
-      image: uiuximg,
-      icons: (
-        <>
-          <FaFigma style={{ fontSize: "1.5rem", color: "#F24E1E" }} />{" "}
-          <SiAdobephotoshop style={{ fontSize: "1.5rem", color: "#31A8FF" }} />{" "}
-          <SiAdobeillustrator
-            style={{ fontSize: "1.5rem", color: "#FF9A00" }}
-          />{" "}
-          <SiAdobexd style={{ fontSize: "1.5rem", color: "#FF26D5" }} />{" "}
-          <SiCanva style={{ fontSize: "1.5rem", color: "#00C6C8" }} />
-        </>
-      ),
-    },
-    {
-      title: "Web Developer",
-      description:
-        "Divisi ini berfokus pada pengembangan aplikasi berbasis web. Anggota tim bertugas mengimplementasikan frontend dan backend untuk membuat aplikasi web yang responsif, fungsional, dan sesuai dengan standar teknologi modern. WebDev juga bertanggung jawab dalam pengintegrasian API, pengelolaan data, serta optimasi performa web.",
-      image: webimg,
-      icons: (
-        <>
-          <FaHtml5 style={{ fontSize: "1.5rem", color: "#E44D26" }} />
-          <FaCss3 style={{ fontSize: "1.5rem", color: "#2965F1" }} />
-          <FaJs style={{ fontSize: "1.5rem", color: "#F7DF1E" }} />
-          <FaReact style={{ fontSize: "1.5rem", color: "#61DBFB" }} />
-          <FaGit style={{ fontSize: "1.5rem", color: "#F1502F" }} />
-          <FaVuejs style={{ fontSize: "1.5rem", color: "#4FC08D" }} />
-          <FaPhp style={{ fontSize: "1.5rem", color: "#8993BE" }} />
-          <FaLaravel style={{ fontSize: "1.5rem", color: "#FF2D20" }} />
-        </>
-      ),
-    },
-    {
-      title: "Mobile Developer",
-      description:
-        "Divisi ini mengembangkan aplikasi mobile untuk platform Android dan/atau iOS. Tim ini memastikan aplikasi memiliki performa yang baik, ramah pengguna, dan sesuai dengan kebutuhan pasar. Mereka menggunakan teknologi dan framework terkini untuk menghadirkan aplikasi mobile yang inovatif.",
-      image: mobileimg,
-      icons: (
-        <>
-          <FaJava style={{ fontSize: "1.5rem", color: "#007396" }} />
-          <SiFlutter style={{ fontSize: "1.5rem", color: "#02569B" }} />
-          <SiDart style={{ fontSize: "1.5rem", color: "#00B4AB" }} />
-          <SiAndroidstudio style={{ fontSize: "1.5rem", color: "#3DDC84" }} />
-          <SiKotlin style={{ fontSize: "1.5rem", color: "#F14C2D" }} />
-        </>
-      ),
-    },
-  ];
-
-  // State untuk menyimpan indeks divisi yang ditampilkan
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const interval = 4000;
-
-  // Fungsi untuk pindah ke divisi berikutnya
-  const goToNextDivision = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % divisionData.length);
-  };
-
-  // Fungsi untuk pindah ke divisi sebelumnya
-  const goToPreviousDivision = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? divisionData.length - 1 : prevIndex - 1
-    );
-  };
-
-  useEffect(() => {
-    const autoPlay = setInterval(() => {
-      goToNextDivision();
-    }, interval);
-
-    return () => clearInterval(autoPlay);
-  }, [currentIndex]);
-
   return (
-    <div className="w-full h-[170vh] sm:h-[200vh]  bg-slate-50 flex justify-center items-center p-4 font-nunito relative tracking-wider">
-      {/* Teks Divisi Kami */}
-      <h2 className="absolute top-10 text-4xl font-extrabold text-blue-500 uppercase p-8">
-        Represent Our Division
-      </h2>
-
-      {/* Konten Divisi */}
-      <div className="relative w-[90%] md:w-[60%] p-6 bg-white rounded-lg shadow-lg flex flex-col items-start">
-        {/* Judul Divisi */}
-        <h3 className="text-2xl font-bold text-blue-500 mb-4">
-          {divisionData[currentIndex].title}
-        </h3>
-
-        {/* Gambar Divisi */}
-        <img
-          src={divisionData[currentIndex].image}
-          alt={divisionData[currentIndex].title}
-          className="w-full h-full object-cover mb-4 rounded-md"
-        />
-
-        {/* Deskripsi Divisi */}
-        <p className="text-lg text-gray-600 text-start">
-          {divisionData[currentIndex].description}
+    <div className="flex flex-col justify-center items-center p-4">
+      <div className="w-full xxs:max-w-[15rem] xs:max-w-[25rem] sm:max-w-7xl px-4 py-8 bg-white z-10 rounded-xl font-nunito">
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold">
+          Highlight
+        </h1>
+        <p className="sm:text-sm lg:text-lg mt-6">
+          Memberikan informasi penting mengenai berbagai aspek yang signifikan
+          terkait Kabupaten Cianjur
         </p>
-
-        <div className="flex flex-wrap items-center mt-2 gap-4">
-          {divisionData[currentIndex].icons}
-        </div>
-
-        {/* Tombol Navigasi */}
-        <button
-          onClick={goToPreviousDivision}
-          className="hidden md:block absolute rounded-full left-[-80px] top-1/2 transform -translate-y-1/2 border-2 border-blue-500 bg-transparent text-blue-500 p-2 text-xl hover:border-blue-700 hover:text-blue-700 transition-all"
+        <a
+          href="#"
+          className="max-w-7xl w-full mx-auto my-6 grid grid-cols-1 md:grid-cols-2 gap-4"
         >
-          <FaArrowLeft />
-        </button>
-        <button
-          onClick={goToNextDivision}
-          className="hidden md:block absolute rounded-full right-[-80px] top-1/2 transform -translate-y-1/2 border-2 border-blue-500 bg-transparent text-blue-500 p-2 text-xl hover:border-blue-700 hover:text-blue-700 transition-all"
-        >
-          <FaArrowRight />
-        </button>
+          {highlightData.map((highlightData, index) => (
+            <div
+              key={index}
+              className="bg-green-600 rounded-lg p-4 flex items-center text-white"
+            >
+              <div className="flex flex-col w-full">
+                <div className="flex flex-row items-center h-12">
+                  <button className="p-1 sm:p-2  rounded-lg mr-2 ml-4 text-white border-2 border-white">
+                    {highlightData.icon}
+                  </button>
+                  <h2 className="font-bold text-sm sm:text-xl ml-0 sm:ml-2">
+                    {highlightData.title}
+                  </h2>
+                </div>
 
-        {/* Tombol Navigasi Mobile */}
-        <div className="mt-4 flex justify-between w-full md:hidden">
-          <button
-            onClick={goToPreviousDivision}
-            className="rounded-lg border-2 border-blue-500 bg-transparent text-blue-500 px-4 py-2 hover:border-blue-700 hover:text-blue-700 transition-all"
-          >
-            <FaArrowLeft />
-          </button>
-          <button
-            onClick={goToNextDivision}
-            className="rounded-lg border-2 border-blue-500 bg-transparent text-blue-500 px-4 py-2 hover:border-blue-700 hover:text-blue-700 transition-all"
-          >
-            <FaArrowRight />
-          </button>
-        </div>
+                <div className="grid grid-cols-1 xs:grid-cols-2 xl:grid-cols-3 p-4 gap-2 mt-3">
+                  <div className="xxs:border-r-0 xs:border-r border-white/20">
+                    <p className="text-sm font-bold">{highlightData.point1}</p>
+                    <p className="text-md font-bold">
+                      {highlightData.subpoint1
+                        ?.split(" ")
+                        .slice(0, -1)
+                        .join(" ") || ""}{" "}
+                      <span className="text-sm font-normal">
+                        {highlightData.subpoint1?.split(" ").slice(-1) || ""}
+                      </span>
+                    </p>
+                    <p className="text-sm font-light mt-3">
+                      {highlightData.subsubpoint1}
+                    </p>
+                  </div>
+                  <div className="sm:border-r-0 xl:border-r border-white/20">
+                    <p className="text-sm font-bold">{highlightData.point2}</p>
+                    <p className="text-md font-bold">
+                      {highlightData.subpoint2
+                        ?.split(" ")
+                        .slice(0, -1)
+                        .join(" ") || ""}{" "}
+                      <span className="text-sm font-normal">
+                        {highlightData.subpoint2?.split(" ").slice(-1) || ""}
+                      </span>
+                    </p>
+                    <p className="text-sm font-light mt-3">
+                      {highlightData.subsubpoint2}
+                    </p>
+                  </div>
+                  <div className="xxs:mt-0 xs:mt-6 sm:mt-0">
+                    <p className="text-sm font-bold">{highlightData.point3}</p>
+                    <p className="text-md font-bold">
+                      {highlightData.subpoint3
+                        ?.split(" ")
+                        .slice(0, -1)
+                        .join(" ") || ""}{" "}
+                      <span className="text-sm font-normal">
+                        {highlightData.subpoint3?.split(" ").slice(-1) || ""}
+                      </span>
+                    </p>
+                    <p className="text-sm font-light mt-3">
+                      {highlightData.subsubpoint3}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </a>
+        <a
+          href="#"
+          className={`w-fit transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 duration-300 p-3 font-bold rounded-xl ml-auto mt-6 max-w-7xl flex justify-end border border-green-600 bg-white text-green-600 hover:bg-green-600 hover:text-white`}
+        >
+          Lihat Semua Highlight
+          <FaExternalLinkAlt className="mt-1 ml-4 hover:text" />
+        </a>
       </div>
     </div>
   );

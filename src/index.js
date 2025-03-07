@@ -4,6 +4,8 @@ import "./index.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import AppRouter from "./Router"; // Import AppRouter yang baru saja dibuat
 import reportWebVitals from "./reportWebVitals";
 

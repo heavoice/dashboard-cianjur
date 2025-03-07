@@ -1,6 +1,6 @@
 import { Navbar } from "./components/Navbar";
-import { About } from "./components/About";
-import { VisionMission } from "./components/VisionMission";
+import { Portal } from "./components/Portal";
+import { News } from "./components/News";
 import { Division } from "./components/Division";
 import { Team } from "./components/Team";
 import { FAQ } from "./components/FAQ";
@@ -11,12 +11,12 @@ function Main() {
   return (
     <>
       <Navbar />
-      <About />
-      <VisionMission />
+      <Portal />
+      <News />
       <Division />
       <Team />
-      <Project />
-      <FAQ />
+      {/*<Project />
+      <FAQ />*/}
       <Footer />
     </>
   );
