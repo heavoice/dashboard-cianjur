@@ -104,7 +104,7 @@ export const News = () => {
 
   return (
     <div className="bg-slate-50 flex flex-col justify-center items-center p-4">
-      <div className="w-full xxs:max-w-[15rem] xs:max-w-[25rem] sm:max-w-7xl p-10 md:p-20 bg-white z-10 rounded-xl -translate-y-20 font-nunito">
+      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl xxs:p-4 sm:p-10 md:p-20 bg-white z-10 rounded-xl -translate-y-20 font-nunito">
         <div className="flex flex-col xs:flex-row items-center gap-4 text-2xl font-bold text-black mb-20">
           <p className="whitespace-nowrap">Topik Populer</p>
           <div className="flex-1 border-t border-black/10"></div>
@@ -118,9 +118,9 @@ export const News = () => {
         <div className="flex justify-between items-center">
           <button
             onClick={prevSlide}
-            className="mr-2 px-2 py-2 bg-transparent border-2 border-green-600 hover:bg-green-600 transition-all duration-200 rounded-full flex items-center justify-center text-green-600 hover:text-white"
+            className="mr-2 p-1 sm:p-2 bg-transparent border-2 border-green-600 hover:bg-green-600 transition-all duration-200 rounded-full flex items-center justify-center text-green-600 hover:text-white"
           >
-            <FaChevronLeft className="text-xl " />
+            <FaChevronLeft className="text-sm sm:text-xl " />
           </button>
 
           <div className="flex gap-4 justify-center items-start flex-grow overflow-hidden">
@@ -144,9 +144,9 @@ export const News = () => {
 
           <button
             onClick={nextSlide}
-            className="ml-2 px-2 py-2 bg-transparent border-2 border-green-600 hover:bg-green-600 transition-all duration-200 rounded-full flex items-center justify-center text-green-600 hover:text-white"
+            className="ml-2 p-1 sm:p-2 bg-transparent border-2 border-green-600 hover:bg-green-600 transition-all duration-200 rounded-full flex items-center justify-center text-green-600 hover:text-white"
           >
-            <FaChevronRight className="text-xl " />
+            <FaChevronRight className="text-sm sm:text-xl " />
           </button>
         </div>
 
