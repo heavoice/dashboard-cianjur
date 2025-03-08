@@ -6,7 +6,7 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 export const Division = () => {
   return (
     <div className="flex flex-col justify-center items-center p-4">
-      <div className="w-full xxs:max-w-[15rem] xs:max-w-[25rem] sm:max-w-7xl px-4 py-8 bg-white z-10 rounded-xl font-nunito">
+      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl px-4 py-8 bg-white z-10 rounded-xl font-nunito">
         <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold">
           Highlight
         </h1>
@@ -86,10 +86,10 @@ export const Division = () => {
         </a>
         <a
           href="#"
-          className={`w-fit transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 duration-300 p-3 font-bold rounded-xl ml-auto mt-6 max-w-7xl flex justify-end border border-green-600 bg-white text-green-600 hover:bg-green-600 hover:text-white`}
+          className={`w-fit transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 duration-300 p-3 font-bold rounded-xl ml-auto mt-6 max-w-7xl flex lg:justify-end md:justify-center border border-green-600 bg-white text-green-600 hover:bg-green-600 hover:text-white`}
         >
           Lihat Semua Highlight
-          <FaExternalLinkAlt className="mt-1 ml-4 hover:text" />
+          <FaExternalLinkAlt className="mt-1 ml-4" />
         </a>
       </div>
     </div>

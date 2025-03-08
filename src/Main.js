@@ -2,7 +2,7 @@ import { Navbar } from "./components/Navbar";
 import { Portal } from "./components/Portal";
 import { News } from "./components/News";
 import { Division } from "./components/Division";
-import { Team } from "./components/Team";
+import { Visualizer } from "./components/Visualizer";
 import { FAQ } from "./components/FAQ";
 import { Project } from "./components/Project";
 import { Footer } from "./components/Footer";
@@ -14,7 +14,7 @@ function Main() {
       <Portal />
       <News />
       <Division />
-      <Team />
+      <Visualizer />
       {/*<Project />
       <FAQ />*/}
       <Footer />

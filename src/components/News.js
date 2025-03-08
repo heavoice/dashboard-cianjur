@@ -167,7 +167,7 @@ export const News = () => {
           )}
         </div>
       </div>
-      <div className="slider-container w-full xxs:max-w-[15rem] xs:max-w-[25rem] sm:max-w-7xl overflow-hidden">
+      <div className="slider-container w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl overflow-hidden">
         <Slider {...dashboard} className="flex justify-center overflow-hidden">
           <div className="flex justify-center px-4">
             <a href="#">
