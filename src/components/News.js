@@ -105,7 +105,7 @@ export const News = () => {
   return (
     <div className="bg-slate-50 flex flex-col justify-center items-center p-4">
       <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl xxs:p-4 sm:p-10 md:p-20 bg-white z-10 rounded-xl -translate-y-20 font-nunito">
-        <div className="flex flex-col xs:flex-row items-center gap-4 text-2xl font-bold text-black mb-20">
+        <div className="flex flex-col xs:flex-row items-center gap-0 xs:gap-4 text-2xl font-bold text-black mb-10">
           <p className="whitespace-nowrap">Topik Populer</p>
           <div className="flex-1 border-t border-black/10"></div>
           <a
@@ -123,19 +123,19 @@ export const News = () => {
             <FaChevronLeft className="text-sm sm:text-xl " />
           </button>
 
-          <div className="flex gap-4 justify-center items-start flex-grow overflow-hidden">
+          <div className="flex gap-4 justify-center items-start overflow-hidden">
             {content
               .slice(startIndex, startIndex + visibleCount)
               .map((item, index) => (
                 <a
                   href={item.link}
                   key={index}
-                  className="w-auto h-auto p-4 rounded-lg flex flex-col items-center"
+                  className="w-auto h-auto  rounded-lg flex flex-col items-center"
                 >
                   <img
                     src={item.src}
                     alt={`icon-${index}`}
-                    className="w-16 h-16 sm:w-24 sm:h-24 xl:w-48 xl:h-48 object-cover "
+                    className="w-20 h-20 sm:w-24 sm:h-24 xl:w-48 xl:h-48 object-cover "
                   />
                   <p className="text-center font-bold mt-2">{item.label}</p>
                 </a>
