@@ -17,45 +17,7 @@ import Social from "../assets/img/Ekonomi.svg";
 import Banner1 from "../assets/img/banner1.png";
 import Banner2 from "../assets/img/comingsoon.png";
 
-export const News = () => {
-  const dashboard = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        dashboard: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: false,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 640,
-        dashboard: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 480,
-        dashboard: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: true,
-        },
-      },
-    ],
-  };
-
+export const Features = () => {
   const content = [
     { src: Ekonomi, label: "Ekonomi", link: "/ekonomi" },
     { src: Environment, label: "Lingkungan", link: "/lingkungan" },
@@ -100,6 +62,19 @@ export const News = () => {
     if (startIndex - visibleCount >= 0) {
       setStartIndex(startIndex - visibleCount);
     }
+  };
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const banners = [Banner1, Banner2, Banner2, Banner2];
+
+  const nextBanner = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
+  };
+
+  const prevBanner = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + banners.length) % banners.length
+    );
   };
 
   return (
@@ -167,48 +142,42 @@ export const News = () => {
           )}
         </div>
       </div>
-      <div className="slider-container w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl overflow-hidden">
-        <Slider {...dashboard} className="flex justify-center overflow-hidden">
-          <div className="flex justify-center px-4">
-            <a href="#">
-              <img
-                src={Banner1}
-                alt="Banner 1"
-                className="w-full h-full object-cover"
-              />
-            </a>
-          </div>
-          <div className="flex justify-center px-4">
-            <a href="#">
-              <img
-                src={Banner2}
-                alt="Coming Soon"
-                className="w-full h-full object-cover"
-              />
-            </a>
-          </div>
-          <div className="flex justify-center px-4">
-            <a href="#">
-              <img
-                src={Banner2}
-                alt="Coming Soon"
-                className="w-full h-full object-cover"
-              />
-            </a>
-          </div>
-          <div className="flex justify-center px-4">
-            <a href="#">
-              <img
-                src={Banner2}
-                alt="Coming Soon"
-                className="w-full h-full object-cover"
-              />
-            </a>
-          </div>
-        </Slider>
+
+      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl overflow-hidden relative">
+        {/* Carousel Images Container */}
+        <div
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {banners.map((banner, index) => (
+            <div key={index} className="w-full flex-shrink-0 px-4">
+              <a href="#">
+                <img
+                  src={banner}
+                  alt={`Banner ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Buttons */}
+        <button
+          onClick={prevBanner}
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-green-600 border-2 border-green-600  transition-all duration-200  flex items-center justify-center text-white hover:text-white p-2 md:p-4 rounded-full"
+        >
+          <FaChevronLeft />
+        </button>
+        <button
+          onClick={nextBanner}
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-green-600 border-2 border-green-600  transition-all duration-200  flex items-center justify-center text-white hover:text-white p-2 md:p-4 rounded-full"
+        >
+          <FaChevronRight />
+        </button>
       </div>
     </div>
   );
 };
 
-export default News;
+export default Features;

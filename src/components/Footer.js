@@ -2,9 +2,10 @@ import React from "react";
 import logo from "../assets/img/logo.png";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { MdPeople } from "react-icons/md";
+import { MdEmail, MdPeople, MdSpaceDashboard } from "react-icons/md";
 import {
   BsFillTelephoneFill,
+  BsStack,
   BsTelephone,
   BsTelephoneFill,
 } from "react-icons/bs";
@@ -38,8 +39,8 @@ export const Footer = () => {
           <div className="p-4 border-b  border-white/20">
             <div className="flex flex-col">
               <div className="flex">
-                <FaLocationDot className="mt-1 text-md" />
-                <p className="pl-4 text-xl font-semibold">Dashboard Jabar</p>
+                <MdSpaceDashboard className="mt-1 text-md" />
+                <p className="pl-4 text-xl font-semibold">Dashboard Cianjur</p>
               </div>
               <p className="ml-8 font-light">Tentang</p>
             </div>
@@ -102,26 +103,22 @@ export const Footer = () => {
           <div className="p-4 border-b border-white/20">
             <div className="flex flex-col">
               <div className="flex">
-                <FaLocationDot className="mt-1 text-md" />
-                <p className="pl-4 text-xl font-semibold">Diskominfo Cianjur</p>
+                <BsStack className="mt-1 text-md" />
+                <p className="pl-4 text-xl font-semibold">Ekosistem Cianjur</p>
               </div>
-              <p className="ml-8 font-light">
-                Jl. KH Abdullah Bin Nuh, Nagrak, Kec. Cianjur, Kabupaten
-                Cianjur, Jawa Barat 43215
-              </p>
+              <p className="ml-8 font-light">Open Data Cianjur</p>
+              <p className="ml-8 font-light">Satu Data Cianjur</p>
+              <p className="ml-8 font-light">Satu Peta Cianjur</p>
             </div>
           </div>
         </div>
         <div className="p-4  text-white max-w-[25rem]">
           <div className="flex flex-col">
             <div className="flex">
-              <FaLocationDot className="mt-1 text-md" />
-              <p className="pl-4 text-xl font-semibold">Diskominfo Cianjur</p>
+              <MdEmail className="mt-1 text-md" />
+              <p className="pl-4 text-xl font-semibold">Email</p>
             </div>
-            <p className="ml-8 font-light">
-              Jl. KH Abdullah Bin Nuh, Nagrak, Kec. Cianjur, Kabupaten Cianjur,
-              Jawa Barat 43215
-            </p>
+            <p className="ml-8 font-light">diskominfo@cianjurkab.go.id</p>
           </div>
         </div>
       </div>

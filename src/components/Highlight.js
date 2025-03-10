@@ -3,7 +3,7 @@ import { highlightData } from "../constant/HighlightData";
 import { bgPrimary, textPrimary } from "../constant/constants";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
-export const Division = () => {
+export const Highlight = () => {
   return (
     <div className="flex flex-col justify-center items-center p-4">
       <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl px-4 py-8 bg-white z-10 rounded-xl font-nunito">

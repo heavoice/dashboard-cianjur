@@ -71,11 +71,12 @@ export const Portal = () => {
       <div className="absolute inset-0 bg-black opacity-80 z-0"></div>
 
       {/* Kontainer teks */}
-      <div className="w-full xxs:max-w-[15rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl flex items-start justify-start text-left z-10 flex-col ">
-        <h1 className="text-white text-sm xs:text-2xl  md:text-2xl lg:text-5xl font-extrabold  ">
-          Hadirkan Visualisasi Data Cianjur <br /> Dalam Satu Kanal.
+      <div className="w-full xxs:max-w-[15rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl flex items-center justify-start text-left z-10 flex-col ">
+        <h1 className="text-white text-xl xs:text-2xl md:text-2xl lg:text-5xl font-extrabold max-w-xl w-full flex justify-center items-center text-start">
+          Hadirkan Visualisasi Data Cianjur Dalam Satu Kanal.
         </h1>
-        <p className="text-white text-sm  max-w-xl w-full mt-6">
+
+        <p className="text-white text-sm  max-w-xl w-full mt-6 ">
           Hadirkan angka, metriks, dan visualisasi data Jabar dalam satu kanal.
           Bantu analisis data dan perumusan kebijakan jadi lebih baik.
         </p>

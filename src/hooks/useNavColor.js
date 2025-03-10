@@ -6,25 +6,35 @@ const useNavbarColor = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
+      const screenWidth = window.innerWidth; // Ambil lebar layar
 
-      // If scroll is at the top of the page, set navbar to transparent
-      if (scrollPosition === 0) {
-        setNavbarColor("bg-transparent");
-      } else if (scrollPosition <= 650) {
-        setNavbarColor("backdrop-blur-md bg-white/10");
+      // Hanya ubah warna navbar jika ukuran layar >= md (768px)
+      if (screenWidth >= 768) {
+        if (scrollPosition === 0) {
+          setNavbarColor("bg-transparent");
+        } else if (scrollPosition <= 650) {
+          setNavbarColor("backdrop-blur-md bg-white/10");
+        } else {
+          setNavbarColor("bg-green-600");
+        }
       } else {
-        setNavbarColor("bg-green-600");
+        setNavbarColor("bg-green-600"); // Warna default untuk layar kecil
       }
     };
 
-    // Add the event listener for scroll
-    window.addEventListener("scroll", handleScroll);
+    // Panggil handleScroll saat pertama kali dijalankan
+    handleScroll();
 
-    // Cleanup function to remove the event listener when the component unmounts
+    // Tambahkan event listener
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleScroll); // Update warna jika ukuran layar berubah
+
+    // Cleanup function
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
     };
-  }, []); // Empty dependency array ensures this effect runs once
+  }, []);
 
   return navbarColor;
 };

@@ -1,7 +1,7 @@
 import { Navbar } from "./components/Navbar";
 import { Portal } from "./components/Portal";
-import { News } from "./components/News";
-import { Division } from "./components/Division";
+import { Features } from "./components/Features";
+import { Highlight } from "./components/Highlight";
 import { Visualizer } from "./components/Visualizer";
 import { FAQ } from "./components/FAQ";
 import { Project } from "./components/Project";
@@ -12,8 +12,8 @@ function Main() {
     <>
       <Navbar />
       <Portal />
-      <News />
-      <Division />
+      <Features />
+      <Highlight />
       <Visualizer />
       {/*<Project />
       <FAQ />*/}

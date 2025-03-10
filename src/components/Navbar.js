@@ -1,44 +1,46 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineDown, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import logo from "../assets/img/logo.png";
-import { beritaJawaBarat } from "../constant/BeritaJawaBarat";
+import { topik } from "../constant/Topik";
 import { layananPublik } from "../constant/LayananPublik";
 import useNavbarColor from "../hooks/useNavColor";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isBeritaJawaBaratOpen, setIsBeritaJawaBaratOpen] = useState(false);
+  const [isTopikOpen, setIsTopikOpen] = useState(false);
   const [isLayananPublikOpen, setIsLayananPublikOpen] = useState(false);
   const menuRef = useRef(null);
   const navbarColor = useNavbarColor();
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
   };
 
   const handleToggle = () => {
-    setIsBeritaJawaBaratOpen(false);
+    setIsTopikOpen(false);
     setIsLayananPublikOpen(false);
   };
 
-  const toggleBeritaJawaBaratDropdown = () => {
-    setIsBeritaJawaBaratOpen(!isBeritaJawaBaratOpen);
+  const toggleTopikDropdown = () => {
+    setIsTopikOpen(!isTopikOpen);
+    setIsLayananPublikOpen(false);
   };
 
   const toggleLayananPublikDropdown = () => {
     setIsLayananPublikOpen(!isLayananPublikOpen);
+    setIsTopikOpen(false);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMobileMenuOpen(false);
-        setIsBeritaJawaBaratOpen(false);
+        setIsTopikOpen(false);
         setIsLayananPublikOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
@@ -46,7 +48,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`${navbarColor} p-4 font-noto fixed top-0 left-0 w-full z-50 shadow-sm hover:bg-green-600`}
+      className={`p-4 font-noto fixed top-0 left-0 w-full z-50 hover:bg-green-600 ${navbarColor}`} // Gunakan navbarColor
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="text-white text-2xl flex items-center font-bold">
@@ -58,18 +60,19 @@ export const Navbar = () => {
           </a>
         </div>
 
+        {/* Desktop Menu */}
         <div className="hidden lg:flex space-x-6 font-medium md:hidden">
           <button
             className="text-white hover:text-gray-300 flex items-center"
-            onClick={toggleBeritaJawaBaratDropdown}
+            onClick={toggleTopikDropdown}
           >
-            Berita Jawa Barat <AiOutlineDown className="ml-2 mt-1" />
+            Topik <AiOutlineDown className="ml-2 mt-1" />
           </button>
 
-          {isBeritaJawaBaratOpen && (
-            <div className="bg-green-600 p-4 font-noto fixed top-24 border-t-2 border-black/10 -left-6 w-full z-50 shadow-md">
+          {isTopikOpen && (
+            <div className="bg-green-600 p-8 font-noto fixed top-24 border-t-2 border-black/10 -left-6 w-full z-50 shadow-md">
               <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <p className="text-white text-3xl">Berita Jawa Barat</p>
+                <p className="text-white text-3xl">Topik</p>
                 <p
                   className="cursor-pointer text-white text-2xl"
                   onClick={handleToggle}
@@ -78,99 +81,95 @@ export const Navbar = () => {
                 </p>
               </div>
 
-              <div className="grid grid-cols-3 gap-6 max-w-7xl mx-auto mt-4">
-                {beritaJawaBarat.map((item) => (
+              <div className="grid  grid-cols-3 gap-6 max-w-7xl mx-auto mt-4">
+                {topik.map((item) => (
                   <div
                     key={item.id}
-                    className="p-4 rounded-lg flex items-center"
+                    className="p-4 rounded-lg flex items-center border border-white/20"
                   >
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-12 h-12 object-cover rounded-lg mr-4"
+                      className="w-20 h-20 object-cover rounded-lg mr-4"
                     />
                     <div>
                       <p className="text-xl font-semibold text-white">
                         {item.title}
                       </p>
-                      <p className="text-white">{item.description}</p>
+                      <p className="text-white font-light">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
           )}
-
-          <button
-            className="text-white hover:text-gray-300 flex items-center"
-            onClick={toggleLayananPublikDropdown}
-          >
-            Layanan Publik <AiOutlineDown className="ml-2 mt-1" />
-          </button>
-
-          {isLayananPublikOpen && (
-            <div className="bg-green-600 p-4 font-noto fixed top-24 border-t-2 border-black/10 -left-6 w-full z-50 shadow-md">
-              <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <p className="text-white text-3xl">Layanan Publik</p>
-                <p
-                  className="cursor-pointer text-white text-2xl"
-                  onClick={handleToggle}
-                >
-                  ✕
-                </p>
-              </div>
-
-              <div className="grid grid-cols-3 gap-6 max-w-7xl mx-auto mt-4">
-                {layananPublik.map((item) => (
-                  <div
-                    key={item.id}
-                    className="p-4 rounded-lg flex items-center"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="w-12 h-12 object-cover rounded-lg mr-4"
-                    />
-                    <div>
-                      <p className="text-xl font-semibold text-white">
-                        {item.title}
-                      </p>
-                      <p className="text-white">{item.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          <a className="text-white">Eksplorasi Dashboard</a>
+          <a className="text-white">Tentang</a>
+          <a className="text-white">Executive Dashboard</a>
         </div>
 
+        {/* Mobile Menu */}
         <div
-          className={`fixed top-0 right-0 h-full bg-green-600 w-64 shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden md:block ${
-            isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`fixed top-0 right-0 h-full bg-green-600 w-64 shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
+          ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
           ref={menuRef}
         >
-          <div className="p-4 flex justify-end">
+          <div className="flex justify-end">
             <button
-              className="text-white text-2xl"
+              className="text-white text-2xl p-5"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               ✕
             </button>
           </div>
           <div className="flex flex-col space-y-4 p-6">
-            <a href="/about" className="text-white hover:text-gray-300">
-              About
-            </a>
+            <button
+              className="text-white flex justify-between items-center"
+              onClick={toggleTopikDropdown}
+            >
+              Berita Jawa Barat <AiOutlineDown className="ml-2" />
+            </button>
+            {isTopikOpen && (
+              <div className="max-h-60 overflow-y-auto">
+                {topik.map((item) => (
+                  <a
+                    key={item.id}
+                    href="#"
+                    className="block text-white mb-3 border-b border-white/20"
+                  >
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            )}
+
+            <button
+              className="text-white flex justify-between items-center"
+              onClick={toggleLayananPublikDropdown}
+            >
+              Layanan Publik <AiOutlineDown className="ml-2" />
+            </button>
+            {isLayananPublikOpen && (
+              <div className="">
+                {layananPublik.map((item) => (
+                  <a key={item.id} href="#" className="block text-white">
+                    {item.title}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
-        <div className="lg:hidden md:block text-white">
+        {/* Mobile Menu Toggle Button */}
+        <div className="lg:hidden">
           <button onClick={toggleMobileMenu}>
             {isMobileMenuOpen ? (
-              <AiOutlineClose size={24} />
+              <AiOutlineClose size={24} className="text-white" />
             ) : (
-              <AiOutlineMenu size={24} />
+              <AiOutlineMenu size={24} className="text-white" />
             )}
           </button>
         </div>
