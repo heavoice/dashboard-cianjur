@@ -22,7 +22,7 @@ export const Footer = () => {
           </a>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6 text-white">
-          <div className="px-8 py-8 border-b border-white/20">
+          <div className="p-4 border-b border-white/20 ">
             <div className="flex flex-col">
               <div className="flex">
                 <FaLocationDot className="mt-1 text-md" />
@@ -35,7 +35,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="px-8 py-8 border-b  border-white/20">
+          <div className="p-4 border-b  border-white/20">
             <div className="flex flex-col">
               <div className="flex">
                 <FaLocationDot className="mt-1 text-md" />
@@ -44,7 +44,7 @@ export const Footer = () => {
               <p className="ml-8 font-light">Tentang</p>
             </div>
           </div>
-          <div className="px-8 py-8 border-b border-white/20">
+          <div className="p-4 border-b border-white/20">
             <div className="flex flex-col">
               <div className="flex">
                 <MdPeople className="mt-1 text-md" />
@@ -90,7 +90,7 @@ export const Footer = () => {
             </div>
           </div>
 
-          <div className="px-8 py-8 border-b border-white/20">
+          <div className="p-4 border-b border-white/20">
             <div className="flex flex-col">
               <div className="flex">
                 <BsTelephoneFill className="mt-1 text-md" />
@@ -99,7 +99,7 @@ export const Footer = () => {
               <p className="ml-8 font-light">(0263) 261892</p>
             </div>
           </div>
-          <div className="px-8 py-8 border-b border-white/20">
+          <div className="p-4 border-b border-white/20">
             <div className="flex flex-col">
               <div className="flex">
                 <FaLocationDot className="mt-1 text-md" />
@@ -112,7 +112,7 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="px-8 py-8  text-white max-w-[25rem]">
+        <div className="p-4  text-white max-w-[25rem]">
           <div className="flex flex-col">
             <div className="flex">
               <FaLocationDot className="mt-1 text-md" />
