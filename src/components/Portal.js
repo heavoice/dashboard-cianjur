@@ -12,6 +12,7 @@ import {
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 
 export const Portal = () => {
   const [currentSlide, setCurrentSlide] = useState(slide1);
@@ -61,28 +62,139 @@ export const Portal = () => {
     ],
   };
 
+  // Main title
+  const textIndexTitle = useMotionValue(0); // Motion value for tracking main title index
+  const textsTitle = ["Hadirkan Visualisasi Data Cianjur Dalam Satu Kanal."]; // Main title text
+  const baseTextTitle = useTransform(
+    textIndexTitle,
+    (latest) => textsTitle[latest] || ""
+  );
+
+  // Subtitle
+  const textIndexSubtitle = useMotionValue(0); // Motion value for tracking subtitle index
+  const textsSubtitle = [
+    "Hadirkan angka, metriks, dan visualisasi data Jabar dalam satu kanal. Bantu analisis data dan perumusan kebijakan jadi lebih baik.",
+  ]; // Subtitle text
+  const baseTextSubtitle = useTransform(
+    textIndexSubtitle,
+    (latest) => textsSubtitle[latest] || ""
+  );
+
+  const countTitle = useMotionValue(0); // Motion value to control the text slicing for title
+  const countSubtitle = useMotionValue(0); // Motion value to control the text slicing for subtitle
+
+  const roundedTitle = useTransform(countTitle, (latest) => Math.round(latest)); // Round the count value for title
+  const roundedSubtitle = useTransform(countSubtitle, (latest) =>
+    Math.round(latest)
+  ); // Round the count value for subtitle
+
+  const displayTextTitle = useTransform(
+    roundedTitle,
+    (latest) => baseTextTitle.get().slice(0, latest) // Slice the title based on the count
+  );
+
+  const displayTextSubtitle = useTransform(
+    roundedSubtitle,
+    (latest) => baseTextSubtitle.get().slice(0, latest) // Slice the subtitle based on the count
+  );
+
+  const updatedThisRoundTitle = useMotionValue(true); // To track the round completion for title
+  const updatedThisRoundSubtitle = useMotionValue(true); // To track the round completion for subtitle
+
+  useEffect(() => {
+    // Animate count value for title to simulate the typing effect
+    animate(countTitle, baseTextTitle.get().length, {
+      type: "tween",
+      duration: 3, // Duration for typing effect
+      ease: "easeInOut",
+      repeatType: "reverse", // Reverse effect after each completion
+      repeatDelay: 1,
+      onUpdate(latest) {
+        if (updatedThisRoundTitle.get() === true && latest > 0) {
+          updatedThisRoundTitle.set(false);
+        } else if (updatedThisRoundTitle.get() === false && latest === 0) {
+          // Switch to the next text when the current one finishes typing (for title)
+          if (textIndexTitle.get() === textsTitle.length - 1) {
+            textIndexTitle.set(0);
+          } else {
+            textIndexTitle.set(textIndexTitle.get() + 1);
+          }
+          updatedThisRoundTitle.set(true);
+        }
+      },
+    });
+
+    // Animate count value for subtitle to simulate the typing effect
+    animate(countSubtitle, baseTextSubtitle.get().length, {
+      type: "tween",
+      duration: 3, // Duration for typing effect
+      ease: "easeInOut",
+      repeatType: "reverse", // Reverse effect after each completion
+      repeatDelay: 1,
+      onUpdate(latest) {
+        if (updatedThisRoundSubtitle.get() === true && latest > 0) {
+          updatedThisRoundSubtitle.set(false);
+        } else if (updatedThisRoundSubtitle.get() === false && latest === 0) {
+          // Switch to the next text when the current one finishes typing (for subtitle)
+          if (textIndexSubtitle.get() === textsSubtitle.length - 1) {
+            textIndexSubtitle.set(0);
+          } else {
+            textIndexSubtitle.set(textIndexSubtitle.get() + 1);
+          }
+          updatedThisRoundSubtitle.set(true);
+        }
+      },
+    });
+
+    return () => {
+      // Clean up the animation on component unmount
+      countTitle.stop();
+      countSubtitle.stop();
+    };
+  }, [
+    countTitle,
+    baseTextTitle,
+    textIndexTitle,
+    updatedThisRoundTitle,
+    countSubtitle,
+    baseTextSubtitle,
+    textIndexSubtitle,
+    updatedThisRoundSubtitle,
+  ]);
+
   return (
     <div
       id="portal"
-      className="relative p-4 w-full h-screen flex flex-col justify-center items-center bg-cover bg-center transition-all duration-1000 font-nunito"
+      className="relative p-4 w-full h-screen flex flex-col justify-center items-center bg-cover bg-center transition-all duration-1000 font-nunito overflow-auto botd"
       style={{ backgroundImage: `url(${currentSlide})` }}
     >
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-black opacity-80 z-0"></div>
 
       {/* Kontainer teks */}
-      <div className="w-full xxs:max-w-[15rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl flex items-center justify-start text-left z-10 flex-col ">
-        <h1 className="text-white text-xl xs:text-2xl md:text-2xl lg:text-5xl font-extrabold max-w-xl w-full flex justify-center items-center text-start">
-          Hadirkan Visualisasi Data Cianjur Dalam Satu Kanal.
-        </h1>
+      <div className="w-full xxs:max-w-[15rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl flex items-center justify-start text-left z-10 flex-col">
+        {/* Main Title Section */}
+        <motion.h1 className="text-white text-xl xs:text-2xl md:text-2xl lg:text-5xl font-extrabold max-w-xl w-full flex justify-center items-center text-start">
+          {displayTextTitle}
+        </motion.h1>
 
-        <p className="text-white text-sm  max-w-xl w-full mt-6 ">
-          Hadirkan angka, metriks, dan visualisasi data Jabar dalam satu kanal.
-          Bantu analisis data dan perumusan kebijakan jadi lebih baik.
-        </p>
+        {/* Subtitle Section */}
+        <motion.h2 className="text-white text-sm max-w-xl w-full mt-6">
+          {displayTextSubtitle}
+        </motion.h2>
 
         {/* Input Pencarian */}
-        <div className="mt-6 w-full max-w-xl flex items-center relative border border-gray-300 rounded-lg overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.2 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 2,
+            type: "spring",
+            bounce: 0,
+          }}
+          viewport={{ once: false, amount: 0.2 }}
+          className="mt-6 w-full max-w-xl flex items-center relative border border-gray-300 rounded-lg overflow-hidden"
+        >
           <FaSearch className="ml-3 absolute text-green-600" />
           <input
             type="text"
@@ -92,11 +204,21 @@ export const Portal = () => {
           <button className="absolute right-2 bg-green-600 text-white px-4 py-2 rounded-lg">
             Cari
           </button>
-        </div>
+        </motion.div>
 
         {/* Carousel */}
 
-        <div className="slider-container w-full max-w-xl mt-6">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.2 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 2,
+            type: "spring",
+            bounce: 0,
+          }}
+          viewport={{ once: false, amount: 0.2 }}
+          className="slider-container w-full max-w-xl mt-6"
+        >
           <Slider {...settings} className="flex justify-center">
             {["PPDB", "Aduan Warga", "Sapawarga", "Al Jabbar"].map(
               (item, index) => (
@@ -111,9 +233,19 @@ export const Portal = () => {
               )
             )}
           </Slider>
-        </div>
+        </motion.div>
         {/* sosmed dll */}
-        <div className="flex flex-row gap-3 pt-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.2 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 2,
+            type: "spring",
+            bounce: 0,
+          }}
+          viewport={{ once: false, amount: 0.2 }}
+          className="flex flex-row gap-3 pt-8"
+        >
           <div className="text-gray-500 hover:text-white bg-gray-500/30 rounded-xl hover:bg-white/20 px-2 py-2 sm:px-5 sm:py-3 transition-all duration-300 text-xl sm:text-2xl">
             <FaFacebook href="https://www.facebook.com/" />
           </div>
@@ -126,7 +258,7 @@ export const Portal = () => {
           <div className="text-gray-500 hover:text-white bg-gray-500/30 rounded-xl hover:bg-white/20 px-2 py-2 sm:px-5 sm:py-3 transition-all duration-300 text-xl sm:text-2xl">
             <FaYoutube />
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

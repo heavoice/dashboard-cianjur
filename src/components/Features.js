@@ -16,6 +16,7 @@ import Pendidikan from "../assets/img/Pendidikan.svg";
 import Social from "../assets/img/Ekonomi.svg";
 import Banner1 from "../assets/img/banner1.png";
 import Banner2 from "../assets/img/comingsoon.png";
+import { motion } from "framer-motion";
 
 export const Features = () => {
   const content = [
@@ -79,7 +80,17 @@ export const Features = () => {
 
   return (
     <div className="bg-slate-50 flex flex-col justify-center items-center p-4">
-      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl xxs:p-4 sm:p-10 md:p-20 bg-white z-10 rounded-xl -translate-y-20 font-nunito">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.2 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 2,
+          type: "spring",
+          bounce: 0,
+        }}
+        viewport={{ once: false, amount: 0.2 }}
+        className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl xxs:p-4 sm:p-10 md:p-20 bg-white z-10 rounded-xl -translate-y-20 font-nunito"
+      >
         <div className="flex flex-col xs:flex-row items-center gap-0 xs:gap-4 text-2xl font-bold text-black mb-10">
           <p className="whitespace-nowrap">Topik Populer</p>
           <div className="flex-1 border-t border-black/10"></div>
@@ -90,6 +101,7 @@ export const Features = () => {
             Lihat Semua Berita
           </a>
         </div>
+        {/* topik  */}
         <div className="flex justify-between items-center">
           <button
             onClick={prevSlide}
@@ -98,7 +110,18 @@ export const Features = () => {
             <FaChevronLeft className="text-sm sm:text-xl " />
           </button>
 
-          <div className="flex gap-4 justify-center items-start overflow-hidden">
+          <motion.div
+            key={startIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{
+              duration: 0.5,
+              type: "tween",
+              ease: "easeInOut",
+            }}
+            className="flex gap-4 justify-center items-start overflow-hidden"
+          >
             {content
               .slice(startIndex, startIndex + visibleCount)
               .map((item, index) => (
@@ -115,7 +138,7 @@ export const Features = () => {
                   <p className="text-center font-bold mt-2">{item.label}</p>
                 </a>
               ))}
-          </div>
+          </motion.div>
 
           <button
             onClick={nextSlide}
@@ -141,9 +164,19 @@ export const Features = () => {
             )
           )}
         </div>
-      </div>
+      </motion.div>
 
-      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl overflow-hidden relative">
+      <motion.div
+        initial={{ opacity: 0, scale: 1, x: -100 }}
+        whileInView={{ opacity: 1, scale: 1, x: 0 }}
+        transition={{
+          duration: 1,
+          type: "tween",
+          ease: "easeInOut",
+        }}
+        viewport={{ once: false, amount: 0.2 }}
+        className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl overflow-hidden relative mt-10"
+      >
         {/* Carousel Images Container */}
         <div
           className="flex transition-transform duration-500 ease-in-out"
@@ -175,7 +208,7 @@ export const Features = () => {
         >
           <FaChevronRight />
         </button>
-      </div>
+      </motion.div>
     </div>
   );
 };

@@ -9,7 +9,7 @@ const useNavbarColor = () => {
       const screenWidth = window.innerWidth; // Ambil lebar layar
 
       // Hanya ubah warna navbar jika ukuran layar >= md (768px)
-      if (screenWidth >= 768) {
+      if (screenWidth >= 1024) {
         if (scrollPosition === 0) {
           setNavbarColor("bg-transparent");
         } else if (scrollPosition <= 650) {

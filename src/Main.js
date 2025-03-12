@@ -15,9 +15,9 @@ function Main() {
       <Features />
       <Highlight />
       <Visualizer />
-      {/*<Project />
-      <FAQ />*/}
       <Footer />
+      {/* <Project />
+      <FAQ />*/}
     </>
   );
 }
