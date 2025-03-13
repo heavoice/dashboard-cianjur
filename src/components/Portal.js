@@ -193,7 +193,7 @@ export const Portal = () => {
             bounce: 0,
           }}
           viewport={{ once: false, amount: 0.2 }}
-          className="mt-6 w-full max-w-xl flex items-center relative border border-gray-300 rounded-lg overflow-hidden"
+          className="mt-6 w-full max-w-xl flex items-center relative rounded-lg overflow-hidden"
         >
           <FaSearch className="ml-3 absolute text-green-600" />
           <input

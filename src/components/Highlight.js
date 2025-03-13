@@ -1,11 +1,11 @@
 import React from "react";
 import { highlightData } from "../constant/HighlightData";
-import { bgPrimary, textPrimary } from "../constant/constants";
+import { motion } from "framer-motion";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 export const Highlight = () => {
   return (
-    <div className="flex flex-col justify-center items-center p-4">
+    <div className="flex flex-col justify-center items-center p-4 overflow-hidden">
       <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl px-4 py-8 bg-white z-10 rounded-xl font-nunito">
         <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold">
           Highlight
@@ -19,9 +19,17 @@ export const Highlight = () => {
           className="max-w-7xl w-full mx-auto my-6 grid grid-cols-1 md:grid-cols-2 gap-4"
         >
           {highlightData.map((highlightData, index) => (
-            <div
+            <motion.div
+              initial={{ opacity: 0, scale: 1, x: 100 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{
+                duration: 1,
+                type: "tween",
+                ease: "easeInOut",
+              }}
+              viewport={{ once: false, amount: 0.2 }}
               key={index}
-              className="bg-green-600 rounded-lg p-4 flex items-center text-white"
+              className="bg-green-600 rounded-lg p-4 flex items-center text-white "
             >
               <div className="flex flex-col w-full">
                 <div className="flex flex-row items-center h-12">
@@ -81,7 +89,7 @@ export const Highlight = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </a>
         <a

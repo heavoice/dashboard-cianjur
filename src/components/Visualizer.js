@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { bgPrimary, textPrimary } from "../constant/constants";
 import { FaSearch } from "react-icons/fa";
 import { visualize } from "../constant/Visualize";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Visualizer = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,11 +21,21 @@ export const Visualizer = () => {
   );
 
   return (
-    <div className="flex flex-col justify-center items-center p-4">
+    <div className="flex flex-col justify-center items-center p-4 overflow-hidden">
       <div className="w-full max-h-fit xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl px-4 py-8 bg-white z-10 rounded-xl font-nunito">
         <div className="flex flex-col xl:flex-row gap-8">
           {/* Sidebar Pencarian */}
-          <div className={`basis-1/4`}>
+          <motion.div
+            initial={{ opacity: 0, scale: 1, x: -100 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{
+              duration: 1,
+              type: "tween",
+              ease: "easeInOut",
+            }}
+            viewport={{ once: false, amount: 0.2 }}
+            className={`basis-1/4`}
+          >
             <div className={`${bgPrimary} p-4 rounded-t-lg`}>
               <p
                 className={`${textPrimary} font-bold xxs:text-sm sm:text-xl lg:text-2xl`}
@@ -68,24 +79,41 @@ export const Visualizer = () => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Tampilan Gambar */}
-          <div
-            className={`basis-3/4 text-4xl justify-center items-center flex flex-col`}
+          </motion.div>
+          {/* visualisasi data */}
+          <motion.div
+            initial={{ opacity: 0, scale: 1, x: 100 }}
+            whileInView={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{
+              duration: 1,
+              type: "tween",
+              ease: "easeInOut",
+            }}
+            viewport={{ once: false, amount: 0.2 }}
+            className="basis-3/4 text-4xl justify-center items-center flex flex-col"
           >
-            {selectedVisual ? (
-              <div className="p-4 border rounded-lg shadow-lg">
-                <img
-                  src={selectedVisual.data[Object.keys(selectedVisual.data)[0]]}
-                  alt={selectedVisual.section}
-                  className="max-w-full h-auto"
-                />
-              </div>
-            ) : (
-              <p className="text-gray-500">Pilih data untuk ditampilkan</p>
-            )}
-          </div>
+            <AnimatePresence mode="wait=">
+              {selectedVisual ? (
+                <motion.div
+                  key={selectedVisual.section} // Memastikan re-render saat selectedVisual berubah
+                  initial={{ opacity: 0, scale: 0.5, x: 50 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="p-4 border rounded-lg shadow-lg"
+                >
+                  <img
+                    src={
+                      selectedVisual.data[Object.keys(selectedVisual.data)[0]]
+                    }
+                    alt={selectedVisual.section}
+                    className="max-w-full h-auto"
+                  />
+                </motion.div>
+              ) : (
+                <p className="text-gray-500">Pilih data untuk ditampilkan</p>
+              )}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </div>
