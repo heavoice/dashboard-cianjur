@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import slide1 from "../assets/img/slide1.jpg";
-import slide2 from "../assets/img/slide2.jpg";
+import slide1 from "../../assets/img/slide1.jpg";
+import slide2 from "../../assets/img/slide2.jpg";
 import {
   FaFacebook,
   FaInstagram,

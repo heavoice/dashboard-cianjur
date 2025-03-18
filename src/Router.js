@@ -1,16 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Import Router dari react-router-dom
-import Main from "./Main"; // Import komponen utama atau halaman lain yang ingin dirutekan
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./page/Home";
+import About from "./page/About";
 
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Main />} /> {/* Tentukan path dan komponen */}
-        {/* Anda dapat menambahkan route lain di sini */}
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   );
 };
 
-export default AppRouter; // Ekspor Router yang telah dikonfigurasi
+export default AppRouter;

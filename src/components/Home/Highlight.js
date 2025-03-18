@@ -1,5 +1,5 @@
 import React from "react";
-import { highlightData } from "../constant/HighlightData";
+import { highlightData } from "../../constant/HighlightData";
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt } from "react-icons/fa";
 

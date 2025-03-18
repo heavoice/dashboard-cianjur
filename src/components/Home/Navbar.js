@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineDown, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import logo from "../assets/img/logo.png";
-import { topik } from "../constant/Topik";
-import { layananPublik } from "../constant/LayananPublik";
-import useNavbarColor from "../hooks/useNavColor";
+import logo from "../../assets/img/logo.png";
+import { topik } from "../../constant/Topik";
+import useNavbarColor from "../../hooks/useNavColor";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -51,14 +51,17 @@ export const Navbar = () => {
       className={`p-4 font-noto fixed top-0 left-0 w-full z-50 hover:bg-green-600 ${navbarColor}`} // Gunakan navbarColor
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="text-white text-2xl flex items-center font-bold">
+        <Link
+          to="/"
+          className="text-white text-2xl flex items-center font-bold"
+        >
           <a href="/" className="mr-2">
             <img src={logo} width={70} height={70} alt="SLP Logo" />
           </a>
           <a href="/" className="text-white text-lg">
             Dashboard <br /> Cianjur
           </a>
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex space-x-6 font-medium md:hidden">
@@ -106,7 +109,9 @@ export const Navbar = () => {
             </div>
           )}
           <a className="text-white">Eksplorasi Dashboard</a>
-          <a className="text-white">Tentang</a>
+          <Link to="/about" className="text-white">
+            Tentang
+          </Link>
           <a className="text-white">Executive Dashboard</a>
         </div>
 
@@ -145,21 +150,11 @@ export const Navbar = () => {
               </div>
             )}
 
-            <button
-              className="text-white flex justify-between items-center"
-              onClick={toggleLayananPublikDropdown}
-            >
-              Layanan Publik <AiOutlineDown className="ml-2" />
-            </button>
-            {isLayananPublikOpen && (
-              <div className="">
-                {layananPublik.map((item) => (
-                  <a key={item.id} href="#" className="block text-white">
-                    {item.title}
-                  </a>
-                ))}
-              </div>
-            )}
+            <a className="text-white">Eksplorasi Dashboard</a>
+            <Link to="/about" className="text-white">
+              Tentang
+            </Link>
+            <a className="text-white">Executive Dashboard</a>
           </div>
         </div>
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { bgPrimary, textPrimary } from "../constant/constants";
+import { bgPrimary, textPrimary } from "../../constant/constants";
 import { FaSearch } from "react-icons/fa";
-import { visualize } from "../constant/Visualize";
+import { visualize } from "../../constant/Visualize";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const Visualizer = () => {

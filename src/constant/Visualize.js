@@ -1,5 +1,9 @@
 import strukturpemerintahan from "../assets/img/struktur-pemerintahan.png";
 import tingkatpendidikan from "../assets/img/tingkat-pendidikan.png";
+import komposisipenduduk from "../assets/img/komposisi-penduduk.png";
+import indekspembangunan from "../assets/img/indeks-pembangunan-manusia.png";
+import trenpertumbuhan from "../assets/img/tren-pertumbuhan.png";
+import prosesadministrasi from "../assets/img/proses-administrasi.png";
 
 export const visualize = [
   {
@@ -15,12 +19,12 @@ export const visualize = [
   {
     id: 3,
     section: "Komposisi Penduduk Berdasarkan Kabupaten Cianjur",
-    data: {},
+    data: { komposisipenduduk },
   },
   {
     id: 4,
     section: "Tren Pertumbuhan Penduduk Berdasarkan Kabupaten Cianjur",
-    data: {},
+    data: { trenpertumbuhan },
   },
   {
     id: 5,
@@ -30,7 +34,7 @@ export const visualize = [
   {
     id: 6,
     section: "Proses Administrasi Berdasarkan Kabupaten Cianjur",
-    data: {},
+    data: { prosesadministrasi },
   },
   {
     id: 7,
@@ -45,7 +49,7 @@ export const visualize = [
   {
     id: 9,
     section: "Indeks Pembangunan Manusia Berdasarkan Kabupaten Cianjur",
-    data: {},
+    data: { indekspembangunan },
   },
   {
     id: 10,
