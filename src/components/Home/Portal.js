@@ -174,12 +174,12 @@ export const Portal = () => {
       {/* Kontainer teks */}
       <div className="w-full xxs:max-w-[15rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl flex items-center justify-start text-left z-10 flex-col">
         {/* Main Title Section */}
-        <motion.h1 className="text-white text-xl xs:text-2xl md:text-2xl lg:text-5xl font-extrabold max-w-xl w-full flex justify-center items-center text-start">
+        <motion.h1 className="text-white text-xl xs:text-2xl md:text-2xl lg:text-5xl font-extrabold max-w-xl w-full flex justify-center items-center text-start font-noto">
           {displayTextTitle}
         </motion.h1>
 
         {/* Subtitle Section */}
-        <motion.h2 className="text-white text-sm max-w-xl w-full mt-6">
+        <motion.h2 className="text-white text-sm max-w-xl w-full mt-6 ">
           {displayTextSubtitle}
         </motion.h2>
 

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Navbar } from "../components/About/Navbar";
-import { Portal } from "../components/About/Portal";
+import { Tentang } from "../components/About/Tentang";
+import { Footer } from "../components/Home/Footer";
 
 function About() {
   useEffect(() => {
@@ -9,7 +10,8 @@ function About() {
   return (
     <>
       <Navbar />
-      <Portal />
+      <Tentang />
+      <Footer />
     </>
   );
 }

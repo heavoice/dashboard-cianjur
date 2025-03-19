@@ -7,7 +7,7 @@ export const Highlight = () => {
   return (
     <div className="flex flex-col justify-center items-center p-4 overflow-hidden">
       <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl px-4 py-8 bg-white z-10 rounded-xl font-nunito">
-        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold">
+        <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold font-noto">
           Highlight
         </h1>
         <p className="sm:text-sm lg:text-lg mt-6">

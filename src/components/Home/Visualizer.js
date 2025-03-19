@@ -38,7 +38,7 @@ export const Visualizer = () => {
           >
             <div className={`${bgPrimary} p-4 rounded-t-lg`}>
               <p
-                className={`${textPrimary} font-bold xxs:text-sm sm:text-xl lg:text-2xl`}
+                className={`${textPrimary} font-bold xxs:text-sm sm:text-xl lg:text-2xl font-noto`}
               >
                 Visualisasi Data
               </p>
@@ -90,7 +90,7 @@ export const Visualizer = () => {
               ease: "easeInOut",
             }}
             viewport={{ once: false, amount: 0.2 }}
-            className="basis-3/4 text-4xl justify-center items-center flex flex-col"
+            className="basis-3/4 text-4xl justify-center items-center flex flex-col font-noto"
           >
             <AnimatePresence mode="wait=">
               {selectedVisual ? (
