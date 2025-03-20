@@ -5,11 +5,11 @@ import { topik } from "../../constant/Topik";
 import { layananPublik } from "../../constant/LayananPublik";
 import useNavbarColor from "../../hooks/useNavColor";
 import { Link } from "react-router-dom";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTopikOpen, setIsTopikOpen] = useState(false);
-  const [isLayananPublikOpen, setIsLayananPublikOpen] = useState(false);
   const menuRef = useRef(null);
   const navbarColor = useNavbarColor();
 
@@ -19,17 +19,10 @@ export const Navbar = () => {
 
   const handleToggle = () => {
     setIsTopikOpen(false);
-    setIsLayananPublikOpen(false);
   };
 
   const toggleTopikDropdown = () => {
     setIsTopikOpen(!isTopikOpen);
-    setIsLayananPublikOpen(false);
-  };
-
-  const toggleLayananPublikDropdown = () => {
-    setIsLayananPublikOpen(!isLayananPublikOpen);
-    setIsTopikOpen(false);
   };
 
   useEffect(() => {
@@ -37,7 +30,6 @@ export const Navbar = () => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMobileMenuOpen(false);
         setIsTopikOpen(false);
-        setIsLayananPublikOpen(false);
       }
     };
 
@@ -49,7 +41,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`p-4 font-noto fixed top-0 left-0 w-full z-50 bg-green-600 `} // Gunakan navbarColor
+      className={`p-4 font-noto fixed top-0 border-b border-white/20 left-0 w-full z-50 bg-green-600`} // Gunakan navbarColor
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link
@@ -67,10 +59,15 @@ export const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden lg:flex space-x-6 font-medium md:hidden">
           <button
-            className="text-white hover:text-gray-300 flex items-center"
-            onClick={toggleTopikDropdown}
+            className="text-white hover:text-gray-300 transition-all ease-in-out duration-200 flex items-center"
+            onClick={isTopikOpen ? handleToggle : toggleTopikDropdown}
           >
-            Topik <AiOutlineDown className="ml-2 mt-1" />
+            Topik
+            <MdKeyboardArrowDown
+              className={`ml-2 mt-1 text-xl transition-transform duration-300 ${
+                isTopikOpen ? "rotate-180" : ""
+              }`}
+            />
           </button>
 
           {isTopikOpen && (
@@ -109,8 +106,13 @@ export const Navbar = () => {
               </div>
             </div>
           )}
-          <a className="text-white">Eksplorasi Dashboard</a>
-          <Link to="/about" className="text-white">
+          <Link to="/eksplorasi-dashboard" className="text-white">
+            Eksplorasi Dashboard
+          </Link>
+          <Link
+            to="/about"
+            className="text-white hover:text-gray-300 transition-all ease-in-out duration-200"
+          >
             Tentang
           </Link>
           <a className="text-white">Executive Dashboard</a>
@@ -132,10 +134,15 @@ export const Navbar = () => {
           </div>
           <div className="flex flex-col space-y-4 p-6">
             <button
-              className="text-white flex justify-between items-center"
+              className="text-white hover:text-gray-300 transition-all ease-in-out duration-200 flex justify-between items-center"
               onClick={toggleTopikDropdown}
             >
-              Topik <AiOutlineDown className="ml-2" />
+              Topik
+              <MdKeyboardArrowDown
+                className={`ml-2 mt-1 text-xl transition-transform duration-300 ${
+                  isTopikOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
             {isTopikOpen && (
               <div className="max-h-60 overflow-y-auto">
@@ -151,8 +158,13 @@ export const Navbar = () => {
               </div>
             )}
 
-            <a className="text-white">Eksplorasi Dashboard</a>
-            <Link to="/about" className="text-white">
+            <Link to="/eksplorasi-dashboard" className="text-white">
+              Eksplorasi Dashboard
+            </Link>
+            <Link
+              to="/about"
+              className="text-white hover:text-gray-300 transition-all ease-in-out duration-200"
+            >
               Tentang
             </Link>
             <a className="text-white">Executive Dashboard</a>

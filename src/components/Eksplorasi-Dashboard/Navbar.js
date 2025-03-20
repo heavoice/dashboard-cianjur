@@ -49,7 +49,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`p-4 font-noto fixed border-b border-white/20 top-0 left-0 w-full z-50 hover:bg-green-600 ${navbarColor}`} // Gunakan navbarColor
+      className={`p-4 font-noto fixed top-0 border-b border-white/20 left-0 w-full z-50 bg-green-600 `} // Gunakan navbarColor
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link
