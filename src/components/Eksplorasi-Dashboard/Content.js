@@ -10,7 +10,7 @@ import Kesehatan from "../../assets/img/Kesehatan.svg";
 import Pariwisata from "../../assets/img/Pariwisata.svg";
 import Pendidikan from "../../assets/img/Pendidikan.svg";
 import Social from "../../assets/img/Ekonomi.svg";
-import { FaSearch } from "react-icons/fa";
+import { FaExternalLinkAlt, FaSearch } from "react-icons/fa";
 
 export const Content = () => {
   return (
@@ -87,8 +87,139 @@ export const Content = () => {
               </div>
             </div>
           </div>
-          <div className="basis-3/4 w-full p-4 border-r rounded">
-            <div className="text-6xl">Content</div>
+          <div className="basis-3/4 w-full p-4 border-r rounded self-center">
+            <div className="flex flex-row  justify-between items-center w-full">
+              <div className="text-3xl font-noto font-black">Pendidikan</div>
+              <div className="flex-grow border-b border-black/20 mx-4"></div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 mt-10 gap-4">
+              {/* 1 */}
+              <div className="w-full flex flex-col gap-4">
+                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
+                <div className="flex flex-row justify-between">
+                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
+                    Dashboard Rekomendasi Sekolah
+                  </p>
+                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
+                </div>
+                <div className="flex xs:flex-row flex-col gap-2 text-xs">
+                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
+                    Pendidikan
+                  </button>
+                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
+                    2024
+                  </button>
+                </div>
+              </div>
+              {/* 2 */}
+              <div className="w-full flex flex-col gap-4">
+                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
+                <div className="flex flex-row justify-between">
+                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
+                    Dashboard Rekomendasi Sekolah
+                  </p>
+                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
+                </div>
+                <div className="flex xs:flex-row flex-col gap-2 text-xs">
+                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
+                    Pendidikan
+                  </button>
+                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
+                    2024
+                  </button>
+                </div>
+              </div>
+              {/* 3 */}
+              <div className="w-full flex flex-col gap-4">
+                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
+                <div className="flex flex-row justify-between">
+                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
+                    Dashboard Rekomendasi Sekolah
+                  </p>
+                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
+                </div>
+                <div className="flex xs:flex-row flex-col gap-2 text-xs">
+                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
+                    Pendidikan
+                  </button>
+                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
+                    2024
+                  </button>
+                </div>
+              </div>
+              {/* 4 */}
+              <div className="w-full flex flex-col gap-4">
+                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
+                <div className="flex flex-row justify-between">
+                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
+                    Dashboard Rekomendasi Sekolah
+                  </p>
+                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
+                </div>
+                <div className="flex xs:flex-row flex-col gap-2 text-xs">
+                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
+                    Pendidikan
+                  </button>
+                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
+                    2024
+                  </button>
+                </div>
+              </div>
+              {/* 5 */}
+              <div className="w-full flex flex-col gap-4">
+                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
+                <div className="flex flex-row justify-between">
+                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
+                    Dashboard Rekomendasi Sekolah
+                  </p>
+                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
+                </div>
+                <div className="flex xs:flex-row flex-col gap-2 text-xs">
+                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
+                    Pendidikan
+                  </button>
+                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
+                    2024
+                  </button>
+                </div>
+              </div>
+              {/* 6 */}
+              <div className="w-full flex flex-col gap-4">
+                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
+                <div className="flex flex-row justify-between">
+                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
+                    Dashboard Rekomendasi Sekolah
+                  </p>
+                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
+                </div>
+                <div className="flex xs:flex-row flex-col gap-2 text-xs">
+                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
+                    Pendidikan
+                  </button>
+                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
+                    2024
+                  </button>
+                </div>
+              </div>
+              {/* 7 */}
+              <div className="w-full flex flex-col gap-4">
+                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
+                <div className="flex flex-row justify-between">
+                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
+                    Dashboard Rekomendasi Sekolah
+                  </p>
+                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
+                </div>
+                <div className="flex xs:flex-row flex-col gap-2 text-xs">
+                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
+                    Pendidikan
+                  </button>
+                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
+                    2024
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
