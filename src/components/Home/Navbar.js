@@ -27,11 +27,6 @@ export const Navbar = () => {
     setIsLayananPublikOpen(false);
   };
 
-  const toggleLayananPublikDropdown = () => {
-    setIsLayananPublikOpen(!isLayananPublikOpen);
-    setIsTopikOpen(false);
-  };
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -51,23 +46,23 @@ export const Navbar = () => {
     <nav
       className={`p-4 font-noto fixed border-b border-white/20 top-0 left-0 w-full z-50 hover:bg-green-600 ${navbarColor}`} // Gunakan navbarColor
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="flex justify-between items-center max-w-7xl mx-auto">
         <Link
           to="/"
-          className="text-white text-2xl flex items-center font-bold"
+          className="flex text-2xl text-white font-bold items-center"
         >
           <a href="/" className="mr-2">
             <img src={logo} width={70} height={70} alt="SLP Logo" />
           </a>
-          <a href="/" className="text-white text-lg">
+          <a href="/" className="text-lg text-white">
             Dashboard <br /> Cianjur
           </a>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden lg:flex space-x-6 font-medium md:hidden">
+        <div className="font-medium hidden lg:flex md:hidden space-x-6">
           <button
-            className="text-white hover:text-gray-300 transition-all ease-in-out duration-200 flex items-center"
+            className="flex text-white duration-200 ease-in-out hover:text-gray-300 items-center transition-all"
             onClick={isTopikOpen ? handleToggle : toggleTopikDropdown}
           >
             Topik
@@ -79,30 +74,30 @@ export const Navbar = () => {
           </button>
 
           {isTopikOpen && (
-            <div className="bg-green-600 p-8 font-noto fixed top-24 border-t-2 border-black/10 -left-6 w-full z-50 shadow-md">
-              <div className="max-w-7xl mx-auto flex items-center justify-between">
-                <p className="text-white text-3xl">Topik</p>
+            <div className="bg-green-600 border-black/10 border-t-2 p-8 shadow-md w-full -left-6 fixed font-noto top-24 z-50">
+              <div className="flex justify-between items-center max-w-7xl mx-auto">
+                <p className="text-3xl text-white">Topik</p>
                 <p
-                  className="cursor-pointer text-white text-2xl"
+                  className="text-2xl text-white cursor-pointer"
                   onClick={handleToggle}
                 >
                   ✕
                 </p>
               </div>
 
-              <div className="grid  grid-cols-3 gap-6 max-w-7xl mx-auto mt-4">
+              <div className="grid grid-cols-3 gap-6 max-w-7xl mt-4 mx-auto">
                 {topik.map((item) => (
                   <div
                     key={item.id}
-                    className="p-4 rounded-lg flex items-center border border-white/20"
+                    className="flex border border-white/20 p-4 rounded-lg items-center"
                   >
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-20 h-20 object-cover rounded-lg mr-4"
+                      className="h-20 rounded-lg w-20 mr-4 object-cover"
                     />
                     <div>
-                      <p className="text-xl font-semibold text-white">
+                      <p className="text-white text-xl font-semibold">
                         {item.title}
                       </p>
                       <p className="text-white font-light">
@@ -119,7 +114,7 @@ export const Navbar = () => {
           </Link>
           <Link
             to="/about"
-            className="text-white hover:text-gray-300 transition-all ease-in-out duration-200"
+            className="text-white duration-200 ease-in-out hover:text-gray-300 transition-all"
           >
             Tentang
           </Link>
@@ -134,15 +129,15 @@ export const Navbar = () => {
         >
           <div className="flex justify-end">
             <button
-              className="text-white text-2xl p-5"
+              className="p-5 text-2xl text-white"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               ✕
             </button>
           </div>
-          <div className="flex flex-col space-y-4 p-6">
+          <div className="flex flex-col p-6 space-y-4">
             <button
-              className="text-white hover:text-gray-300 transition-all ease-in-out duration-200 flex justify-between items-center"
+              className="flex justify-between text-white duration-200 ease-in-out hover:text-gray-300 items-center transition-all"
               onClick={toggleTopikDropdown}
             >
               Topik <AiOutlineDown className="ml-2" />
@@ -153,7 +148,7 @@ export const Navbar = () => {
                   <a
                     key={item.id}
                     href="#"
-                    className="block text-white  mb-3 border-b border-white/20"
+                    className="border-b border-white/20 text-white block mb-3"
                   >
                     {item.title}
                   </a>
@@ -166,7 +161,7 @@ export const Navbar = () => {
             </Link>
             <Link
               to="/about"
-              className="text-white hover:text-gray-300 transition-all ease-in-out duration-200 "
+              className="text-white duration-200 ease-in-out hover:text-gray-300 transition-all"
             >
               Tentang
             </Link>

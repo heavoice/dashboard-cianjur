@@ -1,224 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
 import Ekonomi from "../../assets/img/Ekonomi.svg";
-import Environment from "../../assets/img/Environment.svg";
-import Governance from "../../assets/img/Governance.svg";
-import Industri from "../../assets/img/Industri.svg";
-import Infrastruktur from "../../assets/img/Infrastruktur.svg";
-import Kemiskinan from "../../assets/img/Kemiskinan.svg";
-import Kependudukan from "../../assets/img/Kependudukan.svg";
-import Kesehatan from "../../assets/img/Kesehatan.svg";
-import Pariwisata from "../../assets/img/Pariwisata.svg";
-import Pendidikan from "../../assets/img/Pendidikan.svg";
-import Social from "../../assets/img/Ekonomi.svg";
 import { FaExternalLinkAlt, FaSearch } from "react-icons/fa";
+import { categories } from "../../constant/Topik";
 
 export const Content = () => {
+  const [selectedCategory, setSelectedCategory] = useState("Semua Topik");
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  };
+
+  const filteredCategory = categories.filter(
+    (category) => category.category === selectedCategory
+  );
+
   return (
-    <div className="relative p-4 w-full h-auto flex flex-col justify-start items-center bg-cover bg-center transition-all duration-1000 font-nunito overflow-auto">
-      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl flex items-center justify-start text-left z-10 flex-col font-nunito text-black mt-10">
-        <div className="w-full justify-between flex-col lg:flex-row flex gap-4">
+    <div className="flex flex-col bg-center bg-cover h-auto justify-start p-4 w-full duration-1000 font-nunito items-center overflow-auto relative transition-all">
+      <div className="flex flex-col justify-start text-black text-left w-full font-nunito items-center mt-10 mx-auto sm:max-w-7xl xs:max-w-[25rem] xxs:max-w-[18rem] z-10">
+        <div className="flex flex-col justify-between w-full gap-4 lg:flex-row">
           {/* Jenis Topik */}
-          <div className="basis-1/4 w-full p-4 border-r rounded">
-            <div className="w-full flex items-center relative rounded-lg overflow-hidden border mt-auto">
-              <FaSearch className="ml-3 absolute text-green-600" />
+          <div className="border-r p-4 rounded w-full basis-1/4">
+            <div className="flex border rounded-lg w-full items-center mt-auto overflow-hidden relative">
+              <FaSearch className="text-green-600 absolute ml-3" />
               <input
                 type="text"
                 placeholder="Cari..."
-                className="w-full p-3 pl-10 pr-16 border-none focus:outline-none bg-gray-50 text-gray-700"
+                className="bg-gray-50 border-none p-3 text-gray-700 w-full focus:outline-none pl-10 pr-16"
               />
-              <button className="absolute right-2 bg-green-600 text-white px-3 py-1 rounded-lg">
+              <button className="bg-green-600 rounded-lg text-white absolute px-3 py-1 right-2">
                 Cari
               </button>
             </div>
-            <div className="max-h-[27.5rem] overflow-y-auto mt-6">
-              {/* Semua Topik */}
-              <div className="flex flex-row items-center mt-6 gap-4">
-                <div>
-                  <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                </div>
-                <div>
-                  <p className="font-bold mt-2 text-lg">Semua Topik</p>
-                </div>
+            <div className="max-h-[27.5rem] mt-6 overflow-y-auto">
+              <div className="flex flex-row gap-4 items-center mt-6">
+                <button
+                  onClick={() => handleCategoryChange("Semua Topik")}
+                  className="flex text-lg font-bold gap-4 items-center"
+                >
+                  <img src={Ekonomi} alt="Ekonomi" className="w-max" /> Semua
+                  Topik
+                </button>
               </div>
-              {/* Pendidikan */}
-              <div className="flex flex-row items-center mt-6 gap-4">
-                <div>
-                  <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                </div>
-                <div>
-                  <p className="font-bold mt-2 text-lg">Pendidikan</p>
-                </div>
+              <div className="flex flex-row gap-4 items-center mt-6">
+                <button
+                  onClick={() => handleCategoryChange("Pendidikan")}
+                  className="flex text-lg font-bold gap-4 items-center"
+                >
+                  <img src={Ekonomi} alt="Ekonomi" className="w-max" />{" "}
+                  Pendidikan
+                </button>
               </div>
-              {/* Sosial */}
-              <div className="flex flex-row items-center mt-6 gap-4">
-                <div>
-                  <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                </div>
-                <div>
-                  <p className="font-bold mt-2 text-lg">Sosial</p>
-                </div>
-              </div>
-              {/* Kependudukan */}
-              <div className="flex flex-row items-center mt-6 gap-4">
-                <div>
-                  <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                </div>
-                <div>
-                  <p className="font-bold mt-2 text-lg">Kependudukan</p>
-                </div>
-              </div>
-              {/* Kependudukan */}
-              <div className="flex flex-row items-center mt-6 gap-4">
-                <div>
-                  <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                </div>
-                <div>
-                  <p className="font-bold mt-2 text-lg">Kependudukan</p>
-                </div>
-              </div>
-              {/* Kependudukan */}
-              <div className="flex flex-row items-center mt-6 gap-4">
-                <div>
-                  <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                </div>
-                <div>
-                  <p className="font-bold mt-2 text-lg">Kependudukan</p>
-                </div>
+
+              <div className="flex flex-row gap-4 items-center mt-6">
+                <button
+                  onClick={() => handleCategoryChange("Sosial")}
+                  className="flex text-lg font-bold gap-4 items-center"
+                >
+                  <img src={Ekonomi} alt="Ekonomi" className="w-max" /> Sosial
+                </button>
               </div>
             </div>
           </div>
-          <div className="basis-3/4 w-full p-4 border-r rounded self-center">
-            <div className="flex flex-row  justify-between items-center w-full">
-              <div className="text-3xl font-noto font-black">Pendidikan</div>
+
+          <div className="border-r p-4 rounded w-full basis-3/4 self-center">
+            {/* Displaying selected category */}
+            <div className="flex flex-row justify-between w-full items-center">
+              <div className="text-3xl font-black font-noto">
+                {selectedCategory}
+              </div>
               <div className="flex-grow border-b border-black/20 mx-4"></div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-3 mt-10 gap-4">
-              {/* 1 */}
-              <div className="w-full flex flex-col gap-4">
-                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                <div className="flex flex-row justify-between">
-                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
-                    Dashboard Rekomendasi Sekolah
-                  </p>
-                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+              {/* Dynamically displaying items based on selected category */}
+              {filteredCategory[0]?.items.map((item, index) => (
+                <div key={index} className="flex flex-col w-full gap-4">
+                  <img src={item.img} alt={item.title} className="w-max" />
+                  <div className="flex flex-row justify-between space-x-4">
+                    <p className="text-green-600 text-xs w-fit font-bold sm:text-xl">
+                      {item.title}
+                    </p>
+                    <FaExternalLinkAlt className="text-green-600 text-xs cursor-pointer sm:text-xl" />
+                  </div>
+                  <div className="flex flex-col text-xs gap-2 xs:flex-row">
+                    <button className="bg-green-600 rounded-lg text-white w-fit px-[0.65rem] py-1">
+                      {selectedCategory}
+                    </button>
+                    <button className="bg-green-600/20 rounded-lg text-green-600 px-[0.65rem] py-1">
+                      {item.year}
+                    </button>
+                  </div>
                 </div>
-                <div className="flex xs:flex-row flex-col gap-2 text-xs">
-                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
-                    Pendidikan
-                  </button>
-                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
-                    2024
-                  </button>
-                </div>
-              </div>
-              {/* 2 */}
-              <div className="w-full flex flex-col gap-4">
-                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                <div className="flex flex-row justify-between">
-                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
-                    Dashboard Rekomendasi Sekolah
-                  </p>
-                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
-                </div>
-                <div className="flex xs:flex-row flex-col gap-2 text-xs">
-                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
-                    Pendidikan
-                  </button>
-                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
-                    2024
-                  </button>
-                </div>
-              </div>
-              {/* 3 */}
-              <div className="w-full flex flex-col gap-4">
-                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                <div className="flex flex-row justify-between">
-                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
-                    Dashboard Rekomendasi Sekolah
-                  </p>
-                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
-                </div>
-                <div className="flex xs:flex-row flex-col gap-2 text-xs">
-                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
-                    Pendidikan
-                  </button>
-                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
-                    2024
-                  </button>
-                </div>
-              </div>
-              {/* 4 */}
-              <div className="w-full flex flex-col gap-4">
-                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                <div className="flex flex-row justify-between">
-                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
-                    Dashboard Rekomendasi Sekolah
-                  </p>
-                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
-                </div>
-                <div className="flex xs:flex-row flex-col gap-2 text-xs">
-                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
-                    Pendidikan
-                  </button>
-                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
-                    2024
-                  </button>
-                </div>
-              </div>
-              {/* 5 */}
-              <div className="w-full flex flex-col gap-4">
-                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                <div className="flex flex-row justify-between">
-                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
-                    Dashboard Rekomendasi Sekolah
-                  </p>
-                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
-                </div>
-                <div className="flex xs:flex-row flex-col gap-2 text-xs">
-                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
-                    Pendidikan
-                  </button>
-                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
-                    2024
-                  </button>
-                </div>
-              </div>
-              {/* 6 */}
-              <div className="w-full flex flex-col gap-4">
-                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                <div className="flex flex-row justify-between">
-                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
-                    Dashboard Rekomendasi Sekolah
-                  </p>
-                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
-                </div>
-                <div className="flex xs:flex-row flex-col gap-2 text-xs">
-                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
-                    Pendidikan
-                  </button>
-                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
-                    2024
-                  </button>
-                </div>
-              </div>
-              {/* 7 */}
-              <div className="w-full flex flex-col gap-4">
-                <img src={Ekonomi} alt="Ekonomi" className="w-max" />
-                <div className="flex flex-row justify-between">
-                  <p className="text-xs sm:text-xl font-bold text-green-600 w-fit">
-                    Dashboard Rekomendasi Sekolah
-                  </p>
-                  <FaExternalLinkAlt className=" cursor-pointer text-green-600 text-xs sm:text-xl" />
-                </div>
-                <div className="flex xs:flex-row flex-col gap-2 text-xs">
-                  <button className="px-[0.65rem] py-1 bg-green-600 rounded-lg text-white w-fit">
-                    Pendidikan
-                  </button>
-                  <button className="px-[0.65rem] py-1 bg-green-600/20 rounded-lg text-green-600">
-                    2024
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
