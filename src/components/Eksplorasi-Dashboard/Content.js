@@ -27,7 +27,7 @@ const ContentCard = ({ title, category, year, imageSrc }) => (
       <button className="bg-green-600 rounded text-white w-fit px-[0.65rem] py-1">
         {category}
       </button>
-      <button className="bg-green-600/20 rounded text-green-600 px-[0.65rem] py-1">
+      <button className="bg-green-600/20 rounded text-green-600 w-fit px-[0.65rem] py-1">
         {year}
       </button>
     </div>
@@ -150,7 +150,7 @@ export const Content = () => {
                   </div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4 gap-y-8 rounded">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4 gap-y-8 rounded">
                   <ContentCard
                     title="Dashboard Rekomendasi Sekolah"
                     category="Pendidikan"
@@ -204,7 +204,7 @@ export const Content = () => {
                   <div className="text-3xl font-black font-noto">Sosial</div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
                   <ContentCard
                     title="Dashboard Rekomendasi Sekolah"
                     category="Sosial"
@@ -222,7 +222,7 @@ export const Content = () => {
                   <div className="text-3xl font-black font-noto">Kesehatan</div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
                   <ContentCard
                     title="Situasi Covid-19"
                     category="Kesehatan"
@@ -284,7 +284,7 @@ export const Content = () => {
                   </div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
                   <ContentCard
                     title="Overview Kependudukan"
                     category="Kependudukan"
@@ -320,7 +320,7 @@ export const Content = () => {
                   <div className="text-3xl font-black font-noto">Industri</div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
                   <ContentCard
                     title="Overview Industri"
                     category="Industri"
@@ -356,7 +356,7 @@ export const Content = () => {
                   <div className="text-3xl font-black font-noto">Ekonomi</div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
                   <ContentCard
                     title="Harga Pangan Cianjur"
                     category="Ekonomi"
@@ -388,7 +388,7 @@ export const Content = () => {
                   </div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
                   <ContentCard
                     title="Overview Lingkungan"
                     category="Lingkungan"
@@ -408,7 +408,7 @@ export const Content = () => {
                   </div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
                   <ContentCard
                     title="Overview Kemiskinan"
                     category="Kemiskinan"
@@ -428,7 +428,7 @@ export const Content = () => {
                   </div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
                   <ContentCard
                     title="Overview Infrasturktur"
                     category="Infrasturktur"
@@ -448,7 +448,7 @@ export const Content = () => {
                   </div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
                   <ContentCard
                     title="Overview Pariwisata"
                     category="Pariwisata"
@@ -468,7 +468,7 @@ export const Content = () => {
                   </div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4">
                   <ContentCard
                     title="Overview Pemerintahan"
                     category="Pemerintahan"
