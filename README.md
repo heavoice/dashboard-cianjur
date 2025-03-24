@@ -20,6 +20,7 @@ Dashboard Cianjur adalah aplikasi berbasis web yang memberikan informasi terkait
 - **Tailwind CSS**: Framework CSS untuk desain antarmuka pengguna yang responsif dan kustomisasi.
 - **Vercel**: Platform hosting untuk aplikasi React dan deployment otomatis.
 - **React Router**: Untuk pengelolaan routing dalam aplikasi React.
+- **Motion Framer**: Untuk pengelolaan animasi dalam aplikasi React.
 
 ---
 
