@@ -120,13 +120,24 @@ export const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 right-0 h-full bg-green-600 w-64 shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
+          className={`fixed top-0 right-0 h-full bg-green-600 w-[70%] shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
           ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
           ref={menuRef}
         >
-          <div className="flex justify-end">
+          <div className="flex justify-between p-4 border-b border-white/20">
+            <Link
+              to="/"
+              className="text-white text-2xl flex items-center font-bold"
+            >
+              <a href="/" className="mr-2">
+                <img src={logo} width={35} height={35} alt="SLP Logo" />
+              </a>
+              <a href="/" className="text-white text-sm">
+                Dashboard <br /> Cianjur
+              </a>
+            </Link>
             <button
-              className="text-white text-2xl p-5"
+              className="text-white text-xl p-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               ✕
@@ -150,7 +161,7 @@ export const Navbar = () => {
                   <a
                     key={item.id}
                     href="#"
-                    className="block text-white mb-3 border-b border-white/20"
+                    className="block text-white  mb-3 border-b border-white/20"
                   >
                     {item.title}
                   </a>
@@ -163,7 +174,7 @@ export const Navbar = () => {
             </Link>
             <Link
               to="/about"
-              className="text-white hover:text-gray-300 transition-all ease-in-out duration-200"
+              className="text-white hover:text-gray-300 transition-all ease-in-out duration-200 "
             >
               Tentang
             </Link>

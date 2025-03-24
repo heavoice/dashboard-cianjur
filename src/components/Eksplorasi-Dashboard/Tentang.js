@@ -31,7 +31,7 @@ export const Tentang = () => {
       className="relative p-4 w-full h-auto flex flex-col justify-start items-center bg-cover bg-center transition-all duration-1000 font-nunito overflow-auto"
     >
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-green-600 rounded-b-[4rem] z-0"></div>
+      <div className="absolute inset-0 bg-green-600 z-0"></div>
 
       {/* Kontainer teks */}
       <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl flex items-center justify-start text-left z-10 flex-col font-nunito text-white mt-40">

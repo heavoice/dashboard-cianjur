@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { AiOutlineDown, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import logo from "../../assets/img/logo.png";
 import { topik } from "../../constant/Topik";
 import useNavbarColor from "../../hooks/useNavColor";
@@ -128,13 +128,24 @@ export const Navbar = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 right-0 h-full bg-green-600 w-64 shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
+          className={`fixed top-0 right-0 h-full bg-green-600 w-[70%] shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
           ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
           ref={menuRef}
         >
-          <div className="flex justify-end">
+          <div className="flex justify-between p-4 border-b border-white/20">
+            <Link
+              to="/"
+              className="text-white text-2xl flex items-center font-bold"
+            >
+              <a href="/" className="mr-2">
+                <img src={logo} width={35} height={35} alt="SLP Logo" />
+              </a>
+              <a href="/" className="text-white text-sm">
+                Dashboard <br /> Cianjur
+              </a>
+            </Link>
             <button
-              className="text-white text-2xl p-5"
+              className="text-white text-xl p-2"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               ✕
@@ -145,7 +156,12 @@ export const Navbar = () => {
               className="text-white hover:text-gray-300 transition-all ease-in-out duration-200 flex justify-between items-center"
               onClick={toggleTopikDropdown}
             >
-              Topik <AiOutlineDown className="ml-2" />
+              Topik
+              <MdKeyboardArrowDown
+                className={`ml-2 mt-1 text-xl transition-transform duration-300 ${
+                  isTopikOpen ? "rotate-180" : ""
+                }`}
+              />
             </button>
             {isTopikOpen && (
               <div className="max-h-60 overflow-y-auto">
