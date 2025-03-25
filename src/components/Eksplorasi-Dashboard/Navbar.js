@@ -123,7 +123,9 @@ export const Navbar = () => {
           >
             Tentang
           </Link>
-          <a className="text-white">Executive Dashboard</a>
+          <Link to="/eksekutif-dashboard" className="text-white">
+            Executive Dashboard
+          </Link>
         </div>
 
         {/* Mobile Menu */}
@@ -186,7 +188,9 @@ export const Navbar = () => {
             >
               Tentang
             </Link>
-            <a className="text-white">Executive Dashboard</a>
+            <Link to="/eksekutif-dashboard" className="text-white">
+              Executive Dashboard
+            </Link>
           </div>
         </div>
 
