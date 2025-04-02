@@ -165,7 +165,7 @@ export const Portal = () => {
   return (
     <div
       id="portal"
-      className="relative p-4 w-full h-screen flex flex-col justify-center items-center bg-cover bg-center transition-all duration-1000 font-nunito overflow-auto botd"
+      className="relative p-4 w-full h-screen flex flex-col justify-center items-center bg-cover bg-center transition-all duration-1000 font-nunito overflow-auto"
       style={{ backgroundImage: `url(${currentSlide})` }}
     >
       {/* Gradient overlay */}

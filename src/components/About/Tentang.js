@@ -43,7 +43,7 @@ export const Tentang = () => {
       <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl flex items-center justify-start text-left z-10 flex-col font-nunito text-black mt-40">
         <div className="flex flex-row gap-2 items-start mr-auto ">
           <Link
-            to="/"
+            to="/home"
             className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
           >
             Beranda

@@ -15,10 +15,10 @@ export const Footer = () => {
     <div className="flex flex-col justify-center items-center p-4 bg-green-600">
       <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl px-4 py-8 z-10 rounded-xl font-nunito">
         <div className="text-white text-2xl flex items-center font-bold">
-          <a href="/" className="mr-2">
+          <a href="/home" className="mr-2">
             <img src={logo} width={70} height={70} alt="SLP Logo" />
           </a>
-          <a href="/" className="text-white font-noto text-lg">
+          <a href="/home" className="text-white font-noto text-lg">
             Dashboard <br /> Cianjur
           </a>
         </div>

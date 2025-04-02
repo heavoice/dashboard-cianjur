@@ -53,13 +53,13 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link
-          to="/"
+          to="/home"
           className="text-white text-2xl flex items-center font-bold"
         >
-          <a href="/" className="mr-2">
+          <a href="/home" className="mr-2">
             <img src={logo} width={70} height={70} alt="SLP Logo" />
           </a>
-          <a href="/" className="text-white text-lg">
+          <a href="/home" className="text-white text-lg">
             Dashboard <br /> Cianjur
           </a>
         </Link>
@@ -79,7 +79,7 @@ export const Navbar = () => {
           </button>
 
           {isTopikOpen && (
-            <div className="bg-green-600 p-8 font-noto fixed top-24 border-t-2 border-black/10 -left-6 w-full z-50 shadow-md">
+            <div className="bg-green-600 p-8 font-noto fixed top-[6.75rem] border-t-2 border-black/10 -left-6 w-full z-50 shadow-md">
               <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <p className="text-white text-3xl">Topik</p>
                 <p
@@ -136,13 +136,13 @@ export const Navbar = () => {
         >
           <div className="flex justify-between p-4 border-b border-white/20">
             <Link
-              to="/"
+              to="/home"
               className="text-white text-2xl flex items-center font-bold"
             >
-              <a href="/" className="mr-2">
+              <a href="/home" className="mr-2">
                 <img src={logo} width={35} height={35} alt="SLP Logo" />
               </a>
-              <a href="/" className="text-white text-sm">
+              <a href="/home" className="text-white text-sm">
                 Dashboard <br /> Cianjur
               </a>
             </Link>
