@@ -9,8 +9,7 @@ import {
 import Home from "./page/Home";
 import About from "./page/About";
 import EksplorasiDashboard from "./page/EksplorasiDashboard";
-import EksekutifDashboard from "./page/EksekutifDashboard";
-import Register from "./page/Register";
+import Auth from "./page/Auth";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -44,8 +43,7 @@ const AppRouter = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/eksplorasi-dashboard" element={<EksplorasiDashboard />} />
-        <Route path="/eksekutif-dashboard" element={<EksekutifDashboard />} />
-        <Route path="/eksekutif-dashboard/register" element={<Register />} />
+        <Route path="/auth" element={<Auth />} />
       </Routes>
     </Router>
   );
