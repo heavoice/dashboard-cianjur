@@ -45,5 +45,5 @@
 
 ### 1. Clone Repositori
 ```bash
-git clone https://github.com/username/dashboard-cianjur.git
+https://github.com/heavoice/dashboard-cianjur.git
 cd dashboard-cianjur
