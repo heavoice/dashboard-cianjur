@@ -108,14 +108,20 @@ export const Auth = () => {
   };
 
   return (
-    <div className="relative w-full h-[200vh] md:h-[120vh] mt-24 flex flex-col md:flex-row bg-gray-100 font-nunito">
+    <div className="relative w-full h-screen mt-24 flex flex-col md:flex-row bg-gray-100 font-nunito">
       {/* Left Side - Login/Register Form */}
-      <div className="w-full xl:w-1/2 h-full flex flex-col justify-center items-center p-4 md:p-10 xl:p-32">
+      <div className="w-full xl:w-1/2 h-full flex flex-col justify-center items-center p-4 md:p-10 xl:p-32 ">
+        <div
+          className="md:hidden absolute inset-0 bg-cover opacity-80 z-0"
+          style={{ backgroundImage: `url(${currentSlide})` }}
+        >
+          <div className="absolute inset-0 bg-black opacity-80 z-0"></div>
+        </div>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="w-full h-auto p-8 bg-white rounded-lg flex flex-col"
+          className="w-full h-auto p-8 bg-white rounded-lg flex flex-col z-10"
         >
           <Link
             to="/"
@@ -418,7 +424,7 @@ export const Auth = () => {
 
       {/* Right Side - Background Slideshow */}
       <div
-        className="w-full xl:w-1/2 h-full flex flex-col justify-center items-center bg-cover bg-center transition-all duration-1000 font-nunito overflow-auto relative"
+        className="w-full xl:w-1/2 h-full md:flex hidden flex-col justify-center items-center bg-cover bg-center transition-all duration-1000 font-nunito overflow-auto relative"
         style={{ backgroundImage: `url(${currentSlide})` }}
       >
         <div className="w-full h-full bg-black opacity-80 z-0"></div>

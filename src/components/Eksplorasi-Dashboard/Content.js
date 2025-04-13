@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaSearch, FaExternalLinkAlt } from "react-icons/fa";
 import Ekonomi from "../../assets/img/Ekonomi.svg";
+import { Link } from "react-router-dom";
 
 const CategoryButton = ({ category, onClick, children, imageSrc }) => (
   <div className="flex flex-row gap-4 items-center mt-6">
@@ -15,19 +16,19 @@ const CategoryButton = ({ category, onClick, children, imageSrc }) => (
 );
 
 const ContentCard = ({ title, category, year, imageSrc }) => (
-  <div className="flex flex-col w-full gap-4 rounded border p-4">
+  <div className="flex flex-col w-full gap-4 rounded p-4 hover:bg-slate-100">
     <img src={imageSrc} alt={title} className="w-max" />
     <div className="flex flex-row justify-between gap-3 ">
-      <p className="text-green-600 text-xs w-full font-bold sm:text-base ">
+      <p className="text-[#22A9E1] text-xs w-full font-bold sm:text-base line-clamp-3">
         {title}
       </p>
-      <FaExternalLinkAlt className="text-green-600 cursor-pointer w-6 h-6" />
+      <FaExternalLinkAlt className="text-[#22A9E1] cursor-pointer w-6 h-6" />
     </div>
     <div className="flex flex-col text-xs gap-2 xs:flex-row mt-auto">
-      <button className="bg-green-600 rounded text-white w-fit px-[0.65rem] py-1">
+      <button className="bg-[#22A9E1] rounded text-white w-fit px-[0.65rem] py-1">
         {category}
       </button>
-      <button className="bg-green-600/20 rounded text-green-600 w-fit px-[0.65rem] py-1">
+      <button className="bg-[#22A9E1]/20 rounded text-[#22A9E1] w-fit px-[0.65rem] py-1">
         {year}
       </button>
     </div>
@@ -43,13 +44,13 @@ export const Content = () => {
         <div className="flex flex-col justify-between w-full gap-4 lg:flex-row">
           <div className="lg:border-r p-4 w-full basis-1/4">
             <div className="flex border rounded-lg w-full items-center mt-auto overflow-hidden relative">
-              <FaSearch className="text-green-600 absolute ml-3" />
+              <FaSearch className="text-[#22A9E1] absolute ml-3" />
               <input
                 type="text"
                 placeholder="Cari..."
                 className="bg-gray-50 border-none p-3 text-gray-700 w-full focus:outline-none pl-10 pr-16"
               />
-              <button className="bg-green-600 rounded-lg text-white absolute px-3 py-1 right-2">
+              <button className="bg-[#22A9E1] rounded-lg text-white absolute px-3 py-1 right-2">
                 Cari
               </button>
             </div>
@@ -150,7 +151,7 @@ export const Content = () => {
                   </div>
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4 gap-y-8 rounded">
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4 gap-y-8 rounded">
                   <ContentCard
                     title="Dashboard Rekomendasi Sekolah"
                     category="Pendidikan"

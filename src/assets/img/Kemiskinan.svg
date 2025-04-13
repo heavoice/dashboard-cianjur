@@ -1,6 +1,6 @@
 <svg width="67" height="67" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect width="67" height="67" rx="8" fill="#16A34A"/>
-<rect x="9" y="9" width="49" height="49" rx="8" fill="#FDE756"/>
+<rect width="67" height="67" rx="8" fill="#22A9E1"/>
+<rect x="9" y="9" width="49" height="49" rx="8" fill="#F7E928"/>
 <mask id="mask0_6_69" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="16" y="15" width="36" height="36">
 <circle cx="34" cy="33" r="18" fill="#D9D9D9"/>
 </mask>
