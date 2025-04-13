@@ -36,14 +36,14 @@ export const Visualizer = () => {
             viewport={{ once: false, amount: 0.2 }}
             className={`basis-1/4`}
           >
-            <div className={`${bgPrimary} p-4 rounded-t-lg`}>
+            <div className={`bg-[#22a9e1] p-4 rounded-t-lg`}>
               <p
-                className={`${textPrimary} font-bold xxs:text-sm sm:text-xl lg:text-2xl font-noto`}
+                className={`text-white font-bold xxs:text-sm sm:text-xl lg:text-2xl font-noto`}
               >
                 Visualisasi Data
               </p>
               <div className="w-full flex items-center relative border border-gray-300 rounded-lg overflow-hidden mt-4">
-                <FaSearch className="ml-3 absolute text-green-600" />
+                <FaSearch className="ml-3 absolute text-[#22a9e1]" />
                 <input
                   type="text"
                   placeholder="Cari..."
@@ -64,8 +64,8 @@ export const Visualizer = () => {
                         onClick={() => handleSelectVisual(item)}
                         className={`w-full p-5 text-left transition-all duration-200 ${
                           selectedVisual === item
-                            ? "bg-green-600 text-white"
-                            : "bg-white text-gray-700 hover:bg-green-600 hover:text-white"
+                            ? "bg-[#22a9e1] text-white"
+                            : "bg-white text-gray-700 hover:bg-[#22a9e1] hover:text-white"
                         }`}
                       >
                         {item.section}

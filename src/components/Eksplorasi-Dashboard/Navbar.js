@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import logo from "../../assets/img/logo.png";
 import { topik } from "../../constant/Topik";
-import useNavbarColor from "../../hooks/useNavColor";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
@@ -11,8 +10,6 @@ export const Navbar = () => {
   const [isTopikOpen, setIsTopikOpen] = useState(false);
   const [isLayananPublikOpen, setIsLayananPublikOpen] = useState(false);
   const menuRef = useRef(null);
-  const navbarColor = useNavbarColor();
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
   };
@@ -49,7 +46,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`p-4 font-noto fixed top-0 border-b border-white/20 left-0 w-full z-50 bg-green-600 `} // Gunakan navbarColor
+      className={`p-4 font-noto fixed top-0 border-b border-white/20 left-0 w-full z-50 bg-[#22a9e1] `} // Gunakan navbarColor
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link
@@ -79,7 +76,7 @@ export const Navbar = () => {
           </button>
 
           {isTopikOpen && (
-            <div className="bg-green-600 p-8 font-noto fixed top-[6.75rem] border-t-2 border-black/10 -left-6 w-full z-50 shadow-md">
+            <div className="bg-[#22a9e1] p-8 font-noto fixed top-[6.75rem] border-t-2 border-black/10 -left-6 w-full z-50 shadow-md">
               <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <p className="text-white text-3xl">Topik</p>
                 <p
@@ -123,14 +120,14 @@ export const Navbar = () => {
           >
             Tentang
           </Link>
-          <Link to="/eksekutif-dashboard" className="text-white">
+          <Link to="/auth" className="text-white">
             Executive Dashboard
           </Link>
         </div>
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 right-0 h-full bg-green-600 w-[70%] shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
+          className={`fixed top-0 right-0 h-full bg-[#22a9e1] w-[70%] shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
           ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
           ref={menuRef}
         >
@@ -188,7 +185,7 @@ export const Navbar = () => {
             >
               Tentang
             </Link>
-            <Link to="/eksekutif-dashboard" className="text-white">
+            <Link to="/auth" className="text-white">
               Executive Dashboard
             </Link>
           </div>

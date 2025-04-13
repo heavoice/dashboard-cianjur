@@ -15,10 +15,10 @@ const useNavbarColor = () => {
         } else if (scrollPosition <= 650) {
           setNavbarColor("backdrop-blur-md bg-white/10");
         } else {
-          setNavbarColor("bg-green-600");
+          setNavbarColor("bg-[#22a9e1]");
         }
       } else {
-        setNavbarColor("bg-green-600"); // Warna default untuk layar kecil
+        setNavbarColor("bg-[#22a9e1]"); // Warna default untuk layar kecil
       }
     };
 

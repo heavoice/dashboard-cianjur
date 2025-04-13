@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
-import { AiOutlineDown, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import logo from "../../assets/img/logo.png";
 import { topik } from "../../constant/Topik";
-import useNavbarColor from "../../hooks/useNavColor";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTopikOpen, setIsTopikOpen] = useState(false);
-  const [isLayananPublikOpen, setIsLayananPublikOpen] = useState(false);
+
   const menuRef = useRef(null);
-  const navbarColor = useNavbarColor();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -19,12 +17,10 @@ export const Navbar = () => {
 
   const handleToggle = () => {
     setIsTopikOpen(false);
-    setIsLayananPublikOpen(false);
   };
 
   const toggleTopikDropdown = () => {
     setIsTopikOpen(!isTopikOpen);
-    setIsLayananPublikOpen(false);
   };
 
   useEffect(() => {
@@ -32,7 +28,6 @@ export const Navbar = () => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMobileMenuOpen(false);
         setIsTopikOpen(false);
-        setIsLayananPublikOpen(false);
       }
     };
 
@@ -44,7 +39,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`p-4 font-noto fixed border-b border-white/20 top-0 left-0 w-full z-50 bg-green-600 `} // Gunakan navbarColor
+      className={`p-4 font-noto fixed border-b border-white/20 top-0 left-0 w-full z-50 bg-[#22a9e1] `} // Gunakan navbarColor
     >
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -74,7 +69,7 @@ export const Navbar = () => {
           </button>
 
           {isTopikOpen && (
-            <div className="bg-green-600 p-8 shadow-md w-full -left-6 fixed font-noto top-[6.75rem] z-50">
+            <div className="bg-[#22a9e1] p-8 shadow-md w-full -left-6 fixed font-noto top-[6.75rem] z-50">
               <div className="flex justify-between items-center max-w-7xl mx-auto">
                 <p className="text-3xl text-white">Topik</p>
                 <p
@@ -118,14 +113,14 @@ export const Navbar = () => {
           >
             Tentang
           </Link>
-          <Link to="/eksekutif-dashboard" className="text-white">
+          <Link to="/auth" className="text-white">
             Executive Dashboard
           </Link>
         </div>
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 right-0 h-full bg-green-600 w-[70%] shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
+          className={`fixed top-0 right-0 h-full bg-[#22a9e1] w-[70%] shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
           ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
           ref={menuRef}
         >
@@ -183,7 +178,7 @@ export const Navbar = () => {
             >
               Tentang
             </Link>
-            <Link to="/eksekutif-dashboard" className="text-white">
+            <Link to="/auth" className="text-white">
               Executive Dashboard
             </Link>
           </div>

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Navbar } from "../components/Eksekutif-Dashboard/Navbar";
 import { Auth } from "../components/Eksekutif-Dashboard/Auth";
+import { Footer } from "../components/Eksekutif-Dashboard/Footer";
 
 function EksekutifDashboard() {
   useEffect(() => {
@@ -10,6 +11,7 @@ function EksekutifDashboard() {
     <>
       <Navbar />
       <Auth />
+      <Footer />
     </>
   );
 }

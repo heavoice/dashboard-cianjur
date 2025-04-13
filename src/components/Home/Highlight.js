@@ -29,7 +29,7 @@ export const Highlight = () => {
               }}
               viewport={{ once: false, amount: 0.2 }}
               key={index}
-              className="bg-green-600 rounded-lg p-4 flex items-center text-white "
+              className="bg-[#22a9e1] rounded-lg p-4 flex items-center text-white "
             >
               <div className="flex flex-col w-full">
                 <div className="flex flex-row items-center h-12">
@@ -94,7 +94,7 @@ export const Highlight = () => {
         </a>
         <a
           href="#"
-          className={`w-fit transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 duration-300 p-3 font-bold rounded-xl ml-auto mt-6 max-w-7xl flex lg:justify-end md:justify-center border border-green-600 bg-white text-green-600 hover:bg-green-600 hover:text-white`}
+          className={`w-fit transition ease-in-out delay-150 hover:translate-y-2 hover:scale-110 duration-300 p-3 font-bold rounded-xl ml-auto mt-6 max-w-7xl flex lg:justify-end md:justify-center border border-[#22a9e1] bg-white text-[#22a9e1] hover:bg-[#22a9e1] hover:text-white`}
         >
           Lihat Semua Highlight
           <FaExternalLinkAlt className="mt-1 ml-4" />

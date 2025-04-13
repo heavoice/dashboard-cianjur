@@ -44,7 +44,7 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`p-4 font-noto fixed border-b border-white/20 top-0 left-0 w-full z-50 hover:bg-green-600 ${navbarColor}`} // Gunakan navbarColor
+      className={`p-4 font-noto fixed border-b border-white/20 top-0 left-0 w-full z-50 hover:bg-[#22a9e1] ${navbarColor}`} // Gunakan navbarColor
     >
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -74,7 +74,7 @@ export const Navbar = () => {
           </button>
 
           {isTopikOpen && (
-            <div className="bg-green-600 border-black/10 border-t-2 p-8 shadow-md w-full -left-6 fixed font-noto top-[6.75rem] z-50">
+            <div className="bg-[#22a9e1] border-black/10 border-t-2 p-8 shadow-md w-full -left-6 fixed font-noto top-[6.75rem] z-50">
               <div className="flex justify-between items-center max-w-7xl mx-auto">
                 <p className="text-3xl text-white">Topik</p>
                 <p
@@ -118,14 +118,14 @@ export const Navbar = () => {
           >
             Tentang
           </Link>
-          <Link to="/eksekutif-dashboard" className="text-white">
+          <Link to="/auth" className="text-white">
             Executive Dashboard
           </Link>
         </div>
 
         {/* Mobile Menu */}
         <div
-          className={`fixed top-0 right-0 h-full bg-green-600 w-[70%] shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
+          className={`fixed top-0 right-0 h-full bg-[#22a9e1] w-[70%] shadow-lg transform transition-transform duration-300 ease-in-out lg:hidden 
           ${isMobileMenuOpen ? "translate-x-0" : "translate-x-full"}`}
           ref={menuRef}
         >
@@ -183,7 +183,7 @@ export const Navbar = () => {
             >
               Tentang
             </Link>
-            <Link to="/eksekutif-dashboard" className="text-white">
+            <Link to="/auth" className="text-white">
               Executive Dashboard
             </Link>
           </div>

@@ -1,41 +1,53 @@
 # Dashboard Cianjur
 
-Dashboard Cianjur adalah aplikasi berbasis web yang memberikan informasi terkait wilayah Cianjur, termasuk data statistik, lokasi penting, dan fitur terkait pembangunan daerah. Proyek ini dibangun menggunakan **React** untuk frontend, **Tailwind CSS** untuk desain responsif, dan **Vercel** untuk hosting.
+**Dashboard Cianjur** adalah aplikasi berbasis web yang memberikan informasi terkait wilayah Cianjur, termasuk data statistik, lokasi penting, dan fitur pembangunan daerah. Aplikasi ini menggunakan **React** di sisi frontend dan **Node.js + Express.js** di sisi backend, serta menggunakan **PostgreSQL** sebagai basis data. Aplikasi ini dideploy menggunakan **Vercel** untuk frontend.
 
 ---
 
-## Fitur
+## ✨ Fitur
 
-- **Dashboard Interaktif**: Menampilkan data statistik terkait wilayah Cianjur.
+- **Dashboard Interaktif**: Menampilkan data statistik wilayah Cianjur.
 - **Peta Lokasi**: Menampilkan lokasi-lokasi penting di Cianjur.
-- **Pengelolaan Data**: Menyediakan halaman untuk melihat data wilayah dan statistik.
-- **Responsif**: Desain responsif agar dapat diakses dengan baik di berbagai perangkat.
-- **Deployment di Vercel**: Aplikasi dapat diakses secara online setelah di-deploy di Vercel.
+- **Pengelolaan Data**: CRUD data wilayah dan statistik.
+- **Autentikasi Pengguna**: Registrasi dan login dengan enkripsi password & JWT.
+- **Desain Responsif**: Tampilan optimal di berbagai ukuran layar.
+- **Deployment Otomatis**: Frontend di-deploy ke Vercel.
 
 ---
 
-## Teknologi yang Digunakan
+## 🛠️ Teknologi yang Digunakan
 
-- **React**: Library JavaScript untuk membangun antarmuka pengguna.
-- **Tailwind CSS**: Framework CSS untuk desain antarmuka pengguna yang responsif dan kustomisasi.
-- **Vercel**: Platform hosting untuk aplikasi React dan deployment otomatis.
-- **React Router**: Untuk pengelolaan routing dalam aplikasi React.
-- **Motion Framer**: Untuk pengelolaan animasi dalam aplikasi React.
+### Frontend
+
+- **React**: Library JavaScript untuk UI.
+- **Tailwind CSS**: Utility-first CSS framework.
+- **React Router**: Navigasi antar halaman.
+- **Framer Motion**: Animasi pada elemen UI.
+
+### Backend
+
+- **Node.js**: JavaScript runtime environment.
+- **Express.js**: Web framework minimalis untuk Node.js.
+- **PostgreSQL**: Database relasional.
+- **bcrypt**: Enkripsi password.
+- **jsonwebtoken (JWT)**: Autentikasi berbasis token.
+- **pg (node-postgres)**: Koneksi PostgreSQL di Node.js.
 
 ---
 
-## Prasyarat
+## 📦 Prasyarat
 
-- **Node.js**: Versi 14.x atau lebih baru.
-- **npm**: Untuk mengelola dependensi proyek.
+- **Node.js**: Versi 14.x atau lebih baru
+- **npm** atau **yarn**
+- **PostgreSQL**: Sudah terinstal dan berjalan secara lokal
 
 ---
 
-## Instalasi
+## 🚀 Instalasi & Menjalankan Proyek
 
 ### 1. Clone Repositori
 
 ```bash
-git clone https://github.com/username/dashboard-cianjur.git
+https://github.com/heavoice/dashboard-cianjur.git
 cd dashboard-cianjur
 ```

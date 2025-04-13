@@ -195,13 +195,13 @@ export const Portal = () => {
           viewport={{ once: false, amount: 0.2 }}
           className="mt-6 w-full max-w-xl flex items-center relative rounded-lg overflow-hidden"
         >
-          <FaSearch className="ml-3 absolute text-green-600" />
+          <FaSearch className="ml-3 absolute text-[#22a9e1]" />
           <input
             type="text"
             placeholder="Cari..."
             className="w-full p-3 pl-10 pr-16 border-none focus:outline-none text-gray-700"
           />
-          <button className="absolute right-2 bg-green-600 text-white px-4 py-2 rounded-lg">
+          <button className="absolute right-2 bg-[#22a9e1] text-white px-4 py-2 rounded-lg">
             Cari
           </button>
         </motion.div>
@@ -223,9 +223,9 @@ export const Portal = () => {
             {["PPDB", "Aduan Warga", "Sapawarga", "Al Jabbar"].map(
               (item, index) => (
                 <div key={index} className="flex justify-center px-1">
-                  <div className="w-full flex items-center justify-between bg-white hover:bg-green-600 text-gray-700 hover:text-white rounded-lg overflow-hidden px-4 py-2 gap-4 transition-all duration-200 ease-in-out relative">
+                  <div className="w-full flex items-center justify-between bg-white hover:bg-[#22a9e1] text-gray-700 hover:text-white rounded-lg overflow-hidden px-4 py-2 gap-4 transition-all duration-200 ease-in-out relative">
                     <p className="text-lg font-medium">{item}</p>
-                    <div className="absolute -right-[9rem] px-40 py-4 text-green-600 hover:text-white overflow-x-hidden-hidden transition-all duration-200 ease-in-out">
+                    <div className="absolute -right-[9rem] px-40 py-4 text-[#22a9e1] hover:text-white overflow-x-hidden-hidden transition-all duration-200 ease-in-out">
                       <FaExternalLinkAlt className="text-xl cursor-pointer" />
                     </div>
                   </div>

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import slide1 from "../../assets/img/slide1.jpg";
 import slide2 from "../../assets/img/slide2.jpg";
 import logo from "../../assets/img/logo.png";
 import axios from "axios";
 
 export const Auth = () => {
-  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [currentSlide, setCurrentSlide] = useState(slide1);
   const [formData, setFormData] = useState({
@@ -131,7 +129,7 @@ export const Auth = () => {
 
           {/* Show success message */}
           {success && (
-            <div className="mt-4 p-2 bg-green-100 text-green-700 rounded-lg">
+            <div className="mt-4 p-2 bg-green-100 text-[#22a9e1] rounded-lg">
               {success}
             </div>
           )}
@@ -232,7 +230,7 @@ export const Auth = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full text-white bg-green-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="w-full text-white bg-[#22a9e1] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   {loading ? "Processing..." : "Sign in"}
                 </button>
@@ -252,7 +250,7 @@ export const Auth = () => {
                 </p>
               </form>
               <div className="flex flex-col xs:flex-row md:flex-col lg:flex-row gap-2 xs:gap-4 mt-4">
-                <button className="text-sm font-normal bg-green-600 px-4 py-5 w-full rounded-lg text-white">
+                <button className="text-sm font-normal bg-[#22a9e1] px-4 py-5 w-full rounded-lg text-white">
                   Masuk dengan SSO Cianjur
                 </button>
                 <button className="text-sm font-normal flex items-center justify-center bg-white gap-2 px-4 py-5 w-full border rounded-lg text-black hover:bg-gray-100">
@@ -386,7 +384,7 @@ export const Auth = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full text-white bg-green-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="w-full text-white bg-[#22a9e1] focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   {loading ? "Processing..." : "Create an account"}
                 </button>
@@ -406,7 +404,7 @@ export const Auth = () => {
                 </p>
               </form>
               <div className="flex flex-col xs:flex-row md:flex-col lg:flex-row gap-2 xs:gap-4 mt-4">
-                <button className="text-sm font-normal bg-green-600 px-4 py-5 w-full rounded-lg text-white">
+                <button className="text-sm font-normal bg-[#22a9e1] px-4 py-5 w-full rounded-lg text-white">
                   Daftar dengan SSO Cianjur
                 </button>
                 <button className="text-sm font-normal flex items-center justify-center bg-white gap-2 px-4 py-5 w-full border rounded-lg text-black hover:bg-gray-100">

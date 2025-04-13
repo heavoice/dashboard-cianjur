@@ -27,7 +27,7 @@ const RedirectToDefault = () => {
 
   useEffect(() => {
     if (pathname === "/") {
-      navigate("/eksekutif-dashboard", { replace: true });
+      navigate("/auth", { replace: true });
     }
   }, [pathname, navigate]);
 

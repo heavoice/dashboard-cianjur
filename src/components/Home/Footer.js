@@ -12,7 +12,7 @@ import {
 
 export const Footer = () => {
   return (
-    <div className="flex flex-col justify-center items-center p-4 bg-green-600">
+    <div className="flex flex-col justify-center items-center p-4 bg-[#22a9e1]">
       <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] sm:max-w-7xl px-4 py-8 z-10 rounded-xl font-nunito">
         <div className="text-white text-2xl flex items-center font-bold">
           <a href="/home" className="mr-2">

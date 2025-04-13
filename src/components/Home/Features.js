@@ -96,7 +96,7 @@ export const Features = () => {
           <div className="flex-1 border-t border-black/10"></div>
           <a
             href="#"
-            className="text-sm text-green-600 hover:underline xxs:text-right"
+            className="text-sm text-[#22a9e1] hover:underline xxs:text-right"
           >
             Lihat Semua Berita
           </a>
@@ -105,7 +105,7 @@ export const Features = () => {
         <div className="flex justify-between items-center">
           <button
             onClick={prevSlide}
-            className="mr-2 p-1 sm:p-2 bg-transparent border-2 border-green-600 hover:bg-green-600 transition-all duration-200 rounded-full flex items-center justify-center text-green-600 hover:text-white"
+            className="mr-2 p-1 sm:p-2 bg-transparent border-2 border-[#22a9e1] hover:bg-[#22a9e1] transition-all duration-200 rounded-full flex items-center justify-center text-[#22a9e1] hover:text-white"
           >
             <FaChevronLeft className="text-sm sm:text-xl " />
           </button>
@@ -142,7 +142,7 @@ export const Features = () => {
 
           <button
             onClick={nextSlide}
-            className="ml-2 p-1 sm:p-2 bg-transparent border-2 border-green-600 hover:bg-green-600 transition-all duration-200 rounded-full flex items-center justify-center text-green-600 hover:text-white"
+            className="ml-2 p-1 sm:p-2 bg-transparent border-2 border-[#22a9e1] hover:bg-[#22a9e1] transition-all duration-200 rounded-full flex items-center justify-center text-[#22a9e1] hover:text-white"
           >
             <FaChevronRight className="text-sm sm:text-xl " />
           </button>
@@ -157,7 +157,7 @@ export const Features = () => {
                 onClick={() => setStartIndex(index * visibleCount)}
                 className={`h-2 w-2 rounded-full transition-all ${
                   index === Math.floor(startIndex / visibleCount)
-                    ? "bg-green-600 w-4"
+                    ? "bg-[#22a9e1] w-4"
                     : "bg-gray-300"
                 }`}
               ></button>
@@ -198,13 +198,13 @@ export const Features = () => {
         {/* Navigation Buttons */}
         <button
           onClick={prevBanner}
-          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-green-600 border-2 border-green-600  transition-all duration-200  flex items-center justify-center text-white hover:text-white p-2 md:p-4 rounded-full"
+          className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-[#22a9e1] border-2 border-[#22a9e1]  transition-all duration-200  flex items-center justify-center text-white hover:text-white p-2 md:p-4 rounded-full"
         >
           <FaChevronLeft />
         </button>
         <button
           onClick={nextBanner}
-          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-green-600 border-2 border-green-600  transition-all duration-200  flex items-center justify-center text-white hover:text-white p-2 md:p-4 rounded-full"
+          className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-[#22a9e1] border-2 border-[#22a9e1]  transition-all duration-200  flex items-center justify-center text-white hover:text-white p-2 md:p-4 rounded-full"
         >
           <FaChevronRight />
         </button>
