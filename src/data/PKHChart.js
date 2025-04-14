@@ -5,6 +5,7 @@ import axios from "axios";
 const PKHChart = () => {
   const [labels, setLabels] = useState([]);
   const [jumlahPKH, setJumlahPKH] = useState([]);
+  const [tahunTerbaru, setTahunTerbaru] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,12 +16,30 @@ const PKHChart = () => {
 
         const data = response.data.data;
 
-        const filteredData = data.filter((item) => item.id <= 64);
+        // Ambil data terbaru (tahun tertinggi) untuk setiap kecamatan
+        const grouped = {};
 
-        const kecamatanLabels = filteredData.map(
-          (item) => item.bps_nama_kecamatan
+        data.forEach((item) => {
+          const kecamatan = item.bps_nama_kecamatan;
+          const tahun = parseInt(item.tahun);
+          const jumlah = parseInt(item.jumlah);
+
+          // Lewatkan jika data tidak valid
+          if (!kecamatan || isNaN(tahun) || isNaN(jumlah)) return;
+
+          if (!grouped[kecamatan] || tahun > grouped[kecamatan].tahun) {
+            grouped[kecamatan] = { tahun, jumlah };
+          }
+        });
+
+        const tahunTerbesar = Math.max(
+          ...Object.values(grouped).map((item) => item.tahun)
         );
-        const pkhValues = filteredData.map((item) => item.jumlah);
+        setTahunTerbaru(tahunTerbesar);
+
+        // Ubah ke bentuk array untuk chart
+        const kecamatanLabels = Object.keys(grouped);
+        const pkhValues = kecamatanLabels.map((kec) => grouped[kec].jumlah);
 
         setLabels(kecamatanLabels);
         setJumlahPKH(pkhValues);
@@ -44,7 +63,7 @@ const PKHChart = () => {
       labels: {
         rotate: -45,
         style: {
-          fontSize: "5px",
+          fontSize: "10px",
         },
       },
     },
@@ -60,7 +79,7 @@ const PKHChart = () => {
 
   const series = [
     {
-      name: "Jumlah Penerima Program Keluarga Harapan (PKH)",
+      name: `Jumlah Penerima PKH (data tahun ${tahunTerbaru})`,
       data: jumlahPKH,
     },
   ];

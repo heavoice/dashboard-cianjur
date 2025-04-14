@@ -5,6 +5,7 @@ import axios from "axios";
 const SiswaChart = () => {
   const [labels, setLabels] = useState([]);
   const [jumlahSiswa, setJumlahSiswa] = useState([]);
+  const [tahunTerbaru, setTahunTerbaru] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,9 +15,27 @@ const SiswaChart = () => {
         );
 
         const data = response.data.data;
+        const grouped = {};
 
-        const kecamatanLabels = data.map((item) => item.bps_nama_kecamatan);
-        const siswaValues = data.map((item) => item.jumlah_siswa);
+        data.forEach((item) => {
+          const kecamatan = item.bps_nama_kecamatan;
+          const tahun = parseInt(item.tahun);
+          const jumlah = parseInt(item.jumlah_siswa);
+
+          if (!kecamatan || isNaN(tahun) || isNaN(jumlah)) return;
+
+          if (!grouped[kecamatan] || tahun > grouped[kecamatan].tahun) {
+            grouped[kecamatan] = { kecamatan, tahun, jumlah };
+          }
+        });
+
+        const tahunTerbesar = Math.max(
+          ...Object.values(grouped).map((item) => item.tahun)
+        );
+        setTahunTerbaru(tahunTerbesar);
+
+        const kecamatanLabels = Object.keys(grouped);
+        const siswaValues = kecamatanLabels.map((kec) => grouped[kec].jumlah);
 
         setLabels(kecamatanLabels);
         setJumlahSiswa(siswaValues);
@@ -56,7 +75,7 @@ const SiswaChart = () => {
 
   const series = [
     {
-      name: "Jumlah Siswa",
+      name: `Jumlah Siswa (data tahun ${tahunTerbaru})`,
       data: jumlahSiswa,
     },
   ];

@@ -6,6 +6,7 @@ const UMKMChart = () => {
   const [labels, setLabels] = useState([]);
   const [jumlahUMKM, setJumlahUMKM] = useState([]);
   const [dataDeskripsi, setDataDeskripsi] = useState([]);
+  const [tahunTerbaru, setTahunTerbaru] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,12 +17,43 @@ const UMKMChart = () => {
 
         const data = response.data.data;
 
-        const kecamatanLabels = data.map((item) => item.bps_nama_kecamatan);
-        const umkmValues = data.map((item) => item.jumlah_umkm);
+        const grouped = {};
 
-        setLabels(kecamatanLabels);
+        data.forEach((item) => {
+          const kecamatan = item.bps_nama_kecamatan;
+          const tahun = parseInt(item.tahun);
+          const jumlah = parseInt(item.jumlah_umkm);
+
+          // Filter tahun 2022-2024
+          if (
+            !kecamatan ||
+            isNaN(tahun) ||
+            tahun < 2022 ||
+            tahun > 2024 ||
+            isNaN(jumlah)
+          )
+            return;
+
+          // Simpan data terbaru per kecamatan
+          if (!grouped[kecamatan] || tahun > grouped[kecamatan].tahun) {
+            grouped[kecamatan] = {
+              tahun,
+              jumlah,
+              kecamatan,
+            };
+          }
+        });
+
+        const sortedKecamatan = Object.keys(grouped).sort();
+        const umkmValues = sortedKecamatan.map((kec) => grouped[kec].jumlah);
+        const tahunTerbesar = Math.max(
+          ...Object.values(grouped).map((item) => item.tahun)
+        );
+
+        setLabels(sortedKecamatan);
         setJumlahUMKM(umkmValues);
-        setDataDeskripsi(data);
+        setDataDeskripsi(Object.values(grouped));
+        setTahunTerbaru(tahunTerbesar);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -51,22 +83,16 @@ const UMKMChart = () => {
   const options = {
     chart: {
       type: "line",
-      toolbar: {
-        show: false,
-      },
+      toolbar: { show: false },
     },
     xaxis: {
       categories: labels,
       labels: {
         rotate: -45,
-        style: {
-          fontSize: "6px",
-        },
+        style: { fontSize: "10px" },
       },
     },
-    dataLabels: {
-      enabled: false,
-    },
+    dataLabels: { enabled: false },
     stroke: {
       curve: "smooth",
       width: 2,
@@ -80,7 +106,7 @@ const UMKMChart = () => {
 
   const series = [
     {
-      name: "Jumlah UMKM",
+      name: `Jumlah UMKM (data tahun ${tahunTerbaru})`,
       data: jumlahUMKM,
     },
   ];
@@ -111,7 +137,7 @@ const UMKMChart = () => {
               }}
             ></span>
             <span>
-              {item.bps_nama_kecamatan} ({item.jumlah_umkm})
+              {item.kecamatan} ({item.tahun})
             </span>
           </div>
         ))}
