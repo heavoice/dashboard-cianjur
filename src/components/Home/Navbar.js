@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineDown, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import logo from "../../assets/img/logo.png";
-import { topik } from "../../constant/Topik";
+import { topik } from "../../data/Topik";
 import useNavbarColor from "../../hooks/useNavColor";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";

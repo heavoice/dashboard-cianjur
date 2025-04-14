@@ -1,0 +1,123 @@
+import React, { useEffect, useState } from "react";
+import Chart from "react-apexcharts";
+import axios from "axios";
+
+const UMKMChart = () => {
+  const [labels, setLabels] = useState([]);
+  const [jumlahUMKM, setJumlahUMKM] = useState([]);
+  const [dataDeskripsi, setDataDeskripsi] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          "https://opendata.cianjurkab.go.id/api/bigdata/dkukmpp//jmlh-sh-mkr-kcl-mnngh-mkm-brdsrkn-skl-sh-dn-kcmtn-d-kbptn-cnjr"
+        );
+
+        const data = response.data.data;
+
+        const kecamatanLabels = data.map((item) => item.bps_nama_kecamatan);
+        const umkmValues = data.map((item) => item.jumlah_umkm);
+
+        setLabels(kecamatanLabels);
+        setJumlahUMKM(umkmValues);
+        setDataDeskripsi(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const colorPalette = [
+    "#FF4560",
+    "#00E396",
+    "#008FFB",
+    "#FEB019",
+    "#775DD0",
+    "#3F51B5",
+    "#546E7A",
+    "#D4526E",
+    "#8D5B4C",
+    "#F86624",
+    "#1B998B",
+    "#2E294E",
+    "#F46036",
+    "#9C27B0",
+    "#3DDC97",
+  ];
+
+  const options = {
+    chart: {
+      type: "line",
+      toolbar: {
+        show: false,
+      },
+    },
+    xaxis: {
+      categories: labels,
+      labels: {
+        rotate: -45,
+        style: {
+          fontSize: "6px",
+        },
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "smooth",
+      width: 2,
+    },
+    markers: {
+      size: 4,
+      colors: colorPalette,
+    },
+    colors: [colorPalette[0]],
+  };
+
+  const series = [
+    {
+      name: "Jumlah UMKM",
+      data: jumlahUMKM,
+    },
+  ];
+
+  return (
+    <div className="w-full max-h-fit xxs:max-w-[15rem] xs:max-w-[25rem] sm:max-w-xl md:max-w-2xl lg:max-w-7xl mx-auto">
+      <h2 className="text-xl font-semibold mb-4">
+        Visualisasi Usaha Mikro, Kecil, dan Menengah di Kabupaten Cianjur
+      </h2>
+
+      <div className="overflow-x-auto">
+        <Chart
+          options={options}
+          series={series}
+          type="line"
+          height={580}
+          width={800}
+        />
+      </div>
+
+      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 text-xs font-semibold">
+        {dataDeskripsi.map((item, index) => (
+          <div key={index} className="flex items-center space-x-2">
+            <span
+              className="inline-block w-3 h-3 rounded-full"
+              style={{
+                backgroundColor: colorPalette[index % colorPalette.length],
+              }}
+            ></span>
+            <span>
+              {item.bps_nama_kecamatan} ({item.jumlah_umkm})
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default UMKMChart;

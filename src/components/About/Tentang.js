@@ -9,7 +9,7 @@ import {
   MdKeyboardArrowDown,
   MdOutlineKeyboardArrowRight,
 } from "react-icons/md";
-import { aboutdata } from "../../constant/AboutData";
+import { aboutdata } from "../../data/AboutData";
 import { motion } from "framer-motion";
 
 export const Tentang = () => {

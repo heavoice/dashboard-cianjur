@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { bgPrimary, textPrimary } from "../../constant/constants";
 import { FaSearch } from "react-icons/fa";
-import { visualize } from "../../constant/Visualize";
+import { visualize } from "../../data/Visualize";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const Visualizer = () => {
@@ -101,13 +100,7 @@ export const Visualizer = () => {
                   transition={{ duration: 0.6, ease: "easeInOut" }}
                   className="p-4 border rounded-lg shadow-lg"
                 >
-                  <img
-                    src={
-                      selectedVisual.data[Object.keys(selectedVisual.data)[0]]
-                    }
-                    alt={selectedVisual.section}
-                    className="max-w-full h-auto"
-                  />
+                  <div className="w-full h-auto">{selectedVisual.data}</div>
                 </motion.div>
               ) : (
                 <p className="text-gray-500">Pilih data untuk ditampilkan</p>

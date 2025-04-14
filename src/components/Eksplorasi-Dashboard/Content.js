@@ -152,12 +152,17 @@ export const Content = () => {
                   <div className="flex-grow border-b border-black/20 mx-4"></div>
                 </div>
                 <div className="grid grid-cols-2 gap-4 md:grid-cols-3 mt-10 xl:grid-cols-4 gap-y-8 rounded">
-                  <ContentCard
-                    title="Dashboard Rekomendasi Sekolah"
-                    category="Pendidikan"
-                    year="2024"
-                    imageSrc={Ekonomi}
-                  />
+                  <Link
+                    to="/rekomendasi-sekolah"
+                    className="block no-underline"
+                  >
+                    <ContentCard
+                      title="Dashboard Rekomendasi Sekolah"
+                      category="Pendidikan"
+                      year="2024"
+                      imageSrc={Ekonomi}
+                    />
+                  </Link>
                   <ContentCard
                     title="Overview Pendidikan"
                     category="Pendidikan"
