@@ -55,11 +55,15 @@ git clone https://github.com/heavoice/dashboard-cianjur.git
 cd dashboard-cianjur
 ```
 
-## Menjalankan Front-end
+### Menjalankan Front-end
+``` 
 npm install
 npm start
+```
 
-## Menjalankan Back-end
+### Menjalankan Back-end
+```
 cd backend
 npm install
 npm run dev
+```
