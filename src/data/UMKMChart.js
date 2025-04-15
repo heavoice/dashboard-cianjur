@@ -63,7 +63,6 @@ const UMKMChart = () => {
   }, []);
 
   const colorPalette = [
-    "#FF4560",
     "#00E396",
     "#008FFB",
     "#FEB019",
@@ -78,6 +77,7 @@ const UMKMChart = () => {
     "#F46036",
     "#9C27B0",
     "#3DDC97",
+    "#FF4560",
   ];
 
   const options = {
@@ -94,14 +94,14 @@ const UMKMChart = () => {
     },
     dataLabels: { enabled: false },
     stroke: {
-      curve: "smooth",
+      curve: "straight",
       width: 2,
     },
     markers: {
       size: 4,
       colors: colorPalette,
     },
-    colors: [colorPalette[0]],
+    colors: [colorPalette[1]],
   };
 
   const series = [

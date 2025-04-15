@@ -109,7 +109,10 @@ export const Navbar = () => {
               </div>
             </div>
           )}
-          <Link to="/eksplorasi-dashboard" className="text-white">
+          <Link
+            to="/eksplorasi-dashboard"
+            className="text-white hover:text-gray-300 transition-all ease-in-out duration-200"
+          >
             Eksplorasi Dashboard
           </Link>
           <Link
@@ -118,7 +121,10 @@ export const Navbar = () => {
           >
             Tentang
           </Link>
-          <Link to="/auth" className="text-white">
+          <Link
+            to="/auth"
+            className="text-white hover:text-gray-300 transition-all ease-in-out duration-200"
+          >
             Executive Dashboard
           </Link>
         </div>
@@ -174,7 +180,10 @@ export const Navbar = () => {
               </div>
             )}
 
-            <Link to="/eksplorasi-dashboard" className="text-white">
+            <Link
+              to="/eksplorasi-dashboard"
+              className="text-white hover:text-gray-300 transition-all ease-in-out duration-200"
+            >
               Eksplorasi Dashboard
             </Link>
             <Link
@@ -183,7 +192,10 @@ export const Navbar = () => {
             >
               Tentang
             </Link>
-            <Link to="/auth" className="text-white">
+            <Link
+              to="/auth"
+              className="text-white hover:text-gray-300 transition-all ease-in-out duration-200"
+            >
               Executive Dashboard
             </Link>
           </div>

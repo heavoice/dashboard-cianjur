@@ -2,6 +2,8 @@ import CCTVChart from "../data/CCTVChart";
 import SiswaChart from "../data/SiswaChart";
 import UMKMChart from "../data/UMKMChart";
 import PKHChart from "../data/PKHChart";
+import PendudukChart from "../data/PendudukChart";
+import PemilihanChart from "./PemilihanChart";
 
 export const visualize = [
   {
@@ -28,13 +30,15 @@ export const visualize = [
   },
   {
     id: 5,
-    section: "Koneksi Infrastruktur Berdasarkan Kabupaten Cianjur",
-    data: null,
+    section:
+      "Jumlah Penduduk Berdasarkan Kelompok Usia dan Jenis Kelamin di Kabupaten Cianjur",
+    data: <PendudukChart />,
   },
   {
     id: 6,
-    section: "Proses Administrasi Berdasarkan Kabupaten Cianjur",
-    data: null,
+    section:
+      "Jumlah Daftar Pemilih Tetap Pemilu per Kecamatan di Kabupaten Cianjur",
+    data: <PemilihanChart />,
   },
   {
     id: 7,
