@@ -2,6 +2,18 @@ import React, { useState } from "react";
 import { FaSearch, FaExternalLinkAlt } from "react-icons/fa";
 import Ekonomi from "../../assets/img/Ekonomi.svg";
 import { Link } from "react-router-dom";
+import IconEkonomi from "../../assets/img/icon-ekonomi.svg";
+import IconPendidikan from "../../assets/img/icon-pendidikan.svg";
+import IconIndustri from "../../assets/img/icon-industri.svg";
+import IconInfrastruktur from "../../assets/img/icon-infrastruktur.svg";
+import IconKemiskinan from "../../assets/img/icon-kemiskinan.svg";
+import IconKependudukan from "../../assets/img/icon-kependudukan.svg";
+import IconKesehatan from "../../assets/img/icon-kesehatan.svg";
+import IconLingkungan from "../../assets/img/icon-lingkungan.svg";
+import IconPariwisata from "../../assets/img/icon-pariwisata.svg";
+import IconSemuaTopik from "../../assets/img/icon-semua-topik.svg";
+import IconSosial from "../../assets/img/icon-sosial.svg";
+import IconPemerintahan from "../../assets/img/icon-pemerintahan.svg";
 
 const CategoryButton = ({ category, onClick, children, imageSrc }) => (
   <div className="flex flex-row gap-4 items-center mt-6">
@@ -58,84 +70,84 @@ export const Content = () => {
               <CategoryButton
                 category="semua"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconSemuaTopik}
               >
                 Semua Kategori
               </CategoryButton>
               <CategoryButton
                 category="pendidikan"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconPendidikan}
               >
                 Pendidikan
               </CategoryButton>
               <CategoryButton
                 category="sosial"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconSosial}
               >
                 Sosial
               </CategoryButton>
               <CategoryButton
                 category="kesehatan"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconKesehatan}
               >
                 Kesehatan
               </CategoryButton>
               <CategoryButton
                 category="kependudukan"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconKependudukan}
               >
                 Kependudukan
               </CategoryButton>
               <CategoryButton
                 category="industri"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconIndustri}
               >
                 Industri
               </CategoryButton>
               <CategoryButton
                 category="ekonomi"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconEkonomi}
               >
                 Ekonomi
               </CategoryButton>
               <CategoryButton
                 category="lingkungan"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconLingkungan}
               >
                 Lingkungan
               </CategoryButton>
               <CategoryButton
                 category="kemiskinan"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconKemiskinan}
               >
                 Kemiskinanan
               </CategoryButton>
               <CategoryButton
                 category="infrastruktur"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconInfrastruktur}
               >
                 Infrastruktur
               </CategoryButton>
               <CategoryButton
                 category="pariwisata"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconPariwisata}
               >
                 Pariwisata
               </CategoryButton>
               <CategoryButton
                 category="pemerintahan"
                 onClick={setSelectedCategory}
-                imageSrc={Ekonomi}
+                imageSrc={IconPemerintahan}
               >
                 Pemerintahan
               </CategoryButton>
