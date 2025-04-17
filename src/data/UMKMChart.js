@@ -84,6 +84,7 @@ const UMKMChart = () => {
     chart: {
       type: "line",
       toolbar: { show: false },
+      zoom: { enabled: false },
     },
     xaxis: {
       categories: labels,
@@ -127,16 +128,16 @@ const UMKMChart = () => {
         />
       </div>
 
-      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 text-xs font-semibold">
+      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 text-xs font-normal">
         {dataDeskripsi.map((item, index) => (
           <div key={index} className="flex items-center space-x-2">
             <span
-              className="inline-block w-3 h-3 rounded-full"
+              className="p-1 sm:p-2 rounded-full"
               style={{
                 backgroundColor: colorPalette[index % colorPalette.length],
               }}
             ></span>
-            <span>
+            <span className="line-clamp-1">
               {item.kecamatan} ({item.tahun})
             </span>
           </div>

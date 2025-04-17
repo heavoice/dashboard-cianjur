@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { FaBookOpen, FaInfoCircle, FaChartLine } from "react-icons/fa";
+import { HiOutlineChartSquareBar } from "react-icons/hi";
 import logo from "../../assets/img/logo.png";
 import { topik } from "../../data/Topik";
-import useNavbarColor from "../../hooks/useNavColor";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
@@ -69,7 +70,7 @@ export const Navbar = () => {
           </button>
 
           {isTopikOpen && (
-            <div className="bg-[#22a9e1] p-8 font-noto fixed top-[6.75rem] border-t-2 border-black/10 -left-6 w-full z-50 shadow-md">
+            <div className="bg-[#22a9e1] p-8 font-noto fixed top-[6.75rem] -left-6 w-full z-50 shadow-md">
               <div className="max-w-7xl mx-auto flex items-center justify-between">
                 <p className="text-white text-3xl">Topik</p>
                 <p
@@ -89,7 +90,7 @@ export const Navbar = () => {
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-20 h-20 object-cover rounded-lg mr-4"
+                      className="w-20 h-20 object-cover rounded-lg mr-4 border-white/20 border"
                     />
                     <div>
                       <p className="text-xl font-semibold text-white">
@@ -104,7 +105,10 @@ export const Navbar = () => {
               </div>
             </div>
           )}
-          <Link to="-dashboard" className="text-white hover:text-gray-300">
+          <Link
+            to="/eksplorasi-dashboard"
+            className="text-white hover:text-gray-300"
+          >
             Eksplorasi Dashboard
           </Link>
           <Link
@@ -148,23 +152,27 @@ export const Navbar = () => {
           </div>
           <div className="flex flex-col space-y-4 p-6">
             <button
-              className="text-white hover:text-gray-300 transition-all ease-in-out duration-200 flex justify-between items-center"
+              className="w-full text-white hover:text-gray-300 transition-all ease-in-out duration-200 flex justify-between items-center"
               onClick={toggleTopikDropdown}
             >
-              Topik
+              <div className="flex items-center space-x-2">
+                <FaBookOpen className="w-5 h-5" />
+                <span className="text-xs sm:text-base">Topik</span>
+              </div>
               <MdKeyboardArrowDown
-                className={`ml-2 mt-1 text-xl transition-transform duration-300 ${
+                className={`ml-2 text-xl transition-transform duration-300 ${
                   isTopikOpen ? "rotate-180" : ""
                 }`}
               />
             </button>
+
             {isTopikOpen && (
               <div className="max-h-60 overflow-y-auto">
                 {topik.map((item) => (
                   <a
                     key={item.id}
                     href="#"
-                    className="block text-white  mb-3 border-b border-white/20"
+                    className="text-xs sm:text-base p-1 block text-white mb-3 border-b border-white/20"
                   >
                     {item.title}
                   </a>
@@ -176,19 +184,32 @@ export const Navbar = () => {
               to="/eksplorasi-dashboard"
               className="text-white hover:text-gray-300 transition-all ease-in-out duration-200"
             >
-              Eksplorasi Dashboard
+              <div className="flex items-center space-x-2">
+                <HiOutlineChartSquareBar className="w-5 h-5" />
+                <span className="text-xs sm:text-base">
+                  Eksplorasi Dashboard
+                </span>
+              </div>
             </Link>
             <Link
               to="/about"
               className="text-white hover:text-gray-300 transition-all ease-in-out duration-200 "
             >
-              Tentang
+              <div className="flex items-center space-x-2">
+                <FaInfoCircle className="w-5 h-5" />
+                <span className="text-xs sm:text-base">Tentang</span>
+              </div>
             </Link>
             <Link
               to="/auth"
               className="text-white hover:text-gray-300 transition-all ease-in-out duration-200"
             >
-              Executive Dashboard
+              <div className="flex items-center space-x-2">
+                <FaChartLine className="w-5 h-5" />
+                <span className="text-xs sm:text-base">
+                  Executive Dashboard
+                </span>
+              </div>
             </Link>
           </div>
         </div>
