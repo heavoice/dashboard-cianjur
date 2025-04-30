@@ -17,6 +17,9 @@ root.render(
   </React.StrictMode>
 );
 
+console.log("API URL:", process.env.REACT_APP_API_URL);
+console.log("Environment:", process.env.REACT_APP_ENV);
+
 // Jika Anda ingin memulai pengukuran kinerja di aplikasi Anda, kirimkan fungsi
 // untuk mencatat hasilnya (misalnya: reportWebVitals(console.log))
 // atau kirim ke endpoint analitik. Pelajari lebih lanjut: https://bit.ly/CRA-vitals
