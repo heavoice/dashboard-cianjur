@@ -24,7 +24,7 @@ export const Sidebar = () => {
       return;
     }
 
-    fetch("http://localhost:5000/api/me", {
+    fetch("https://dashboard-cianjur-backend.vercel.app/api/me", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`, // Kirim token di header Authorization
