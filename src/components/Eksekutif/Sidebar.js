@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 import { CgProfile } from "react-icons/cg";
+import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { IoPrint } from "react-icons/io5";
-import { FaBookOpen } from "react-icons/fa";
+import { sidebarItems } from "../../data/SidebarItems";
 import { useNavigate } from "react-router-dom";
 
 // Sidebar Component
 export const Sidebar = () => {
   const navigate = useNavigate();
   const [selectedSection, setSelectedSection] = useState("Dashboard Utama");
+  const [closeSidebar, setCloseSidebar] = useState(false);
   const [userData, setUserData] = useState(null); // State untuk menyimpan data pengguna
   const [error, setError] = useState(null); // State untuk menyimpan error
 
@@ -45,7 +47,11 @@ export const Sidebar = () => {
   }
 
   if (!userData) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-[#22a9e1]">
+        <div className="loader"></div>
+      </div>
+    );
   }
 
   const handleSelect = (section) => {
@@ -60,51 +66,66 @@ export const Sidebar = () => {
 
   return (
     <div className="flex border bg-slate-50 h-screen">
-      <div className="basis-1/4  text-black p-4 ">
-        <div className="border bg-white rounded-lg font-noto">
-          <Link
-            to="/home"
-            className="flex text-2xl font-bold items-center space-x-2 border-b p-4"
-          >
+      <div
+        className={`border bg-white rounded-lg font-noto transition-all duration-300 text-black p-4  ${
+          closeSidebar ? "w-44" : "w-1/4"
+        }`}
+      >
+        <div className="flex border-b justify-between ">
+          <Link to="/home" className="flex items-center space-x-2 p-4">
             <img src={logo} width={35} height={35} alt="SLP Logo" />
-            <span className="text-sm">
-              Dashboard <br /> Cianjur
-            </span>
+            {!closeSidebar && (
+              <span className="text-sm font-bold">
+                Dashboard <br /> Cianjur
+              </span>
+            )}
           </Link>
+          <button
+            className="p-4 bg-white hover:bg-black text-black hover:text-white transition-all duration-200 ease-in-out"
+            onClick={() => setCloseSidebar(!closeSidebar)}
+          >
+            <MdOutlineKeyboardDoubleArrowLeft
+              className={`transition-transform duration-300 ${
+                closeSidebar ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+        </div>
 
-          {/* Menu Navigasi */}
-          <nav className="font-nunito text-start text-sm font-bold p-4">
-            <ul className="">
-              {[
-                "Dashboard Utama",
-                "Manajemen Program & Kegiatan",
-                "Monitoring Infrastruktur & Proyek Fisik",
-                "Layanan Publik & Kesejahteraan",
-                "Logout",
-              ].map((item) => (
-                <li key={item} className="mb-4">
+        {/* Menu Navigasi */}
+        <nav className="font-nunito text-start text-sm font-bold p-4">
+          <ul>
+            <ul>
+              {sidebarItems.map(({ label, icon }) => (
+                <li key={label} className="mb-4">
                   <button
-                    className={`hover:text-[#22a9e1] flex flex-row gap-2 ${
-                      selectedSection === item ? "font-bold text-[#22a9e1]" : ""
+                    className={`hover:text-[#22a9e1] flex items-center gap-2 w-full ${
+                      selectedSection === label
+                        ? "font-bold text-[#22a9e1]"
+                        : ""
                     }`}
                     onClick={() => {
-                      if (item === "Logout") {
+                      if (label === "Logout") {
                         handleLogout();
                       } else {
-                        handleSelect(item);
+                        handleSelect(label);
                       }
                     }}
                   >
-                    <FaBookOpen className="w-5 h-5" />
-                    {item}
+                    {icon}
+                    {!closeSidebar && <span>{label}</span>}
                   </button>
                 </li>
               ))}
             </ul>
-          </nav>
-        </div>
+          </ul>
+        </nav>
       </div>
-      <div className="basis-3/4 text-black p-4 h-screen flex flex-col">
+      <div
+        className={`transition-all duration-300 text-black p-4 h-screen flex flex-col ${
+          closeSidebar ? "w-full" : "w-3/4"
+        }`}
+      >
         {/* Header */}
         <div className="p-4 flex flex-row justify-between font-nunito">
           <div className="flex flex-row gap-2">
