@@ -5,8 +5,12 @@ import { CgProfile } from "react-icons/cg";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { IoPrint } from "react-icons/io5";
+import { FaCheck } from "react-icons/fa";
+import { SlOptionsVertical } from "react-icons/sl";
 import { sidebarItems } from "../../data/SidebarItems";
 import { useNavigate } from "react-router-dom";
+import WeeklyViewsChart from "../Eksekutif/WeeklyChart";
+import CompletionCell from "../../hooks/statusColor";
 
 // Sidebar Component
 export const Sidebar = () => {
@@ -65,9 +69,9 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="flex border bg-slate-50 h-screen">
+    <div className="flex border bg-slate-50 h-auto p-4">
       <div
-        className={`border bg-white rounded-lg font-noto transition-all duration-300 text-black p-4  ${
+        className={`border bg-white rounded-lg font-noto transition-all duration-300 text-black h-fit  ${
           closeSidebar ? "w-44" : "w-1/4"
         }`}
       >
@@ -81,7 +85,7 @@ export const Sidebar = () => {
             )}
           </Link>
           <button
-            className="p-4 bg-white hover:bg-black text-black hover:text-white transition-all duration-200 ease-in-out"
+            className="p-4  bg-white hover:bg-black text-black hover:text-white transition-all duration-200 ease-in-out"
             onClick={() => setCloseSidebar(!closeSidebar)}
           >
             <MdOutlineKeyboardDoubleArrowLeft
@@ -93,7 +97,7 @@ export const Sidebar = () => {
         </div>
 
         {/* Menu Navigasi */}
-        <nav className="font-nunito text-start text-sm font-bold p-4">
+        <nav className="font-nunito text-start text-sm font-bold p-4 ">
           <ul>
             <ul>
               {sidebarItems.map(({ label, icon }) => (
@@ -122,7 +126,7 @@ export const Sidebar = () => {
         </nav>
       </div>
       <div
-        className={`transition-all duration-300 text-black p-4 h-screen flex flex-col ${
+        className={`transition-all duration-300 text-black p-4 h-auto flex flex-col ${
           closeSidebar ? "w-full" : "w-3/4"
         }`}
       >
@@ -130,8 +134,8 @@ export const Sidebar = () => {
         <div className="p-4 flex flex-row justify-between font-nunito">
           <div className="flex flex-row gap-2">
             <p>Pages</p>
-            <p>/</p>
-            <p>Dashboard Utama</p>
+            <p className="font-bold">/</p>
+            <p className="font-bold">{selectedSection}</p>
           </div>
 
           <div className="flex flex-row gap-4 items-center">
@@ -264,9 +268,9 @@ export const Sidebar = () => {
                   </div>
                 </div>
                 {/* Visualisasi */}
-                <div className="w-full flex flex-row gap-6 rounded-lg mt-6">
+                <div className="w-full flex flex-row gap-6 rounded-lg mt-6 overflow-hidden">
                   {/* Content 1 */}
-                  <div className="w-full h-auto flex flex-col items-center border rounded-lg p-4 space-y-2 bg-white">
+                  <div className="w-full min-w-0 h-auto flex flex-col items-center border rounded-lg p-4 space-y-2 bg-white">
                     <div className="flex flex-row w-full justify-between">
                       <div className="flex flex-col">
                         <p className="font-semibold text-black text-base">
@@ -276,27 +280,14 @@ export const Sidebar = () => {
                           Last Campaign Performance
                         </p>
                       </div>
-
-                      <div className="bg-black p-3 rounded-lg shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3)]">
-                        <IoPrint className="filter invert" />
-                      </div>
                     </div>
-                    <div className="w-full h-[200px] my-4 bg-gradient-to-r from-transparent via-gray-400 to-transparent">
-                      Tralala
-                    </div>
-
-                    <div className="w-full flex flex-row items-center gap-1">
-                      <span className="font-bold text-base text-green-500">
-                        +55%
-                      </span>
-                      <p className="text-gray-400 text-sm font-normal">
-                        than last week
-                      </p>
+                    <div className="w-full h-auto">
+                      <WeeklyViewsChart />
                     </div>
                   </div>
 
                   {/* Content 2 */}
-                  <div className="w-full h-auto flex flex-col items-center border rounded-lg p-4 space-y-2 bg-white">
+                  <div className="w-full min-w-0 h-auto flex flex-col items-center border rounded-lg p-4 space-y-2 bg-white">
                     <div className="flex flex-row w-full  justify-between">
                       <div className="flex flex-col">
                         <p className="font-semibold text-black text-base">
@@ -307,26 +298,13 @@ export const Sidebar = () => {
                           in today sales.
                         </p>
                       </div>
-
-                      <div className="bg-black p-3 rounded-lg shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3)]">
-                        <IoPrint className="filter invert" />
-                      </div>
                     </div>
-                    <div className="w-full h-[200px] my-4 bg-gradient-to-r from-transparent via-gray-400 to-transparent">
-                      Tralala
-                    </div>
-
-                    <div className="w-full flex flex-row items-center gap-1">
-                      <span className="font-bold text-base text-green-500">
-                        +55%
-                      </span>
-                      <p className="text-gray-400 text-sm font-normal">
-                        than last week
-                      </p>
+                    <div className="w-full h-auto">
+                      <WeeklyViewsChart />
                     </div>
                   </div>
                   {/* Content 3 */}
-                  <div className="w-full h-auto flex flex-col items-center border rounded-lg p-4 space-y-2 bg-white">
+                  <div className="w-full min-w-0 h-auto flex flex-col items-center border rounded-lg p-4 space-y-2 bg-white">
                     <div className="flex flex-row w-full  justify-between">
                       <div cla ssName="flex flex-col">
                         <p className="font-semibold text-black text-base">
@@ -336,24 +314,136 @@ export const Sidebar = () => {
                           Last Campaign Performance
                         </p>
                       </div>
-
-                      <div className="bg-black p-3 rounded-lg shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3)]">
-                        <IoPrint className="filter invert" />
-                      </div>
                     </div>
-                    <div className="w-full h-[200px] my-4 bg-gradient-to-r from-transparent via-gray-400 to-transparent">
-                      Tralala
-                    </div>
-
-                    <div className="w-full flex flex-row items-center gap-1">
-                      <span className="font-bold text-base text-green-500">
-                        +55%
-                      </span>
-                      <p className="text-gray-400 text-sm font-normal">
-                        than last week
-                      </p>
+                    <div className="w-full h-auto">
+                      <WeeklyViewsChart />
                     </div>
                   </div>
+                </div>
+                {/* Project & Orders */}
+                <div className="w-full flex flex-row gap-6 mt-6 overflow-hidden">
+                  <div className="w-2/3 h-auto rounded-lg border bg-white font-nunito">
+                    {/* Head */}
+                    <div className="flex flex-row justify-between items-center p-4">
+                      <div>
+                        <p className="font-bold text-base">Projects</p>
+                        <div className="flex flex-row mt-3">
+                          <FaCheck className="text-sm mt-0.5 text-blue-600" />
+                          <p className="ml-2 text-sm text-gray-500">
+                            30 done
+                            <span className="font-normal ml-1">this month</span>
+                          </p>
+                        </div>
+                      </div>
+                      <div>
+                        <button>
+                          <SlOptionsVertical className="text-sm mt-0.5 text-gray-500" />
+                        </button>
+                      </div>
+                    </div>
+                    {/* Table */}
+                    <div className="relative overflow-x-auto">
+                      <table className="w-full text-sm text-left  text-gray-500 font-nunito">
+                        <thead className="text-xs text-gray-700 uppercase border-b">
+                          <tr>
+                            <th scope="col" className="px-6 py-3">
+                              Companies
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                              Member
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                              Budget
+                            </th>
+                            <th scope="col" className="px-6 py-3">
+                              Completion
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className="bg-white border-b border-gray-200">
+                            <th
+                              scope="row"
+                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
+                            >
+                              Material XD Version
+                            </th>
+                            <td className="px-6 py-4"></td>
+                            <td className="px-6 py-4">$14,000</td>
+                            <td>
+                              <CompletionCell percentage={72} />
+                            </td>
+                          </tr>
+                          <tr className="bg-white border-b border-gray-200">
+                            <th
+                              scope="row"
+                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
+                            >
+                              Add Progress Track
+                            </th>
+                            <td className="px-6 py-4"></td>
+                            <td className="px-6 py-4">$3,000</td>
+                            <td className="">
+                              <CompletionCell percentage={26} />
+                            </td>
+                          </tr>
+                          <tr className="bg-white border-b border-gray-200">
+                            <th
+                              scope="row"
+                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
+                            >
+                              Fix Platform Errors
+                            </th>
+                            <td className="px-6 py-4"></td>
+                            <td className="px-6 py-4">Not set</td>
+                            <td className="">
+                              <CompletionCell percentage={52} />
+                            </td>
+                          </tr>
+                          <tr className="bg-white border-b border-gray-200">
+                            <th
+                              scope="row"
+                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
+                            >
+                              Launch our Mobile App
+                            </th>
+                            <td className="px-6 py-4"></td>
+                            <td className="px-6 py-4">$20,500</td>
+                            <td className="">
+                              <CompletionCell percentage={100} />
+                            </td>
+                          </tr>
+                          <tr className="bg-white border-b border-gray-200">
+                            <th
+                              scope="row"
+                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
+                            >
+                              Add the New Pricing Page
+                            </th>
+                            <td className="px-6 py-4"></td>
+                            <td className="px-6 py-4">$500</td>
+                            <td className="">
+                              <CompletionCell percentage={82} />
+                            </td>
+                          </tr>
+                          <tr className="bg-white border-b border-gray-200">
+                            <th
+                              scope="row"
+                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
+                            >
+                              Redesign New Online Shop
+                            </th>
+                            <td className="px-6 py-4"></td>
+                            <td className="px-6 py-4">$2000</td>
+                            <td className="">
+                              <CompletionCell percentage={82} />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <div className="w-1/3 h-[400px] rounded-lg border bg-black"></div>
                 </div>
               </div>
             )}
@@ -377,8 +467,12 @@ export const Sidebar = () => {
 
         {/* Footer */}
         <div className="p-4 mt-auto flex flex-row justify-between font-nunito">
-          <p>Copyright © 2025 Diskominfo Cianjur. All Right Reserved</p>
-          <div className="flex flex-row gap-4">
+          <p>
+            Copyright © 2025{" "}
+            <span className="font-bold">Diskominfo Cianjur</span>. All Right
+            Reserved
+          </p>
+          <div className="flex flex-row gap-4 font-bold">
             <Link
               to="/home"
               className="hover:text-gray-400 flex flex-row gap-2"
