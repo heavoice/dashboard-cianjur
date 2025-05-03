@@ -5,12 +5,13 @@ import { CgProfile } from "react-icons/cg";
 import { MdOutlineKeyboardDoubleArrowLeft } from "react-icons/md";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { IoPrint } from "react-icons/io5";
-import { FaCheck } from "react-icons/fa";
+import { FaCheck, FaArrowUp } from "react-icons/fa";
 import { SlOptionsVertical } from "react-icons/sl";
 import { sidebarItems } from "../../data/SidebarItems";
 import { useNavigate } from "react-router-dom";
 import WeeklyViewsChart from "../Eksekutif/WeeklyChart";
 import CompletionCell from "../../hooks/statusColor";
+import { projectData } from "./ProjectData";
 
 // Sidebar Component
 export const Sidebar = () => {
@@ -75,7 +76,7 @@ export const Sidebar = () => {
           closeSidebar ? "w-44" : "w-1/4"
         }`}
       >
-        <div className="flex border-b justify-between ">
+        <div className="flex border-b justify-between py-1">
           <Link to="/home" className="flex items-center space-x-2 p-4">
             <img src={logo} width={35} height={35} alt="SLP Logo" />
             {!closeSidebar && (
@@ -85,7 +86,7 @@ export const Sidebar = () => {
             )}
           </Link>
           <button
-            className="p-4  bg-white hover:bg-black text-black hover:text-white transition-all duration-200 ease-in-out"
+            className="bg-white hover:bg-black text-black hover:text-white transition-all duration-200 ease-in-out mr-2 w-fit h-fit self-center rounded-lg"
             onClick={() => setCloseSidebar(!closeSidebar)}
           >
             <MdOutlineKeyboardDoubleArrowLeft
@@ -342,8 +343,8 @@ export const Sidebar = () => {
                       </div>
                     </div>
                     {/* Table */}
-                    <div className="relative overflow-x-auto">
-                      <table className="w-full text-sm text-left  text-gray-500 font-nunito">
+                    <div className="relative overflow-x-auto py-2 ">
+                      <table className="w-full text-sm text-left text-gray-500 font-nunito">
                         <thead className="text-xs text-gray-700 uppercase border-b">
                           <tr>
                             <th scope="col" className="px-6 py-3">
@@ -361,89 +362,159 @@ export const Sidebar = () => {
                           </tr>
                         </thead>
                         <tbody>
-                          <tr className="bg-white border-b border-gray-200">
-                            <th
-                              scope="row"
-                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
+                          {projectData.map((project, index) => (
+                            <tr
+                              key={index}
+                              className="bg-white border-b border-gray-200"
                             >
-                              Material XD Version
-                            </th>
-                            <td className="px-6 py-4"></td>
-                            <td className="px-6 py-4">$14,000</td>
-                            <td>
-                              <CompletionCell percentage={72} />
-                            </td>
-                          </tr>
-                          <tr className="bg-white border-b border-gray-200">
-                            <th
-                              scope="row"
-                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
-                            >
-                              Add Progress Track
-                            </th>
-                            <td className="px-6 py-4"></td>
-                            <td className="px-6 py-4">$3,000</td>
-                            <td className="">
-                              <CompletionCell percentage={26} />
-                            </td>
-                          </tr>
-                          <tr className="bg-white border-b border-gray-200">
-                            <th
-                              scope="row"
-                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
-                            >
-                              Fix Platform Errors
-                            </th>
-                            <td className="px-6 py-4"></td>
-                            <td className="px-6 py-4">Not set</td>
-                            <td className="">
-                              <CompletionCell percentage={52} />
-                            </td>
-                          </tr>
-                          <tr className="bg-white border-b border-gray-200">
-                            <th
-                              scope="row"
-                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
-                            >
-                              Launch our Mobile App
-                            </th>
-                            <td className="px-6 py-4"></td>
-                            <td className="px-6 py-4">$20,500</td>
-                            <td className="">
-                              <CompletionCell percentage={100} />
-                            </td>
-                          </tr>
-                          <tr className="bg-white border-b border-gray-200">
-                            <th
-                              scope="row"
-                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
-                            >
-                              Add the New Pricing Page
-                            </th>
-                            <td className="px-6 py-4"></td>
-                            <td className="px-6 py-4">$500</td>
-                            <td className="">
-                              <CompletionCell percentage={82} />
-                            </td>
-                          </tr>
-                          <tr className="bg-white border-b border-gray-200">
-                            <th
-                              scope="row"
-                              className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap "
-                            >
-                              Redesign New Online Shop
-                            </th>
-                            <td className="px-6 py-4"></td>
-                            <td className="px-6 py-4">$2000</td>
-                            <td className="">
-                              <CompletionCell percentage={82} />
-                            </td>
-                          </tr>
+                              <th
+                                scope="row"
+                                className="px-6 py-4 font-bold text-gray-900 whitespace-nowrap flex flex-row"
+                              >
+                                {project.icon}
+                                <span className="ml-5 text-sm">
+                                  {project.title}
+                                </span>
+                              </th>
+                              <td className="px-6 py-4">
+                                <div className="flex flex-row">
+                                  {project.members.map((member, i) => (
+                                    <img
+                                      key={i}
+                                      src={member}
+                                      className="w-6 h-6 rounded-full aspect-square object-cover"
+                                      alt={`member-${i}`}
+                                    />
+                                  ))}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4">{project.budget}</td>
+                              <td>
+                                <CompletionCell
+                                  percentage={project.percentage}
+                                />
+                              </td>
+                            </tr>
+                          ))}
                         </tbody>
                       </table>
                     </div>
                   </div>
-                  <div className="w-1/3 h-[400px] rounded-lg border bg-black"></div>
+                  <div className="w-1/3 h-auto rounded-lg border bg-white">
+                    <div className="flex flex-col p-4">
+                      <p className="font-semibold text-base">Orders overview</p>
+                      <p className="flex flex-row text-sm text-gray-500 mt-3">
+                        <FaArrowUp className="mt-1 text-green-500" />
+                        <span className="ml-2">
+                          24% <span className="font-normal">this month</span>
+                        </span>
+                      </p>
+                      <div className="mt-6 px-2">
+                        <div className="flex flex-row items-start">
+                          {/* Icon dan garis */}
+                          <div className="flex flex-col items-center">
+                            <IoMdNotificationsOutline className="text-2xl" />
+                            <div className="w-px h-8 bg-gray-300 mt-1" />
+                          </div>
+
+                          {/* Teks di kanan */}
+                          <div className="flex flex-col ml-2">
+                            <p className="text-sm font-semibold">
+                              $2400, Design changes
+                            </p>
+                            <p className="text-xs text-gray-500 font-semibold">
+                              22 DEC 7:20 PM
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex flex-row items-start">
+                          {/* Icon dan garis */}
+                          <div className="flex flex-col items-center">
+                            <IoMdNotificationsOutline className="text-2xl" />
+                            <div className="w-px h-8 bg-gray-300 mt-1" />
+                          </div>
+
+                          {/* Teks di kanan */}
+                          <div className="flex flex-col ml-2">
+                            <p className="text-sm font-semibold">
+                              $2400, Design changes
+                            </p>
+                            <p className="text-xs text-gray-500 font-semibold">
+                              22 DEC 7:20 PM
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex flex-row items-start">
+                          {/* Icon dan garis */}
+                          <div className="flex flex-col items-center">
+                            <IoMdNotificationsOutline className="text-2xl" />
+                            <div className="w-px h-8 bg-gray-300 mt-1" />
+                          </div>
+
+                          {/* Teks di kanan */}
+                          <div className="flex flex-col ml-2">
+                            <p className="text-sm font-semibold">
+                              $2400, Design changes
+                            </p>
+                            <p className="text-xs text-gray-500 font-semibold">
+                              22 DEC 7:20 PM
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex flex-row items-start">
+                          {/* Icon dan garis */}
+                          <div className="flex flex-col items-center">
+                            <IoMdNotificationsOutline className="text-2xl" />
+                            <div className="w-px h-8 bg-gray-300 mt-1" />
+                          </div>
+
+                          {/* Teks di kanan */}
+                          <div className="flex flex-col ml-2">
+                            <p className="text-sm font-semibold">
+                              $2400, Design changes
+                            </p>
+                            <p className="text-xs text-gray-500 font-semibold">
+                              22 DEC 7:20 PM
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex flex-row items-start">
+                          {/* Icon dan garis */}
+                          <div className="flex flex-col items-center">
+                            <IoMdNotificationsOutline className="text-2xl" />
+                            <div className="w-px h-8 bg-gray-300 mt-1" />
+                          </div>
+
+                          {/* Teks di kanan */}
+                          <div className="flex flex-col ml-2">
+                            <p className="text-sm font-semibold">
+                              $2400, Design changes
+                            </p>
+                            <p className="text-xs text-gray-500 font-semibold">
+                              22 DEC 7:20 PM
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex flex-row items-start">
+                          {/* Icon dan garis */}
+                          <div className="flex flex-col items-center">
+                            <IoMdNotificationsOutline className="text-2xl" />
+                            <div className="w-px h-8 bg-gray-300 mt-1" />
+                          </div>
+
+                          {/* Teks di kanan */}
+                          <div className="flex flex-col ml-2">
+                            <p className="text-sm font-semibold">
+                              $2400, Design changes
+                            </p>
+                            <p className="text-xs text-gray-500 font-semibold">
+                              22 DEC 7:20 PM
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}

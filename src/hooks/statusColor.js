@@ -15,12 +15,12 @@ const getBarColor = (percentage) => {
 const CompletionCell = ({ percentage }) => {
   return (
     <td className="px-6 py-4">
-      <div className={`font-semibold ${getStatusColor(percentage)}`}>
+      <div className={`font-semibold text-xs ${getStatusColor(percentage)}`}>
         {percentage}%
       </div>
-      <div className="w-20 bg-gray-200 h-1 mt-1">
+      <div className="w-20 bg-gray-200 h-0.5 mt-1">
         <div
-          className={`${getBarColor(percentage)} h-1 `}
+          className={`${getBarColor(percentage)} h-0.5 `}
           style={{ width: `${percentage}%` }}
         ></div>
       </div>
