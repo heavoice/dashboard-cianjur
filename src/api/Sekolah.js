@@ -1,4 +1,3 @@
-// src/data/Sekolah.js
 import { useEffect, useState } from "react";
 
 export const Sekolah = () => {
@@ -19,6 +18,7 @@ export const Sekolah = () => {
           kecamatan: item.kecamatan,
           npsn: item.npsn,
           koordinat: [item.koordinat_lat, item.koordinat_lng],
+          jenjang: item.jenjang,
         }));
         setSekolahList(filteredData);
         setLoading(false);

@@ -4,7 +4,7 @@ import { MapView } from "../../components/MapView";
 import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
 import IconPendidikan from "../../assets/img/icon-pendidikan.svg";
 import { getAkredColor } from "../../hooks/akredColor";
-import { Sekolah } from "../../data/Sekolah";
+import { Sekolah } from "../../api/Sekolah";
 
 export const Data = () => {
   const { sekolahList, loading, error } = Sekolah();
@@ -15,6 +15,7 @@ export const Data = () => {
     lokasi: null,
     status: null,
     akreditasi: null,
+    jenjang: null,
   });
 
   const handleSearchChange = (event) => {
@@ -42,8 +43,17 @@ export const Data = () => {
     const matchesAkreditasi = selectedFilters.akreditasi
       ? item.akreditasi === selectedFilters.akreditasi
       : true;
+    const matchesJenjang = selectedFilters.jenjang
+      ? item.jenjang === selectedFilters.jenjang
+      : true;
 
-    return matchesSearch && matchesLokasi && matchesStatus && matchesAkreditasi;
+    return (
+      matchesSearch &&
+      matchesLokasi &&
+      matchesStatus &&
+      matchesAkreditasi &&
+      matchesJenjang
+    );
   });
 
   if (loading) return <div className="text-white">Loading...</div>;
@@ -79,19 +89,25 @@ export const Data = () => {
                   key: "lokasi",
                   options: [
                     ...new Set(sekolahList.map((item) => item.kecamatan)),
-                  ],
+                  ].sort(),
+                },
+                {
+                  key: "jenjang",
+                  options: [
+                    ...new Set(sekolahList.map((item) => item.jenjang)),
+                  ].sort(),
                 },
                 {
                   key: "status",
                   options: [
                     ...new Set(sekolahList.map((item) => item.instansi)),
-                  ],
+                  ].sort(),
                 },
                 {
                   key: "akreditasi",
                   options: [
                     ...new Set(sekolahList.map((item) => item.akreditasi)),
-                  ],
+                  ].sort(),
                 },
               ].map(({ key, options }) => (
                 <div key={key} className="relative">
@@ -117,7 +133,7 @@ export const Data = () => {
                           onClick={() => {
                             setSelectedFilters((prev) => ({
                               ...prev,
-                              [key]: prev[key] === option ? "" : option, // reset jika sama
+                              [key]: prev[key] === option ? "" : option,
                             }));
                             setOpenDropdown(null); // tutup dropdown setelah memilih
                           }}
