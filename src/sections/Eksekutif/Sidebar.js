@@ -20,6 +20,7 @@ export const Sidebar = () => {
   const [closeSidebar, setCloseSidebar] = useState(false);
   const [userData, setUserData] = useState(null); // State untuk menyimpan data pengguna
   const [error, setError] = useState(null); // State untuk menyimpan error
+  const API_URL = process.env.REACT_APP_API_URL;
 
   // Ambil token JWT dari localStorage
   const token = localStorage.getItem("token");
@@ -31,7 +32,7 @@ export const Sidebar = () => {
       return;
     }
 
-    fetch("https://dashboard-cianjur-backend.vercel.app/api/me", {
+    fetch(`${API_URL}/me`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`, // Kirim token di header Authorization

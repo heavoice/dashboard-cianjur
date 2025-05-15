@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Sidebar } from "../components/Eksekutif/Sidebar";
+import { Sidebar } from "../sections/Eksekutif/Sidebar";
 
 function Eksekutif() {
   useEffect(() => {

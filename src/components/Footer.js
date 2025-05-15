@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../assets/img/logo.png";
+import logo from "../assets/img/logo.png";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { MdEmail, MdPeople, MdSpaceDashboard } from "react-icons/md";

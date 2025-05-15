@@ -13,6 +13,7 @@ import Auth from "./page/Auth";
 import EksekutifDashboard from "./page/Eksekutif";
 import ProtectedRoute from "./components/ProtectedRoute";
 import RekomendasiSekolah from "./page/RekomendasiSekolah";
+import OverviewPendidikan from "./page/OverviewPendidikan";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -45,7 +46,10 @@ const AppRouter = () => {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/eksplorasi-dashboard" element={<EksplorasiDashboard />} />
+        <Route
+          path="/eksplorasi-dashboard/*"
+          element={<EksplorasiDashboard />}
+        />
         <Route path="/auth" element={<Auth />} />
         <Route
           path="/eksekutif-dashboard"
@@ -59,7 +63,10 @@ const AppRouter = () => {
           path="/eksplorasi-dashboard/rekomendasi-sekolah"
           element={<RekomendasiSekolah />}
         />
-        ``
+        <Route
+          path="/eksplorasi-dashboard/overview-pendidikan"
+          element={<OverviewPendidikan />}
+        />
       </Routes>
     </Router>
   );

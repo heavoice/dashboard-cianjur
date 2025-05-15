@@ -1,19 +1,10 @@
 import React, { useState } from "react";
 import { FaSearch, FaExternalLinkAlt } from "react-icons/fa";
 import Ekonomi from "../../assets/img/Ekonomi.svg";
-import { Link } from "react-router-dom";
-import IconEkonomi from "../../assets/img/icon-ekonomi.svg";
-import IconPendidikan from "../../assets/img/icon-pendidikan.svg";
-import IconIndustri from "../../assets/img/icon-industri.svg";
-import IconInfrastruktur from "../../assets/img/icon-infrastruktur.svg";
-import IconKemiskinan from "../../assets/img/icon-kemiskinan.svg";
-import IconKependudukan from "../../assets/img/icon-kependudukan.svg";
-import IconKesehatan from "../../assets/img/icon-kesehatan.svg";
-import IconLingkungan from "../../assets/img/icon-lingkungan.svg";
-import IconPariwisata from "../../assets/img/icon-pariwisata.svg";
-import IconSemuaTopik from "../../assets/img/icon-semua-topik.svg";
-import IconSosial from "../../assets/img/icon-sosial.svg";
-import IconPemerintahan from "../../assets/img/icon-pemerintahan.svg";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import RekomendasiSekolah from "../../assets/img/rekomendasi-sekolah.svg";
+import OverviewPendidikan from "../../assets/img/overview-pendidikan.svg";
+import { categories } from "../../data/Categories";
 
 const CategoryButton = ({ category, onClick, children, imageSrc }) => (
   <div className="flex flex-row gap-4 items-center mt-6">
@@ -50,6 +41,15 @@ const ContentCard = ({ title, category, year, imageSrc }) => (
 export const Content = () => {
   const [selectedCategory, setSelectedCategory] = useState("semua");
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
+
+    navigate(`/eksplorasi-dashboard/${category}`, { replace: true });
+  };
+
   return (
     <div className="flex flex-col bg-center bg-cover h-auto justify-start p-4 w-full duration-1000 font-nunito items-center overflow-auto relative transition-all">
       <div className="flex flex-col justify-start text-black text-left w-full font-nunito items-center mt-10 mx-auto sm:max-w-7xl xs:max-w-[25rem] xxs:max-w-[18rem] z-10">
@@ -67,90 +67,16 @@ export const Content = () => {
               </button>
             </div>
             <div className="max-h-[23.5rem] mt-6 overflow-y-auto">
-              <CategoryButton
-                category="semua"
-                onClick={setSelectedCategory}
-                imageSrc={IconSemuaTopik}
-              >
-                Semua Kategori
-              </CategoryButton>
-              <CategoryButton
-                category="pendidikan"
-                onClick={setSelectedCategory}
-                imageSrc={IconPendidikan}
-              >
-                Pendidikan
-              </CategoryButton>
-              <CategoryButton
-                category="sosial"
-                onClick={setSelectedCategory}
-                imageSrc={IconSosial}
-              >
-                Sosial
-              </CategoryButton>
-              <CategoryButton
-                category="kesehatan"
-                onClick={setSelectedCategory}
-                imageSrc={IconKesehatan}
-              >
-                Kesehatan
-              </CategoryButton>
-              <CategoryButton
-                category="kependudukan"
-                onClick={setSelectedCategory}
-                imageSrc={IconKependudukan}
-              >
-                Kependudukan
-              </CategoryButton>
-              <CategoryButton
-                category="industri"
-                onClick={setSelectedCategory}
-                imageSrc={IconIndustri}
-              >
-                Industri
-              </CategoryButton>
-              <CategoryButton
-                category="ekonomi"
-                onClick={setSelectedCategory}
-                imageSrc={IconEkonomi}
-              >
-                Ekonomi
-              </CategoryButton>
-              <CategoryButton
-                category="lingkungan"
-                onClick={setSelectedCategory}
-                imageSrc={IconLingkungan}
-              >
-                Lingkungan
-              </CategoryButton>
-              <CategoryButton
-                category="kemiskinan"
-                onClick={setSelectedCategory}
-                imageSrc={IconKemiskinan}
-              >
-                Kemiskinanan
-              </CategoryButton>
-              <CategoryButton
-                category="infrastruktur"
-                onClick={setSelectedCategory}
-                imageSrc={IconInfrastruktur}
-              >
-                Infrastruktur
-              </CategoryButton>
-              <CategoryButton
-                category="pariwisata"
-                onClick={setSelectedCategory}
-                imageSrc={IconPariwisata}
-              >
-                Pariwisata
-              </CategoryButton>
-              <CategoryButton
-                category="pemerintahan"
-                onClick={setSelectedCategory}
-                imageSrc={IconPemerintahan}
-              >
-                Pemerintahan
-              </CategoryButton>
+              {categories.map(({ category, label, icon }) => (
+                <CategoryButton
+                  key={category}
+                  category={category}
+                  onClick={handleCategoryClick}
+                  imageSrc={icon}
+                >
+                  {label}
+                </CategoryButton>
+              ))}
             </div>
           </div>
 
@@ -172,15 +98,18 @@ export const Content = () => {
                       title="Dashboard Rekomendasi Sekolah"
                       category="Pendidikan"
                       year="2024"
-                      imageSrc={Ekonomi}
+                      imageSrc={RekomendasiSekolah}
                     />
                   </Link>
-                  <ContentCard
-                    title="Overview Pendidikan"
-                    category="Pendidikan"
-                    year="2024"
-                    imageSrc={Ekonomi}
-                  />
+                  <Link to="/eksplorasi-dashboard/overview-pendidikan">
+                    <ContentCard
+                      title="Overview Pendidikan"
+                      category="Pendidikan"
+                      year="2024"
+                      imageSrc={OverviewPendidikan}
+                    />
+                  </Link>
+
                   <ContentCard
                     title="Indeks Pendidikan Cianjur"
                     category="Pendidikan"

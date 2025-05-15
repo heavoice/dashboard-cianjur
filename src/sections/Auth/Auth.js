@@ -23,7 +23,7 @@ export const Auth = () => {
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
-  const API_URL = "https://dashboard-cianjur-backend.vercel.app/api";
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const interval = setInterval(() => {

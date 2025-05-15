@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { Navbar } from "../components/About/Navbar";
-import { Tentang } from "../components/About/Tentang";
-import { Footer } from "../components/About/Footer";
+import { Tentang } from "../sections/About/Tentang";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 
 function About() {
   useEffect(() => {

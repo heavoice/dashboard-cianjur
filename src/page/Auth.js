@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { Navbar } from "../components/Auth/Navbar";
-import { Auth } from "../components/Auth/Auth";
-import { Footer } from "../components/Auth/Footer";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
+import { Auth } from "../sections/Auth/Auth";
 
-function EksekutifDashboard() {
+function AuthPage() {
   useEffect(() => {
     document.title = "Dashboard Cianjur | Autentikasi";
   }, []);
@@ -16,4 +16,4 @@ function EksekutifDashboard() {
   );
 }
 
-export default EksekutifDashboard;
+export default AuthPage;

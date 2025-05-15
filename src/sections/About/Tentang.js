@@ -66,7 +66,7 @@ export const Tentang = () => {
 
         <div className="p-4 mb-20 sm:mb-40 w-full">
           {aboutdata.map((item, index) => (
-            <div key={index} className="mr-auto mt-10 md:mt-10 p-4 border-b">
+            <div key={index} className="mr-auto mt-10 md:mt-10 py-4 border-b">
               <div
                 className="flex items-center cursor-pointer"
                 onClick={() => toggleItem(index)}

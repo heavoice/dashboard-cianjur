@@ -1,8 +1,7 @@
-import React from "react";
-import { Navbar } from "../components/Rekomendasi-Sekolah/Navbar";
-import { Tentang } from "../components/Rekomendasi-Sekolah/Tentang";
-import { Data } from "../components/Rekomendasi-Sekolah/Data";
-import { Footer } from "../components/Rekomendasi-Sekolah/Footer";
+import { Navbar } from "../components/Navbar";
+import { Tentang } from "../sections/Rekomendasi-Sekolah/Tentang";
+import { Data } from "../sections/Rekomendasi-Sekolah/Data";
+import { Footer } from "../components/Footer";
 
 function RekomendasiSekolah() {
   return (

@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { Navbar } from "../components/Home/Navbar";
-import { Portal } from "../components/Home/Portal";
-import { Features } from "../components/Home/Features";
-import { Highlight } from "../components/Home/Highlight";
-import { Visualizer } from "../components/Home/Visualizer";
-import { Footer } from "../components/Home/Footer";
+import { Navbar } from "../sections/Home/Navbar";
+import { Portal } from "../sections/Home/Portal";
+import { Features } from "../sections/Home/Features";
+import { Highlight } from "../sections/Home/Highlight";
+import { Visualizer } from "../sections/Home/Visualizer";
+import { Footer } from "../components/Footer";
 
 function Home() {
   useEffect(() => {

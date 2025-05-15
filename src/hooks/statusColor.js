@@ -1,5 +1,3 @@
-import React from "react";
-
 export const getStatusColor = (percentage) => {
   if (percentage <= 40) return "text-red-500";
   if (percentage <= 65) return "text-yellow-500";

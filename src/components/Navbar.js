@@ -2,22 +2,21 @@ import React, { useState, useEffect, useRef } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { FaBookOpen, FaInfoCircle, FaChartLine } from "react-icons/fa";
 import { HiOutlineChartSquareBar } from "react-icons/hi";
-import logo from "../../assets/img/logo.png";
-import { topik } from "../../data/Topik";
+import logo from "../assets/img/logo.png";
+import { topik } from "../data/Topik";
 import { Link } from "react-router-dom";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTopikOpen, setIsTopikOpen] = useState(false);
-
   const menuRef = useRef(null);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
   };
 
-  const handleToggle = () => {
+  const closeTopikDropdown = () => {
     setIsTopikOpen(false);
   };
 
@@ -25,23 +24,9 @@ export const Navbar = () => {
     setIsTopikOpen(!isTopikOpen);
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setIsMobileMenuOpen(false);
-        setIsTopikOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   return (
     <nav
-      className={`p-4 font-noto fixed border-b border-white/20 top-0 left-0 w-full z-50 bg-[#22a9e1] `}
+      className={`p-4 font-noto fixed border-b border-white/20 top-0 left-0 w-full z-50 bg-[#22a9e1] `} // Gunakan navbarColor
     >
       <div className="flex justify-between items-center max-w-7xl mx-auto">
         <Link
@@ -60,7 +45,7 @@ export const Navbar = () => {
         <div className="font-medium hidden lg:flex md:hidden space-x-6">
           <button
             className="flex text-white duration-200 ease-in-out hover:text-gray-300 items-center transition-all"
-            onClick={isTopikOpen ? handleToggle : toggleTopikDropdown}
+            onClick={toggleTopikDropdown}
           >
             Topik
             <MdKeyboardArrowDown
@@ -76,7 +61,7 @@ export const Navbar = () => {
                 <p className="text-3xl text-white">Topik</p>
                 <p
                   className="text-2xl text-white cursor-pointer"
-                  onClick={handleToggle}
+                  onClick={closeTopikDropdown}
                 >
                   ✕
                 </p>
@@ -84,9 +69,10 @@ export const Navbar = () => {
 
               <div className="grid grid-cols-3 gap-6 max-w-7xl mt-4 mx-auto">
                 {topik.map((item) => (
-                  <div
+                  <Link
+                    to={item.link}
                     key={item.id}
-                    className="flex border border-white/20 p-4 rounded-lg items-center"
+                    className="flex border border-white/20 p-4 rounded-lg items-center hover:bg-white/10 transition"
                   >
                     <img
                       src={item.image}
@@ -101,7 +87,7 @@ export const Navbar = () => {
                         {item.description}
                       </p>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
