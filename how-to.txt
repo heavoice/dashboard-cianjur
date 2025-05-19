@@ -1,3 +1,0 @@
-1. build aplikasi front-end
-2. buat public folder di backend
-3. sudah
