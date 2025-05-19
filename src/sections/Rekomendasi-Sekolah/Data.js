@@ -83,7 +83,7 @@ export const Data = () => {
 
           {/* Dropdown Filters */}
           <div className="w-full max-w-max">
-            <div className="flex flex-row gap-2 w-fit">
+            <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-fit">
               {[
                 {
                   key: "lokasi",
@@ -173,7 +173,7 @@ export const Data = () => {
                 className="w-full p-4 bg-white rounded-lg border flex flex-col gap-5 cursor-pointer hover:bg-slate-100 transition"
                 onClick={() => handleSekolahClick(item.koordinat)}
               >
-                <div className="flex flex-col sm:flex-row justify-between gap-1 sm:gap-0">
+                <div className="flex flex-col sm:flex-row justify-between gap-1 sm:gap-0 sm:items-center">
                   <div className="text-black font-bold uppercase text-lg">
                     {item.nama}
                   </div>
@@ -182,9 +182,9 @@ export const Data = () => {
                       {item.instansi}
                     </p>
                     <p
-                      className={`px-2 sm:px-[0.95rem] py-1 sm:py-2 rounded-full text-white font-semibold ${getAkredColor(
+                      className={`px-[9px] sm:px-[15px] py-[4.5px] sm:py-[7.5px] rounded-full text-white font-semibold ${getAkredColor(
                         item.akreditasi
-                      )} text-center`}
+                      )} `}
                     >
                       {item.akreditasi}
                     </p>
