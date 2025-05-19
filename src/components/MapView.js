@@ -2267,7 +2267,7 @@ export const MapView = ({ selectedPosition }) => {
     { lat: -6.771642, lng: 106.966904 },
     { lat: -6.770338, lng: 106.965157 },
   ];
-  const colorOptions = { color: "#22a9e1", fillOpacity: 0.3 };
+  const colorOptions = { color: "#22a9e1", fillOpacity: 0 };
   const FlyToLocation = ({ position }) => {
     const map = useMap();
 
