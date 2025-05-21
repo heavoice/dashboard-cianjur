@@ -2273,7 +2273,7 @@ export const MapView = ({ selectedPosition }) => {
 
     useEffect(() => {
       if (position) {
-        map.flyTo(position, 15); // Zoom level 15
+        map.flyTo(position, 15);
       }
     }, [position]);
 
