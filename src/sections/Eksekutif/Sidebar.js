@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/img/logo.png";
 import { CgProfile } from "react-icons/cg";
@@ -7,14 +7,15 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 import { sidebarItems } from "../../data/SidebarItems";
 import { useNavigate } from "react-router-dom";
 import { MainDashboard } from "./MainDashboard";
+import { ManajemenProgram } from "./ManajemenProgram";
 
 // Sidebar Component
 export const Sidebar = () => {
   const navigate = useNavigate();
   const [selectedSection, setSelectedSection] = useState("Dashboard Utama");
   const [closeSidebar, setCloseSidebar] = useState(false);
-  const [userData, setUserData] = useState(null); // State untuk menyimpan data pengguna
-  const [error, setError] = useState(null); // State untuk menyimpan error
+  const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(null);
   const API_URL = process.env.REACT_APP_API_URL;
 
   // Ambil token JWT dari localStorage
@@ -69,7 +70,7 @@ export const Sidebar = () => {
     <div className="flex border bg-slate-50 h-auto p-4">
       <div
         className={`border bg-white rounded-lg font-noto transition-all duration-300 text-black h-fit  ${
-          closeSidebar ? "w-44" : "w-1/4"
+          closeSidebar ? "w-32" : "w-[30%] xl:w-1/4"
         }`}
       >
         <div className="flex border-b justify-between py-1">
@@ -94,41 +95,37 @@ export const Sidebar = () => {
         </div>
 
         {/* Menu Navigasi */}
-        <nav className="font-nunito text-start text-sm font-bold p-4 ">
+        <nav className="font-nunito text-start w-full text-xs xl:text-sm font-bold p-4 ">
           <ul>
-            <ul>
-              {sidebarItems.map(({ label, icon }) => (
-                <li key={label} className="mb-4">
-                  <button
-                    className={`hover:text-[#22a9e1] flex items-center gap-2 w-full ${
-                      selectedSection === label
-                        ? "font-bold text-[#22a9e1]"
-                        : ""
-                    }`}
-                    onClick={() => {
-                      if (label === "Logout") {
-                        handleLogout();
-                      } else {
-                        handleSelect(label);
-                      }
-                    }}
-                  >
-                    {icon}
-                    {!closeSidebar && <span>{label}</span>}
-                  </button>
-                </li>
-              ))}
-            </ul>
+            {sidebarItems.map(({ label, icon }) => (
+              <li key={label} className="mb-4">
+                <button
+                  className={`hover:text-[#22a9e1] flex items-center gap-2 w-full ${
+                    selectedSection === label ? "font-bold text-[#22a9e1]" : ""
+                  }`}
+                  onClick={() => {
+                    if (label === "Logout") {
+                      handleLogout();
+                    } else {
+                      handleSelect(label);
+                    }
+                  }}
+                >
+                  {icon}
+                  {!closeSidebar && <span>{label}</span>}
+                </button>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
       <div
         className={`transition-all duration-300 text-black p-4 h-auto flex flex-col ${
-          closeSidebar ? "w-full" : "w-3/4"
+          closeSidebar ? "w-full" : "w-[70%] xl:w-3/4"
         }`}
       >
         {/* Header */}
-        <div className="p-4 flex flex-row justify-between font-nunito">
+        <div className="p-4 flex flex-row items-center justify-between font-nunito text-sm xl:text-base">
           <div className="flex flex-row gap-2">
             <p>Pages</p>
             <p className="font-bold">/</p>
@@ -140,7 +137,7 @@ export const Sidebar = () => {
             <input
               type="text"
               placeholder="Type here..."
-              className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 border rounded-md focus:outline-none "
             />
 
             <CgProfile className="text-gray-700" />
@@ -155,7 +152,7 @@ export const Sidebar = () => {
           <div>
             {selectedSection === "Dashboard Utama" && <MainDashboard />}
             {selectedSection === "Manajemen Program & Kegiatan" && (
-              <p>Berikut adalah daftar program dan kegiatan yang tersedia.</p>
+              <ManajemenProgram />
             )}
             {selectedSection === "Monitoring Infrastruktur & Proyek Fisik" && (
               <p>
