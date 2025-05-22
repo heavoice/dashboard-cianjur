@@ -19,21 +19,18 @@
 
 ### 🧩 Frontend
 
-- **React** – Library untuk membangun antarmuka pengguna.
-- **Tailwind CSS** – Utility-first CSS framework.
-- **React Router** – Navigasi antar halaman.
-- **Framer Motion** – Animasi interaktif pada elemen UI.
-- **ApexCharts** – Visualisasi grafik interaktif.
+- **React** 
+- **Tailwind CSS** 
+- **React Router** 
+- **Framer Motion**
+- **ApexCharts**
 
 ### ⚙️ Backend
 
-- **Node.js** – Runtime JavaScript.
-- **Express.js** – Web framework minimalis.
-- **PostgreSQL** – Database relasional.
-- **bcrypt** – Untuk mengenkripsi password pengguna.
-- **jsonwebtoken (JWT)** – Untuk autentikasi berbasis token.
-- **pg (node-postgres)** – Library PostgreSQL untuk Node.js.
-
+- **Node.js** 
+- **Express.js** 
+- **PostgreSQL** 
+- **Sequelize**
 ---
 
 ## 📦 Prasyarat
