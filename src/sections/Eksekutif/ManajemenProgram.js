@@ -45,7 +45,7 @@ export const ManajemenProgram = (options = { loop: true }) => {
   const [namaKegiatan, setNamaKegiatan] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   useEffect(() => {
-    fetch(`${API_URL}/login`)
+    fetch(`${API_URL}/dokumentasi`)
       .then((res) => res.json())
       .then(setSlidesData);
   }, []);
@@ -63,7 +63,6 @@ export const ManajemenProgram = (options = { loop: true }) => {
 
     const result = await res.json();
     alert(result.message);
-    // Refresh the carousel
   };
 
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
