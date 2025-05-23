@@ -56,7 +56,7 @@ export const ManajemenProgram = (options = { loop: true }) => {
     formData.append("kegiatan", namaKegiatan);
     formData.append("media", selectedFile);
 
-    const res = await fetch(`${API_URL}/uploads`, {
+    const res = await fetch(`${API_URL}/upload`, {
       method: "POST",
       body: formData,
     });
