@@ -2,36 +2,12 @@ import { useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Ekonomi from "../../assets/img/Ekonomi.svg";
-import Environment from "../../assets/img/Environment.svg";
-import Governance from "../../assets/img/Governance.svg";
-import Industri from "../../assets/img/Industri.svg";
-import Infrastruktur from "../../assets/img/Infrastruktur.svg";
-import Kemiskinan from "../../assets/img/Kemiskinan.svg";
-import Kependudukan from "../../assets/img/Kependudukan.svg";
-import Kesehatan from "../../assets/img/Kesehatan.svg";
-import Pariwisata from "../../assets/img/Pariwisata.svg";
-import Pendidikan from "../../assets/img/Pendidikan.svg";
-import Social from "../../assets/img/Ekonomi.svg";
+import { topik } from "../../data/Topik";
 import Banner1 from "../../assets/img/banner1.png";
 import Banner2 from "../../assets/img/comingsoon.png";
 import { motion } from "framer-motion";
 
 export const Features = () => {
-  const content = [
-    { src: Ekonomi, label: "Ekonomi", link: "/ekonomi" },
-    { src: Environment, label: "Lingkungan", link: "/lingkungan" },
-    { src: Governance, label: "Pemerintahan", link: "/pemerintahan" },
-    { src: Industri, label: "Industri", link: "/industri" },
-    { src: Infrastruktur, label: "Infrastruktur", link: "/infrastruktur" },
-    { src: Kemiskinan, label: "Kemiskinan", link: "/kemiskinan" },
-    { src: Kependudukan, label: "Kependudukan", link: "/kependudukan" },
-    { src: Kesehatan, label: "Kesehatan", link: "/kesehatan" },
-    { src: Pariwisata, label: "Pariwisata", link: "/pariwisata" },
-    { src: Pendidikan, label: "Pendidikan", link: "/pendidikan" },
-    { src: Social, label: "Sosial", link: "/sosial" },
-  ];
-
   const [startIndex, setStartIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(4);
 
@@ -53,7 +29,7 @@ export const Features = () => {
   }, []);
 
   const nextSlide = () => {
-    if (startIndex + visibleCount < content.length) {
+    if (startIndex + visibleCount < topik.length) {
       setStartIndex(startIndex + visibleCount);
     }
   };
@@ -121,7 +97,7 @@ export const Features = () => {
             }}
             className="flex gap-4 justify-center items-start overflow-hidden"
           >
-            {content
+            {topik
               .slice(startIndex, startIndex + visibleCount)
               .map((item, index) => (
                 <a
@@ -130,11 +106,11 @@ export const Features = () => {
                   className="w-auto h-auto  rounded-lg flex flex-col items-center"
                 >
                   <img
-                    src={item.src}
+                    src={item.image}
                     alt={`icon-${index}`}
                     className="w-20 h-20 sm:w-24 sm:h-24 xl:w-48 xl:h-48 object-cover "
                   />
-                  <p className="text-center font-bold mt-2">{item.label}</p>
+                  <p className="text-center font-bold mt-2">{item.title}</p>
                 </a>
               ))}
           </motion.div>
@@ -149,7 +125,7 @@ export const Features = () => {
 
         {/* Pagination dots */}
         <div className="flex justify-center mt-4 gap-2">
-          {Array.from({ length: Math.ceil(content.length / visibleCount) }).map(
+          {Array.from({ length: Math.ceil(topik.length / visibleCount) }).map(
             (_, index) => (
               <button
                 key={index}

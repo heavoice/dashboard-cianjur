@@ -55,7 +55,7 @@ export const ManajemenProgram = (options = { loop: true }) => {
     const formData = new FormData();
     formData.append("kegiatan", namaKegiatan);
     formData.append("media", selectedFile);
-
+    console.log("Selected file:", selectedFile);
     const res = await fetch(`${API_URL}/upload`, {
       method: "POST",
       body: formData,
@@ -131,7 +131,7 @@ export const ManajemenProgram = (options = { loop: true }) => {
             </button>
           </form>
 
-          <section className="embla mt-6 relative overflow-hidden">
+          <section className="embla mt-6 relative overflow-hidden p-2.5">
             <div
               className="embla__viewport overflow-hidden w-full"
               ref={emblaRef}
@@ -139,43 +139,49 @@ export const ManajemenProgram = (options = { loop: true }) => {
               <div className="embla__container flex justify-start">
                 {slides?.length > 0 ? (
                   slides.map((item, index) => (
-                    <div
-                      className="embla__slide flex-[0_0_100%] px-4"
-                      key={item.id}
-                    >
-                      <div className="text-center font-bold mb-2">
-                        {item.activityName}
-                      </div>
+                    <div className="embla__slide flex-[0_0_100%]" key={item.id}>
                       {item.fileType?.startsWith("image") ? (
                         <img
                           src={item.fileUrl}
                           alt={item.activityName}
-                          className="w-full h-[500px] object-cover rounded-lg"
+                          className="w-full h-[600px] object-cover rounded-lg"
                         />
                       ) : item.fileType?.startsWith("video") ? (
                         <video
                           controls
-                          className="w-full h-[500px] object-cover rounded-lg"
+                          className="w-full h-[600px] object-cover rounded-lg"
                         >
-                          <source src={item.fileUrl} type="video/mp4" />
+                          <source src={item.fileUrl} />
                           Your browser does not support video.
                         </video>
                       ) : (
-                        <div className="w-full h-[300px] flex items-center justify-center bg-gray-200 rounded-lg">
-                          Tidak ada dokumentasi
-                        </div>
+                        <div className="w-full h-[600px] flex items-center justify-center bg-gray-200 rounded-lg"></div>
                       )}
+                      <div className="mt-6">
+                        <h1 className="font-bold text-3xl">
+                          {item.activityName}
+                        </h1>
+                        <p className="font-light text-base mt-1">
+                          Tanggal :{" "}
+                          {new Date(item.uploadedAt).toLocaleDateString(
+                            "id-ID",
+                            {
+                              day: "2-digit",
+                              month: "2-digit",
+                              year: "numeric",
+                            }
+                          )}
+                        </p>
+                      </div>
                     </div>
                   ))
                 ) : (
-                  <div className="w-full xh-[300px] flex items-center justify-center bg-gray-200 rounded-lg">
-                    Tidak ada dokumentasi
-                  </div>
+                  <div className="w-full h-[600px] flex items-center justify-center bg-gray-200 rounded-lg"></div>
                 )}
               </div>
             </div>
 
-            <div className="absolute inset-0 flex items-center justify-between pointer-events-none">
+            <div className="flex items-center justify-center pointer-events-none gap-3 mt-5">
               <div className="pointer-events-auto">
                 <PrevButton
                   onClick={onPrevButtonClick}

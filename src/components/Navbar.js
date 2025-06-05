@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { FaBookOpen, FaInfoCircle, FaChartLine } from "react-icons/fa";
 import { HiOutlineChartSquareBar } from "react-icons/hi";

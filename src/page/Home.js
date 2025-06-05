@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Navbar } from "../sections/Home/Navbar";
 import { Portal } from "../sections/Home/Portal";
 import { Features } from "../sections/Home/Features";
 import { Highlight } from "../sections/Home/Highlight";
 import { Visualizer } from "../sections/Home/Visualizer";
 import { Footer } from "../components/Footer";
+import { Feedback } from "../components/Feedback";
 
 function Home() {
   useEffect(() => {
@@ -18,6 +19,7 @@ function Home() {
       <Highlight />
       <Visualizer />
       <Footer />
+      <Feedback />
     </>
   );
 }

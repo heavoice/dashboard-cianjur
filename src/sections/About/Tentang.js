@@ -41,7 +41,17 @@ export const Tentang = () => {
 
       {/* Kontainer teks */}
       <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl flex items-center justify-start text-left z-10 flex-col font-nunito text-black mt-40">
-        <div className="flex flex-row gap-2 items-start mr-auto ">
+        <motion.div
+          initial={{ opacity: 0, scale: 1, x: 100 }}
+          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{
+            duration: 1,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+          viewport={{ once: false, amount: 0.2 }}
+          className="flex flex-row gap-2 items-start mr-auto "
+        >
           <Link
             to="/home"
             className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-current after:transition-all after:duration-300 hover:after:w-full"
@@ -55,18 +65,39 @@ export const Tentang = () => {
           >
             Tentang
           </Link>
-        </div>
-        <div className="flex flex-col sm:flex-row justify-between w-full p-4 sm:p-8   ">
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 1, x: 100 }}
+          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          transition={{
+            duration: 1,
+            type: "tween",
+            ease: "easeInOut",
+          }}
+          viewport={{ once: false, amount: 0.2 }}
+          className="flex flex-col sm:flex-row justify-between w-full p-4 sm:p-8   "
+        >
           <div className="text-2xl md:text-4xl lg:text-5xl font-bold font-noto sm:self-center">
             Tentang <div className="md:mt-4 xxs:mb-10">Dashboard Cianjur</div>
           </div>
 
           <img src={Ilustrasi} className="sm:mt-0 xl:mr-40" />
-        </div>
+        </motion.div>
 
         <div className="p-4 mb-20 sm:mb-40 w-full">
           {aboutdata.map((item, index) => (
-            <div key={index} className="mr-auto mt-10 md:mt-10 py-4 border-b">
+            <motion.div
+              initial={{ opacity: 0, scale: 1, x: -100 }}
+              whileInView={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{
+                duration: 1,
+                type: "tween",
+                ease: "easeInOut",
+              }}
+              viewport={{ once: false, amount: 0.2 }}
+              key={index}
+              className="mr-auto mt-10 md:mt-10 py-4 border-b"
+            >
               <div
                 className="flex items-center cursor-pointer"
                 onClick={() => toggleItem(index)}
@@ -96,7 +127,7 @@ export const Tentang = () => {
                   {item.description}
                 </motion.p>
               )}
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

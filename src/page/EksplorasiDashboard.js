@@ -3,6 +3,7 @@ import { Tentang } from "../sections/Eksplorasi-Dashboard/Tentang";
 import { Content } from "../sections/Eksplorasi-Dashboard/Content";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { Feedback } from "../components/Feedback";
 
 function EksplorasiDashboard() {
   useEffect(() => {
@@ -14,6 +15,7 @@ function EksplorasiDashboard() {
       <Tentang />
       <Content />
       <Footer />
+      <Feedback />
     </>
   );
 }

@@ -5,6 +5,7 @@ import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
 import IconPendidikan from "../../assets/img/icon-pendidikan.svg";
 import { getAkredColor } from "../../hooks/akredColor";
 import { Sekolah } from "../../api/Sekolah";
+import { RSLoader } from "../../components/RSLoader";
 
 export const Data = () => {
   const { sekolahList, loading, error } = Sekolah();
@@ -56,14 +57,21 @@ export const Data = () => {
     );
   });
 
-  if (loading) return <div className="text-white">Loading...</div>;
-  if (error) return <div className="text-red-500">Error: {error.message}</div>;
+  if (loading)
+    return (
+      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl h-[400px] mb-8 flex justify-center items-center rounded-lg">
+        <RSLoader />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl h-[400px] mb-8 flex justify-center items-center rounded-lg">
+        <RSLoader />
+      </div>
+    );
 
   return (
-    <div
-      id="tentang"
-      className="relative p-4 w-full h-auto flex flex-col justify-start items-center bg-cover bg-center transition-all duration-1000 font-nunito"
-    >
+    <div className="relative p-4 w-full h-auto flex flex-col justify-start items-center bg-cover bg-center transition-all duration-1000 font-nunito">
       {/* Filter UI */}
       <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl flex items-center justify-start text-left z-10 flex-col font-nunito text-white border rounded-lg mt-20">
         <div className="flex flex-col lg:flex-row w-full p-4 items-start justify-center gap-4 lg:gap-12">

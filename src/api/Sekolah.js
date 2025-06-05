@@ -4,9 +4,10 @@ export const Sekolah = () => {
   const [sekolahList, setSekolahList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const API_URL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    fetch(`https://dashboard-cianjur-backend.vercel.app/api/sekolah`)
+    fetch(`${API_URL}/sekolah`)
       .then((res) => res.json())
       .then((data) => {
         const filteredData = data.map((item) => ({
