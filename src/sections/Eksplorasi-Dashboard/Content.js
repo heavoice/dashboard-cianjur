@@ -29,7 +29,7 @@ const ContentCard = ({ title, category, year, imageSrc }) => (
       ease: "easeInOut",
     }}
     viewport={{ once: false, amount: 0.2 }}
-    className="flex flex-col w-full gap-4 rounded p-4 hover:bg-slate-100"
+    className="flex flex-col h-full w-full gap-4 rounded p-4 hover:bg-slate-100"
   >
     <img src={imageSrc} alt={title} className="w-max" />
     <div className="flex flex-row justify-between gap-3 ">
