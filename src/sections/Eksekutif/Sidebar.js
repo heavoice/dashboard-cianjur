@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import { MainDashboard } from "./MainDashboard";
 import { ManajemenProgram } from "./ManajemenProgram";
 
-// Sidebar Component
 export const Sidebar = () => {
   const navigate = useNavigate();
   const [selectedSection, setSelectedSection] = useState("Dashboard Utama");
@@ -18,10 +17,8 @@ export const Sidebar = () => {
   const [error, setError] = useState(null);
   const API_URL = process.env.REACT_APP_API_URL;
 
-  // Ambil token JWT dari localStorage
   const token = localStorage.getItem("token");
 
-  // Mengambil data pengguna setelah komponen dimuat
   useEffect(() => {
     if (!token) {
       setError("No token found. Please login again.");
@@ -31,7 +28,7 @@ export const Sidebar = () => {
     fetch(`${API_URL}/me`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`, // Kirim token di header Authorization
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
@@ -67,10 +64,11 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className="flex border bg-slate-50 h-auto p-4">
+    <div className="flex flex-col lg:flex-row border bg-slate-50 h-auto p-2 lg:p-4">
+      {/* Sidebar - hanya tampil di lg ke atas */}
       <div
-        className={`border bg-white rounded-lg font-noto transition-all duration-300 text-black h-fit  ${
-          closeSidebar ? "w-32" : "w-[30%] xl:w-1/4"
+        className={`hidden lg:block border bg-white rounded-lg font-noto transition-all duration-300 text-black h-fit mb-4 lg:mb-0  ${
+          closeSidebar ? "lg:w-20" : "lg:w-[30%] xl:w-1/4"
         }`}
       >
         <div className="flex border-b justify-between py-1">
@@ -94,8 +92,7 @@ export const Sidebar = () => {
           </button>
         </div>
 
-        {/* Menu Navigasi */}
-        <nav className="font-nunito text-start w-full text-xs xl:text-sm font-bold p-4 ">
+        <nav className="font-nunito text-start w-full text-xs font-bold p-4">
           <ul>
             {sidebarItems.map(({ label, icon }) => (
               <li key={label} className="mb-4">
@@ -119,36 +116,83 @@ export const Sidebar = () => {
           </ul>
         </nav>
       </div>
+
+      {/* Bottom Navigation - hanya tampil di bawah lg */}
+      <nav className="block lg:hidden fixed bottom-0 left-0 w-full bg-white border-t z-50">
+        <ul className="flex justify-around items-center p-2 text-sm font-bold font-nunito">
+          {sidebarItems.map(({ label, icon }) => (
+            <li key={label}>
+              <button
+                className={`flex flex-col items-center ${
+                  selectedSection === label ? "text-[#22a9e1]" : "text-gray-700"
+                }`}
+                onClick={() => {
+                  if (label === "Logout") {
+                    handleLogout();
+                  } else {
+                    handleSelect(label);
+                  }
+                }}
+              >
+                {icon}
+                <span className="text-[10px]">{label}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Main Content */}
       <div
         className={`transition-all duration-300 text-black p-4 h-auto flex flex-col ${
-          closeSidebar ? "w-full" : "w-[70%] xl:w-3/4"
+          closeSidebar ? "w-full" : "w-full lg:w-[70%] xl:w-3/4"
         }`}
       >
         {/* Header */}
-        <div className="p-4 flex flex-row items-center justify-between font-nunito text-sm xl:text-base">
+        <div className="p-2 md:p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-nunito text-sm xl:text-base">
           <div className="flex flex-row gap-2">
             <p>Pages</p>
             <p className="font-bold">/</p>
             <p className="font-bold">{selectedSection}</p>
           </div>
 
-          <div className="flex flex-row gap-4 items-center">
-            {/* Input Field */}
+          <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-start md:items-center">
             <input
               type="text"
               placeholder="Type here..."
-              className="px-4 py-2 border rounded-md focus:outline-none "
+              className="px-4 py-2 border rounded-md focus:outline-none w-full md:w-auto"
             />
 
-            <CgProfile className="text-gray-700" />
-            <p>{userData.full_name}</p>
+            <div className="flex items-center gap-2">
+              <CgProfile className="text-gray-700" />
+              <p>{userData.full_name}</p>
+            </div>
 
             <IoMdNotificationsOutline className="text-gray-700" />
           </div>
+          {/* Footer untuk mobile - muncul di atas konten ketika layar kecil */}
+          <div className="block lg:hidden p-2 md:p-4 mb-2 font-nunito text-xs">
+            <p>
+              Copyright © 2025{" "}
+              <span className="font-bold">Diskominfo Cianjur</span>. All Right
+              Reserved
+            </p>
+            <div className="flex flex-col gap-1 font-bold mt-2">
+              <Link to="/home" className="hover:text-gray-400">
+                Home
+              </Link>
+              <Link to="/eksplorasi-dashboard" className="hover:text-gray-400">
+                Eksplorasi Dashboard
+              </Link>
+              <Link to="/about" className="hover:text-gray-400">
+                Tentang
+              </Link>
+            </div>
+          </div>
         </div>
 
-        {/* Main Content (optional) */}
-        <div className="flex-1 p-4 h-auto">
+        {/* Main Content Section */}
+        <div className="flex-1 p-2 md:p-4 h-auto overflow-auto">
           <div>
             {selectedSection === "Dashboard Utama" && <MainDashboard />}
             {selectedSection === "Manajemen Program & Kegiatan" && (
@@ -169,30 +213,21 @@ export const Sidebar = () => {
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="p-4 mt-auto flex flex-row justify-between font-nunito">
+        {/* Footer untuk desktop */}
+        <div className="hidden lg:flex p-2 md:p-4 mt-auto flex-col md:flex-row justify-between items-start md:items-center gap-2 font-nunito text-xs xl:text-base">
           <p>
             Copyright © 2025{" "}
             <span className="font-bold">Diskominfo Cianjur</span>. All Right
             Reserved
           </p>
-          <div className="flex flex-row gap-4 font-bold">
-            <Link
-              to="/home"
-              className="hover:text-gray-400 flex flex-row gap-2"
-            >
+          <div className="flex flex-col md:flex-row gap-2 font-bold">
+            <Link to="/home" className="hover:text-gray-400">
               Home
             </Link>
-            <Link
-              to="/eksplorasi-dashboard"
-              className="text-black hover:text-gray-300 transition-all ease-in-out duration-200"
-            >
+            <Link to="/eksplorasi-dashboard" className="hover:text-gray-400">
               Eksplorasi Dashboard
             </Link>
-            <Link
-              to="/about"
-              className="text-black duration-200 ease-in-out hover:text-gray-300 transition-all"
-            >
+            <Link to="/about" className="hover:text-gray-400">
               Tentang
             </Link>
           </div>

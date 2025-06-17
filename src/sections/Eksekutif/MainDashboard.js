@@ -6,20 +6,20 @@ import { notifier, analytics, orderoverview } from "./Constant";
 
 export const MainDashboard = () => {
   return (
-    <div className="text-2xl font-bold flex flex-col gap-2">
+    <div className="text-2xl font-bold flex flex-col gap-2 lg:mb-0 mb-20">
       <p className="font-nunito font-bold">Dashboard Utama</p>
       <p className="font-nunito font-normal text-sm">
         Dashboard Utama adalah tampilan utama atau halaman pertama dari sebuah
         aplikasi atau sistem yang memberikan gambaran umum tentang status atau
         informasi penting secara ringkas.
       </p>
-      <div className="w-full flex flex-row gap-6 rounded-lg mt-6">
+      <div className="w-full flex flex-col xl:flex-row gap-6 rounded-lg mt-6">
         {notifier.map((item) => (
           <div
             key={item.id}
             className="w-full h-auto flex flex-col items-center border rounded-lg p-4 space-y-2 bg-white"
           >
-            <div className="flex flex-row w-full justify-between">
+            <div className="flex flex-row justify-between items-center w-full">
               <div className="flex flex-col">
                 <p className="font-normal text-sm text-gray-400">
                   {item.title}
@@ -31,6 +31,7 @@ export const MainDashboard = () => {
                 {item.icon}
               </div>
             </div>
+
             <div className="w-full h-px my-4 bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
 
             <div className="w-full flex flex-row items-center gap-1">
@@ -45,7 +46,7 @@ export const MainDashboard = () => {
         ))}
       </div>
       {/* Visualisasi */}
-      <div className="w-full flex flex-row gap-6 rounded-lg mt-6 overflow-hidden">
+      <div className="w-full flex flex-col xl:flex-row gap-6 rounded-lg mt-6 overflow-hidden">
         {analytics.map((item) => (
           <div
             key={item.id}
@@ -74,8 +75,8 @@ export const MainDashboard = () => {
         ))}
       </div>
       {/* Project & Orders */}
-      <div className="w-full flex flex-row gap-6 mt-6 overflow-hidden">
-        <div className="w-2/3 h-auto rounded-lg border bg-white font-nunito">
+      <div className="w-full flex flex-col xl:flex-row gap-6 mt-6 overflow-hidden">
+        <div className="w-full xl:w-2/3 h-auto rounded-lg border bg-white font-nunito">
           {/* Head */}
           <div className="flex flex-row justify-between items-center p-4">
             <div>
@@ -95,7 +96,7 @@ export const MainDashboard = () => {
             </div>
           </div>
           {/* Table */}
-          <div className="relative overflow-x-auto py-2 ">
+          <div className="relative overflow-x-auto p-4 ">
             <table className="w-full text-sm text-left text-gray-500 font-nunito">
               <thead className="text-xs text-gray-700 uppercase border-b">
                 <tr>
@@ -145,7 +146,7 @@ export const MainDashboard = () => {
             </table>
           </div>
         </div>
-        <div className="w-1/3 h-auto rounded-lg border bg-white">
+        <div className="w-full xl:w-1/3 h-auto rounded-lg border bg-white">
           <div className="flex flex-col p-4">
             <p className="font-semibold text-base">Orders overview</p>
             <p className="flex flex-row text-sm text-gray-500 mt-3">

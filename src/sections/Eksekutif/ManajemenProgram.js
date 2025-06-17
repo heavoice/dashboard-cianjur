@@ -8,6 +8,8 @@ import { PrevButton, NextButton } from "../../components/EmblaButton";
 import { Feedback } from "../../api/Feedback";
 import { RSLoader } from "../../components/RSLoader";
 
+const itemsPerPage = 5;
+
 const usePrevNextButtons = (emblaApi) => {
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true);
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true);
@@ -48,6 +50,15 @@ export const ManajemenProgram = (options = { loop: true }) => {
   const [namaKegiatan, setNamaKegiatan] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.ceil(feedbackList.length / itemsPerPage);
+
+  const paginatedData = feedbackList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
   const {
     prevBtnDisabled,
@@ -78,13 +89,13 @@ export const ManajemenProgram = (options = { loop: true }) => {
 
   if (loading)
     return (
-      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl h-[400px] mb-8 flex justify-center items-center rounded-lg">
+      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl h-screen mb-8 flex justify-center items-center rounded-lg">
         <RSLoader />
       </div>
     );
   if (error)
     return (
-      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl h-[400px] mb-8 flex justify-center items-center rounded-lg">
+      <div className="w-full xxs:max-w-[18rem] xs:max-w-[25rem] mx-auto sm:max-w-7xl h-screen mb-8 flex justify-center items-center rounded-lg">
         <RSLoader />
       </div>
     );
@@ -246,19 +257,55 @@ export const ManajemenProgram = (options = { loop: true }) => {
                 </tr>
               </thead>
               <tbody>
-                {feedbackList.map((item) => (
+                {paginatedData.map((item) => (
                   <tr
                     key={item.id}
                     className="bg-white border-b border-gray-200"
                   >
                     <td className="px-6 py-4">{item.nama}</td>
                     <td className="px-6 py-4">{item.pesan}</td>
-                    <td className="px-6 py-4">{item.topik}</td>
+                    <td className="px-6 py-4">
+                      <div className="flex flex-row flex-wrap gap-2">
+                        {item.topik.split(",").map((topik, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center justify-center px-4 py-2 rounded-lg bg-[#22a9e1] text-white text-xs"
+                          >
+                            {topik.trim()}
+                          </div>
+                        ))}
+                      </div>
+                    </td>
                     <td className="px-6 py-4">{item.kepuasan}</td>
                     <td className="px-6 py-4">{item.formattedDate}</td>
                   </tr>
                 ))}
               </tbody>
+
+              {/* Pagination Controls */}
+              {totalPages > 1 && (
+                <tfoot>
+                  <tr>
+                    <td colSpan={5} className="px-6 py-4 text-center">
+                      <div className="flex justify-center gap-2 mt-4">
+                        {Array.from({ length: totalPages }, (_, i) => (
+                          <button
+                            key={i}
+                            className={`px-3 py-1 rounded-md ${
+                              currentPage === i + 1
+                                ? "bg-blue-600 text-white"
+                                : "bg-gray-200 text-gray-700"
+                            }`}
+                            onClick={() => setCurrentPage(i + 1)}
+                          >
+                            {i + 1}
+                          </button>
+                        ))}
+                      </div>
+                    </td>
+                  </tr>
+                </tfoot>
+              )}
             </table>
           </div>
         </div>
