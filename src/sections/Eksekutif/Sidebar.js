@@ -148,19 +148,63 @@ export const Sidebar = () => {
           closeSidebar ? "w-full" : "w-full lg:w-[70%] xl:w-3/4"
         }`}
       >
-        {/* Header */}
-        <div className="p-2 md:p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-nunito text-sm xl:text-base">
+        {/* Navbar mobile sebagai pengganti footer di lg kebawah */}
+        <nav className="block lg:hidden fixed top-0 left-0 w-full bg-white border-b z-50">
+          <div className="w-full bg-white pt-2 pb-2 px-4">
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] text-gray-500">
+                © 2025 <span className="font-bold">Diskominfo Cianjur</span>
+              </p>
+
+              {/* Toggle Dropdown Button */}
+              <details className="relative">
+                <summary className="cursor-pointer list-none text-xs font-bold">
+                  Menu
+                </summary>
+                <ul className="absolute right-0 mt-2 w-40 bg-white border shadow-lg rounded-md z-50">
+                  <li>
+                    <Link
+                      to="/home"
+                      className="block px-4 py-2 text-sm hover:bg-gray-100"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/eksplorasi-dashboard"
+                      className="block px-4 py-2 text-sm hover:bg-gray-100"
+                    >
+                      Eksplorasi Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/about"
+                      className="block px-4 py-2 text-sm hover:bg-gray-100"
+                    >
+                      Tentang
+                    </Link>
+                  </li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </nav>
+
+        {/* Header untuk layar lg ke atas */}
+        <div className="hidden lg:flex p-2 lg:p-4 flex-col lg:flex-row items-start lg:items-center justify-between gap-4 font-nunito text-sm xl:text-base">
           <div className="flex flex-row gap-2">
             <p>Pages</p>
             <p className="font-bold">/</p>
             <p className="font-bold">{selectedSection}</p>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-start md:items-center">
+          <div className="flex flex-col lg:flex-row gap-2 lg:gap-4 items-start lg:items-center">
             <input
               type="text"
               placeholder="Type here..."
-              className="px-4 py-2 border rounded-md focus:outline-none w-full md:w-auto"
+              className="px-4 py-2 border rounded-md focus:outline-none w-full lg:w-auto"
             />
 
             <div className="flex items-center gap-2">
@@ -170,29 +214,10 @@ export const Sidebar = () => {
 
             <IoMdNotificationsOutline className="text-gray-700" />
           </div>
-          {/* Footer untuk mobile - muncul di atas konten ketika layar kecil */}
-          <div className="block lg:hidden p-2 md:p-4 mb-2 font-nunito text-xs">
-            <p>
-              Copyright © 2025{" "}
-              <span className="font-bold">Diskominfo Cianjur</span>. All Right
-              Reserved
-            </p>
-            <div className="flex flex-col gap-1 font-bold mt-2">
-              <Link to="/home" className="hover:text-gray-400">
-                Home
-              </Link>
-              <Link to="/eksplorasi-dashboard" className="hover:text-gray-400">
-                Eksplorasi Dashboard
-              </Link>
-              <Link to="/about" className="hover:text-gray-400">
-                Tentang
-              </Link>
-            </div>
-          </div>
         </div>
 
         {/* Main Content Section */}
-        <div className="flex-1 p-2 md:p-4 h-auto overflow-auto">
+        <div className="flex-1 p-2 lg:p-4 h-auto overflow-auto mt-6 lg:mt-0">
           <div>
             {selectedSection === "Dashboard Utama" && <MainDashboard />}
             {selectedSection === "Manajemen Program & Kegiatan" && (
@@ -214,13 +239,13 @@ export const Sidebar = () => {
         </div>
 
         {/* Footer untuk desktop */}
-        <div className="hidden lg:flex p-2 md:p-4 mt-auto flex-col md:flex-row justify-between items-start md:items-center gap-2 font-nunito text-xs xl:text-base">
+        <div className="hidden lg:flex p-2 lg:p-4 mt-auto flex-col lg:flex-row justify-between items-start lg:items-center gap-2 font-nunito text-xs xl:text-base">
           <p>
             Copyright © 2025{" "}
             <span className="font-bold">Diskominfo Cianjur</span>. All Right
             Reserved
           </p>
-          <div className="flex flex-col md:flex-row gap-2 font-bold">
+          <div className="flex flex-col lg:flex-row gap-2 font-bold">
             <Link to="/home" className="hover:text-gray-400">
               Home
             </Link>
