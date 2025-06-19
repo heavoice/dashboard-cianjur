@@ -6,7 +6,7 @@ import { notifier, analytics, orderoverview } from "./Constant";
 
 export const MainDashboard = () => {
   return (
-    <div className="text-2xl font-bold flex flex-col gap-2 lg:mb-0 mb-20">
+    <div className="text-2xl font-bold flex flex-col gap-2 lg:my-0 my-20">
       <p className="font-nunito font-bold">Dashboard Utama</p>
       <p className="font-nunito font-normal text-sm">
         Dashboard Utama adalah tampilan utama atau halaman pertama dari sebuah

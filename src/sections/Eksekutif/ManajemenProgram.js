@@ -101,7 +101,7 @@ export const ManajemenProgram = (options = { loop: true }) => {
     );
 
   return (
-    <div className="text-2xl font-bold flex flex-col h-auto gap-2">
+    <div className="text-2xl font-bold flex flex-col h-auto gap-2 lg:my-0 my-20">
       <p className="font-nunito font-bold">Manajemen Program & Kegiatan</p>
       <p className="font-nunito font-normal text-sm">
         Manajemen Program & Kegiatan adalah fitur yang dirancang untuk membantu
@@ -287,13 +287,13 @@ export const ManajemenProgram = (options = { loop: true }) => {
                 <tfoot>
                   <tr>
                     <td colSpan={5} className="px-6 py-4 text-center">
-                      <div className="flex justify-center gap-2 mt-4">
+                      <div className="flex sm:justify-center justify-start gap-2 mt-4">
                         {Array.from({ length: totalPages }, (_, i) => (
                           <button
                             key={i}
                             className={`px-3 py-1 rounded-md ${
                               currentPage === i + 1
-                                ? "bg-blue-600 text-white"
+                                ? "bg-[#22a9e1] text-white"
                                 : "bg-gray-200 text-gray-700"
                             }`}
                             onClick={() => setCurrentPage(i + 1)}
